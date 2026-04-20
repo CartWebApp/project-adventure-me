@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Indie Flower', cursive;
+}
+
+/* General */
+.active {
+    display: block;
+}
+
+.page {
+    display: none;
+}
+
+
+/* Title Screen */
+
+#titleScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-image: url("assets/titleBG.png");
+    background-position: center;
+    background-size: cover;
+    width: auto;
+    height: 100dvh;
+    background-repeat: no-repeat;
+}
+
+#title {
+    font-family: 'Hachi Maru Pop', cursive;
+    font-size: 150px;
+}
+
+#startButton {
+    font-size: 50px;
+    padding: 10px 60px;
+    background-color: #25201C;
+    border-color: #BD9745;
+}
+
+/* Dialogue Screen */
+
+
+
