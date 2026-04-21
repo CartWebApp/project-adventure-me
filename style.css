@@ -7,18 +7,16 @@
 }
 
 /* General */
-.active {
-    display: block;
-}
 
 .page {
     display: none;
+    width: auto;
+    height: 100dvh;
 }
 
 
 /* Title Screen */
-
-#titleScreen {
+#titleScreen.active {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,8 +24,6 @@
     background-image: url("assets/titleBG.png");
     background-position: center;
     background-size: cover;
-    width: auto;
-    height: 100dvh;
     background-repeat: no-repeat;
 }
 
@@ -41,9 +37,56 @@
     padding: 10px 60px;
     background-color: #25201C;
     border-color: #BD9745;
+    border-width: 3px;
 }
 
 /* Dialogue Screen */
+#dialogueScreen.active {
+    display: block;
+}
 
+#dialogueAndSprites {
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 50% 50%; 
+    grid-template-areas: 
+    "a b"
+    "c c";
+    gap: 0px;
+}
 
+#playerSprite {
+    justify-self: flex-start;
+    align-self: flex-end;
+    grid-area: a;
+    width: 70%;
+}
+
+#otherSprite {
+    justify-self: flex-end;
+    align-self: flex-end;
+    grid-area: b;
+    width: 70%;
+}
+
+#dialogueBox {
+    grid-area: c;
+    padding: 20px;
+    margin: 20px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    width: auto;
+}
+
+/* Combat Screen */
+#combatScreen.active {
+    display: block;
+}
+
+/* Ending Screen */
+#endingScreen.active {
+    display: block;
+}
 
