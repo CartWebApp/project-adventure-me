@@ -4,6 +4,15 @@ const dialogueScreen = document.getElementById('dialogueScreen');
 const combatScreen = document.getElementById('combatScreen');
 const endingScreen = document.getElementById('endingScreen');
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
+let storyObject = {
+    "intro": {
+        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan", "This is a test of the dialogue system.", "I am the narrator", "", "That was a CG"],
+        "leftSprite": ["SorenGB.png", null, null, null, null, null],
+        "rightSprite": [null, "AlanGB.png", null, null, null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png"],
+        "CGmode": ["off", "off", "off", "off", "on", "off"]
+    }
+}
 let currentPage = "title";
 
 function setPage() {

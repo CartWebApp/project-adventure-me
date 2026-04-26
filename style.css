@@ -45,6 +45,28 @@
     display: block;
 }
 
+#nonAbsoluteElements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#optionsButton {
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    height: 5dvh;
+    width: 50px;
+    padding: 5px;
+    margin: 5px;
+    align-self: flex-end;
+}
+
 #dialogueAndSprites {
     display: grid;
     grid-template-rows: auto auto;
@@ -52,6 +74,7 @@
     grid-template-areas: 
     "a b"
     "c c";
+    flex-grow: 1;
     gap: 0px;
 }
 
@@ -59,14 +82,14 @@
     justify-self: flex-start;
     align-self: flex-end;
     grid-area: a;
-    width: 70%;
+    height: 60dvh;
 }
 
 #otherSprite {
     justify-self: flex-end;
     align-self: flex-end;
     grid-area: b;
-    width: 70%;
+    height: 60dvh;
 }
 
 #dialogueBox {
@@ -77,7 +100,19 @@
     margin-bottom: 40px;
     background-color: #25201C;
     border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
     width: auto;
+    height: 25dvh;
+}
+
+#statusBars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
 }
 
 /* Combat Screen */
