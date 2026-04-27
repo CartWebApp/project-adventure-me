@@ -13,6 +13,8 @@ const speakerTag = document.querySelector('#speakerTag');
 const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
 const choice3 = document.querySelector('#choice3');
+const choiceButtons = [choice1, choice2, choice3];
+const choiceLog = [];
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
 let storyObject = {
     "intro": {
@@ -85,6 +87,7 @@ let dialogueTracker = -1;
 let typeWrite = 0;
 let dialogueSkip = false;
 let skipTimeout;
+let choosingChoice = false;
 
 function setPage() {
     for (let screen of screens) {
@@ -164,12 +167,25 @@ function typeWriter(txt, speed) {
 }
 
 function setUpChoices() {
+    choosingChoice = true;
     leftSprite.style = "visibility: hidden;";
     rightSprite.style = "visibility: hidden;";
     dialogueAndSprites.style = "visibility: hidden;";
     choice1.innerHTML = choices[storyStage].text[0];
     choice2.innerHTML = choices[storyStage].text[1];
     choice3.innerHTML = choices[storyStage].text[2];
+}
+
+function choicePressed(choiceNumber) {
+    let chosenChoice = choiceButtons[choiceNumber].innerHTML;
+    choiceLog.push(chosenChoice);
+    setTimeout(() => choosingChoice = false, 50);
+    dialogueSkip = false;
+    typeWrite = 0;
+    console.log("clicked");
+    dialogueTracker = -1;
+    storyStage = choices[storyStage].nextPath[choiceNumber];
+    advanceStory();
 }
 
 startButton.addEventListener('click', () => {
@@ -179,31 +195,26 @@ startButton.addEventListener('click', () => {
 });
 
 choice1.addEventListener('click', () => {
-    console.log("clicked");
-    dialogueTracker = -1;
-    storyStage = choices[storyStage].nextPath[0];
-    advanceStory();
+    choicePressed(0);
 });
 
 choice2.addEventListener('click', () => {
-    dialogueTracker = -1;
-    storyStage = choices[storyStage].nextPath[1];
-    advanceStory();
+    choicePressed(1);
 });
 
 choice3.addEventListener('click', () => {
-    dialogueTracker = -1;
-    storyStage = choices[storyStage].nextPath[2];
-    advanceStory();
+    choicePressed(2);
 });
 
 dialogueScreen.addEventListener('click', () => {
-    if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
-        dialogueSkip = true;
-    } else {
-        typeWrite = 0;
-        clearTimeout(skipTimeout);
-        advanceStory();
+    if (choosingChoice === false) {
+        if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
+            dialogueSkip = true;
+        } else {
+            typeWrite = 0;
+            clearTimeout(skipTimeout);
+            advanceStory();
+        }
     }
 });
 
