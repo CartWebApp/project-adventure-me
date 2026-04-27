@@ -66,6 +66,14 @@ p {
     width: 100%;
 }
 
+#backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+}
+
 #optionsButton {
     background-color: #25201C;
     border-color: #BD9745;
@@ -146,6 +154,31 @@ p {
     width: 100%;
     height: 100%;
     pointer-events: none;
+}
+
+.choice {
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 70px;
+    margin-bottom: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    height: auto;
+}
+
+#choiceOverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Combat Screen */

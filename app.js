@@ -1,6 +1,7 @@
 const startButton = document.getElementById('startButton');
 const titleScreen = document.getElementById('titleScreen');
 const dialogueScreen = document.getElementById('dialogueScreen');
+const choiceOverlay = document.getElementById('choiceOverlay');
 const combatScreen = document.getElementById('combatScreen');
 const endingScreen = document.getElementById('endingScreen');
 const leftSprite = document.querySelector('#playerSprite');
@@ -9,6 +10,9 @@ const dialogueText = document.querySelector('#dialogueText');
 const dialogueAndSprites = document.querySelector('#dialogueAndSprites');
 const speakerName = document.querySelector('#speakerName');
 const speakerTag = document.querySelector('#speakerTag');
+const choice1 = document.querySelector('#choice1');
+const choice2 = document.querySelector('#choice2');
+const choice3 = document.querySelector('#choice3');
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
 let storyObject = {
     "intro": {
@@ -21,15 +25,33 @@ let storyObject = {
         "tagPosition": ["left", "right", null, null, null, null]
     },
     "1A": {
-        "text": [],
-        "leftSprite": [],
-        "rightSprite": [],
-        "background": [],
-        "CGmode": [],
-        "speaker":  [],
-        "tagPosition": []
+        "text": ["You chose 1A"],
+        "leftSprite": ["SorenGB.png"],
+        "rightSprite": [null],
+        "background": ["GrillBrosBG.png"],
+        "CGmode": ["off"],
+        "speaker":  ["Soren"],
+        "tagPosition": ["left"]
     },
     "1B": {
+        "text": ["You chose 1B"],
+        "leftSprite": [null],
+        "rightSprite": ["AlanGB.png"],
+        "background": ["GrillBrosBG.png"],
+        "CGmode": ["off"],
+        "speaker":  ["Alan"],
+        "tagPosition": ["right"]
+    },
+    "1C": {
+        "text": ["You chose 1C"],
+        "leftSprite": [null],
+        "rightSprite": [null],
+        "background": ["GrillBrosBG.png"],
+        "CGmode": ["off"],
+        "speaker":  ["Narrator"],
+        "tagPosition": [null]
+    },
+    "2A": {
         "text": [],
         "leftSprite": [],
         "rightSprite": [],
@@ -40,13 +62,25 @@ let storyObject = {
     }
 }
 let choices = {
-    "1": {
-        "text": []
-        "nextPath": []
+    "intro": {
+        "text": ["Run", "Hide", "Fight"],
+        "nextPath": ["1A", "1B", "1C"]
+    },
+    "1A": {
+        "text": ["Run", "Hide", "Fight"],
+        "nextPath": ["1A", "1B", "1C"]
+    },
+    "1B": {
+        "text": ["Run", "Hide", "Fight"],
+        "nextPath": ["1A", "1B", "1C"]
+    },
+    "1C": {
+        "text": ["Run", "Hide", "Fight"],
+        "nextPath": ["1A", "1B", "1C"]
     }
 }
 let currentPage = "title";
-let storyStage = storyObject.intro;
+let storyStage = "intro";
 let dialogueTracker = -1;
 let typeWrite = 0;
 let dialogueSkip = false;
@@ -70,41 +104,45 @@ function setPage() {
 }
 
 function advanceStory() {
-    if (storyStage.text[dialogueTracker + 1]) {
+    if (storyObject[storyStage].text[dialogueTracker + 1]) {
+        choiceOverlay.style = "display: none";
         dialogueTracker++;
         dialogueText.innerHTML = "";
-        typeWriter(storyStage.text[dialogueTracker], 50);
-        if (storyStage.leftSprite[dialogueTracker]) {
+        typeWriter(storyObject[storyStage].text[dialogueTracker], 50);
+        if (storyObject[storyStage].leftSprite[dialogueTracker]) {
             leftSprite.style = "visibility: visible;";
-            leftSprite.src = `assets/${storyStage.leftSprite[dialogueTracker]}`;
+            leftSprite.src = `assets/${storyObject[storyStage].leftSprite[dialogueTracker]}`;
         } else if (leftSprite.style = "visibility: visible;") {
             leftSprite.style = "visibility: hidden;";
         }
-        if (storyStage.rightSprite[dialogueTracker]) {
+        if (storyObject[storyStage].rightSprite[dialogueTracker]) {
             rightSprite.style = "visibility: visible;";
-            rightSprite.src = `assets/${storyStage.rightSprite[dialogueTracker]}`;
+            rightSprite.src = `assets/${storyObject[storyStage].rightSprite[dialogueTracker]}`;
         } else if (rightSprite.style = "visibility: visible;") {
             rightSprite.style = "visibility: hidden;";
         }
-        if (storyStage.CGmode[dialogueTracker] === "on") {
+        if (storyObject[storyStage].CGmode[dialogueTracker] === "on") {
             dialogueAndSprites.style = "visibility: hidden;";
+            backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.0);";
         } else if (dialogueAndSprites.style = "visibility: hidden;") {
             dialogueAndSprites.style = "visibility: visible;";
+            backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.4);";
         }
-        if (storyStage.speaker[dialogueTracker] === "Narrator") {
+        if (storyObject[storyStage].speaker[dialogueTracker] === "Narrator") {
             speakerTag.style = "visibility: hidden;";
         } else {
             speakerTag.style = "visibility: visible;";
-            speakerName.innerHTML = storyStage.speaker[dialogueTracker];
+            speakerName.innerHTML = storyObject[storyStage].speaker[dialogueTracker];
         }
-        if (storyStage.tagPosition[dialogueTracker] === "left") {
+        if (storyObject[storyStage].tagPosition[dialogueTracker] === "left") {
             speakerTag.style = "left: 0;";
-        } else if (storyStage.tagPosition[dialogueTracker] === "right") {
+        } else if (storyObject[storyStage].tagPosition[dialogueTracker] === "right") {
             speakerTag.style = "right: 0;";
         }
-        dialogueScreen.style = `background-image: url("assets/${storyStage.background[dialogueTracker]}");`;
+        dialogueScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
     } else {
-
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
     }
 }
 
@@ -115,7 +153,9 @@ function typeWriter(txt, speed) {
         typeWrite++;
         skipTimeout = setTimeout(() => typeWriter(txt, speed), speed);
     }
+    //added to check if player skips dialogue, and instantly display text if so
     if (dialogueSkip === true) {
+        //stop recursion by clearing the previous setTimeout
         clearTimeout(skipTimeout);
         dialogueText.innerHTML = txt;
         typeWrite = txt.length;
@@ -124,7 +164,12 @@ function typeWriter(txt, speed) {
 }
 
 function setUpChoices() {
-
+    leftSprite.style = "visibility: hidden;";
+    rightSprite.style = "visibility: hidden;";
+    dialogueAndSprites.style = "visibility: hidden;";
+    choice1.innerHTML = choices[storyStage].text[0];
+    choice2.innerHTML = choices[storyStage].text[1];
+    choice3.innerHTML = choices[storyStage].text[2];
 }
 
 startButton.addEventListener('click', () => {
@@ -133,8 +178,27 @@ startButton.addEventListener('click', () => {
     advanceStory();
 });
 
+choice1.addEventListener('click', () => {
+    console.log("clicked");
+    dialogueTracker = -1;
+    storyStage = choices[storyStage].nextPath[0];
+    advanceStory();
+});
+
+choice2.addEventListener('click', () => {
+    dialogueTracker = -1;
+    storyStage = choices[storyStage].nextPath[1];
+    advanceStory();
+});
+
+choice3.addEventListener('click', () => {
+    dialogueTracker = -1;
+    storyStage = choices[storyStage].nextPath[2];
+    advanceStory();
+});
+
 dialogueScreen.addEventListener('click', () => {
-    if (typeWrite < storyStage.text[dialogueTracker].length) {
+    if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
         dialogueSkip = true;
     } else {
         typeWrite = 0;
