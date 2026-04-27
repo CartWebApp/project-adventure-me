@@ -4,9 +4,17 @@
     box-sizing: border-box;
     color: white;
     font-family: 'Indie Flower', cursive;
+    
 }
 
 /* General */
+body {
+    overflow: hidden;
+}
+
+p {
+    font-size: 20px;
+}
 
 .page {
     display: none;
@@ -43,6 +51,9 @@
 /* Dialogue Screen */
 #dialogueScreen.active {
     display: block;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 #nonAbsoluteElements {
@@ -82,18 +93,25 @@
     justify-self: flex-start;
     align-self: flex-end;
     grid-area: a;
-    height: 60dvh;
+    height: 65dvh;
 }
 
 #otherSprite {
     justify-self: flex-end;
     align-self: flex-end;
     grid-area: b;
-    height: 60dvh;
+    height: 65dvh;
+}
+
+#dialogueBoxAndTag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    grid-area: c;
 }
 
 #dialogueBox {
-    grid-area: c;
     padding: 20px;
     margin: 20px;
     margin-top: 0px;
@@ -102,8 +120,23 @@
     border-color: #BD9745;
     border-width: 3px;
     border-style: solid;
-    width: auto;
+    width: -webkit-fill-available;
     height: 25dvh;
+}
+
+#speakerTag {
+    position: absolute;
+    top: -80px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin: 20px;
+    margin-bottom: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    height: auto;
 }
 
 #statusBars {
