@@ -21,7 +21,7 @@ const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
 const choice3 = document.querySelector('#choice3');
 const choiceButtons = [choice1, choice2, choice3];
-const choiceLog = [];
+let choiceLog = [];
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
 let storyObject = {
     "intro": {
@@ -195,6 +195,7 @@ function setUpChoices() {
 }
 
 function choicePressed(choiceNumber) {
+    choosingChoice = false;
     let chosenChoice = choiceButtons[choiceNumber].innerHTML;
     choiceLog.push(chosenChoice);
     setTimeout(() => choosingChoice = false, 50);
@@ -216,12 +217,17 @@ function setUpOptionsButtons() {
     for (button of homeButtons) {
         button.addEventListener('click', () => {
             setUpOptionsMenus();
-            optionsOpen = false;
+            setTimeout(() => resetDialogueState(), 50);
             currentPage = 'title';
             setStartPage();
             setPage();
         });
     }
+}
+
+function resetDialogueState() {
+    choosingChoice = false;
+    optionsOpen = false;
 }
 
 function setUpOptionsMenus() {
@@ -251,7 +257,14 @@ function Enemy(name, health, attack, sprite, canSpare, sparesNeeded, canSleep, c
     this.canDistract = canDistract;
 }
 
+function resetStory() {
+    choiceLog = [];
+    dialogueTracker = -1;
+    storyStage = 'intro';
+}
+
 startButton.addEventListener('click', () => {
+    resetStory();
     currentPage = "dialogue";
     setPage();
     advanceStory();
@@ -277,6 +290,7 @@ choice3.addEventListener('click', () => {
 });
 
 dialogueScreen.addEventListener('click', () => {
+    console.log('click')
     if (optionsOpen === false) {
         if (choosingChoice === false) {
             if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
