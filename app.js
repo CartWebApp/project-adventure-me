@@ -16,12 +16,14 @@ const optionsButtons = document.querySelectorAll('.optionsButton');
 const optionsMenus = document.querySelectorAll('.optionsMenu');
 const homeButtons = document.querySelectorAll('.homeButton');
 const logsButtons = document.querySelectorAll('.logsButtons');
-const statusButtons = document.querySelectorAll('statusButton');
+const statusButtons = document.querySelectorAll('.statusButton');
 const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
 const choice3 = document.querySelector('#choice3');
 const choiceButtons = [choice1, choice2, choice3];
 let choiceLog = [];
+const statusBars = document.querySelector('#statusBars');
+const statusBarsCtx = statusBars.getContext('2d');
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
 let storyObject = {
     "intro": {
@@ -31,7 +33,8 @@ let storyObject = {
         "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png"],
         "CGmode": ["off", "off", "off", "off", "on", "off"],
         "speaker":  ["Soren", "Alan", "Narrator", "Narrator", "Narrator", "Narrator"],
-        "tagPosition": ["left", "right", null, null, null, null]
+        "tagPosition": ["left", "right", null, null, null, null],
+        "combat": [null, null, ]
     },
     "1A": {
         "text": ["You chose 1A"],
@@ -96,6 +99,10 @@ let dialogueSkip = false;
 let skipTimeout;
 let choosingChoice = false;
 let optionsOpen = false;
+let suspicion = 0;
+let interrogation = 0;
+let interrogationMode = false;
+let showStatusBars = true;
 
 function setStartPage() {
     if (storyStage === "intro" && dialogueTracker === -1) {
@@ -133,19 +140,19 @@ function advanceStory() {
         if (storyObject[storyStage].leftSprite[dialogueTracker]) {
             leftSprite.style = "visibility: visible;";
             leftSprite.src = `assets/${storyObject[storyStage].leftSprite[dialogueTracker]}`;
-        } else if (leftSprite.style = "visibility: visible;") {
+        } else {
             leftSprite.style = "visibility: hidden;";
         }
         if (storyObject[storyStage].rightSprite[dialogueTracker]) {
             rightSprite.style = "visibility: visible;";
             rightSprite.src = `assets/${storyObject[storyStage].rightSprite[dialogueTracker]}`;
-        } else if (rightSprite.style = "visibility: visible;") {
+        } else {
             rightSprite.style = "visibility: hidden;";
         }
         if (storyObject[storyStage].CGmode[dialogueTracker] === "on") {
             dialogueAndSprites.style = "visibility: hidden;";
             backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.0);";
-        } else if (dialogueAndSprites.style = "visibility: hidden;") {
+        } else if (storyObject[storyStage].CGmode[dialogueTracker] === "off") {
             dialogueAndSprites.style = "visibility: visible;";
             backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.4);";
         }
@@ -223,6 +230,22 @@ function setUpOptionsButtons() {
             setPage();
         });
     }
+    for (button of statusButtons) {
+        button.addEventListener('click', () => {
+            if (showStatusBars === true) {
+                showStatusBars = false;
+                statusBars.style = "visibility: hidden;";
+            } else if (showStatusBars === false) {
+                showStatusBars = true;
+                statusBars.style = "visibility: visible;";
+            }
+        });
+    }
+    for (button of logsButtons) {
+        button.addEventListener('click', () => {
+            
+        });
+    }
 }
 
 function resetDialogueState() {
@@ -244,6 +267,27 @@ function optionsPressed(index) {
     backgroundOverlay.classList.add("z-index1");
     backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.6);";
     optionsMenus[index].style = "display: flex;";
+}
+
+function updateStatusCanvas() {
+    statusBarsCtx.fillStyle = "#BD9745";
+    statusBarsCtx.fillRect(20, 20, 280, 25);
+    statusBarsCtx.fillStyle = "#25201C";
+    statusBarsCtx.fillRect(23, 23, 274, 19);
+    statusBarsCtx.fillStyle = "#BDBDBD";
+    statusBarsCtx.fillRect(26, 26, 268, 13);
+    statusBarsCtx.fillStyle = "#755498";
+    statusBarsCtx.fillRect(26, 26, (suspicion * 2.68), 13);
+    if (interrogationMode === true) {
+        statusBarsCtx.fillStyle = "#BD9745";
+        statusBarsCtx.fillRect(20, 55, 280, 25);
+        statusBarsCtx.fillStyle = "#25201C";
+        statusBarsCtx.fillRect(23, 58, 274, 19);
+        statusBarsCtx.fillStyle = "#BDBDBD";
+        statusBarsCtx.fillRect(26, 61, 268, 13);
+        statusBarsCtx.fillStyle = "#0BCCC2";
+        statusBarsCtx.fillRect(26, 61, (interrogation * 2.68), 13);
+    }
 }
 
 function Enemy(name, health, attack, sprite, canSpare, sparesNeeded, canSleep, canDistract) {
@@ -304,4 +348,5 @@ dialogueScreen.addEventListener('click', () => {
 
 setUpOptionsButtons();
 setUpOptionsMenus();
+updateStatusCanvas();
 setStartPage();
