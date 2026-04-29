@@ -13,36 +13,39 @@
     <div id="titleScreen" class="page active">
         <h1 id="title">Soren</h1>
         <button id="startButton">Start</button>
+        <button id="continueButton">Continue</button>
     </div>
     <div id="dialogueScreen" class="page">
-        <div id="backgroundOverlay">
-            <canvas id="statusBars"></canvas>
-            <div id ="nonAbsoluteElements">
-                <img src="assets/Icon.png" id="optionsButton">
-                <div id="dialogueAndSprites">
-                    <img src="assets/SorenGB.png" id="playerSprite">
-                    <img src="assets/AlanGB.png" id="otherSprite">
-                    <div id="dialogueBoxAndTag">
-                        <div id="speakerTag">
-                            <p id="speakerName">Speaker</p>
-                        </div>
-                        <div id="dialogueBox">
-                            <p id="dialogueText">Placeholder text</p>
-                        </div>
-                    </div>
+        <div id="backgroundOverlay"></div> 
+        <canvas id="statusBars"></canvas>
+        <img src="assets/Icon.png" class="optionsButton">
+        <div class="optionsMenu centered">
+            <button class="homeButton">Home</button>
+            <button class="logsButton">Chat logs</button>
+            <button class="statusButton">Show/Hide Status Bars</button>
+        </div>
+        <div id="dialogueAndSprites">
+            <img src="assets/SorenGB.png" id="playerSprite">
+            <img src="assets/AlanGB.png" id="otherSprite">
+            <div id="dialogueBoxAndTag">
+                <div id="speakerTag">
+                    <p id="speakerName">Speaker</p>
+                </div>
+                <div id="dialogueBox">
+                    <p id="dialogueText">Placeholder text</p>
                 </div>
             </div>
-            <div id="choiceOverlay">
-                <button id="choice1" class="choice">Choice 1</button>
-                <button id="choice2" class="choice">Choice 2</button>
-                <button id="choice3" class="choice">Choice 3</button>
-            </div>
-        </div> 
+        </div>
+        <div id="choiceOverlay">
+            <button id="choice1" class="choice">Choice 1</button>
+            <button id="choice2" class="choice">Choice 2</button>
+            <button id="choice3" class="choice">Choice 3</button>
+        </div>
     </div>
     <div id="combatScreen" class="page">
         <img src="assets/Icon.png">
-        <div id="dialogueBox">
-            <p id="dialogueText">Placeholder text</p>
+        <div id="combatLogBox">
+            <p id="combatText">Placeholder text</p>
         </div>
     </div>
     <div id="endingScreen" class="page">

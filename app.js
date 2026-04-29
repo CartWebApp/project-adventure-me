@@ -1,4 +1,5 @@
 const startButton = document.getElementById('startButton');
+const continueButton = document.getElementById('continueButton');
 const titleScreen = document.getElementById('titleScreen');
 const dialogueScreen = document.getElementById('dialogueScreen');
 const choiceOverlay = document.getElementById('choiceOverlay');
@@ -10,6 +11,12 @@ const dialogueText = document.querySelector('#dialogueText');
 const dialogueAndSprites = document.querySelector('#dialogueAndSprites');
 const speakerName = document.querySelector('#speakerName');
 const speakerTag = document.querySelector('#speakerTag');
+const backgroundOverlay = document.querySelector('#backgroundOverlay');
+const optionsButtons = document.querySelectorAll('.optionsButton');
+const optionsMenus = document.querySelectorAll('.optionsMenu');
+const homeButtons = document.querySelectorAll('.homeButton');
+const logsButtons = document.querySelectorAll('.logsButtons');
+const statusButtons = document.querySelectorAll('statusButton');
 const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
 const choice3 = document.querySelector('#choice3');
@@ -88,6 +95,15 @@ let typeWrite = 0;
 let dialogueSkip = false;
 let skipTimeout;
 let choosingChoice = false;
+let optionsOpen = false;
+
+function setStartPage() {
+    if (storyStage === "intro" && dialogueTracker === -1) {
+        continueButton.style = "display: none";
+    } else {
+        continueButton.style = "display: block";
+    }
+}
 
 function setPage() {
     for (let screen of screens) {
@@ -108,9 +124,11 @@ function setPage() {
 
 function advanceStory() {
     if (storyObject[storyStage].text[dialogueTracker + 1]) {
+        clearTimeout(skipTimeout);
         choiceOverlay.style = "display: none";
         dialogueTracker++;
         dialogueText.innerHTML = "";
+        typeWrite = 0;
         typeWriter(storyObject[storyStage].text[dialogueTracker], 50);
         if (storyObject[storyStage].leftSprite[dialogueTracker]) {
             leftSprite.style = "visibility: visible;";
@@ -181,15 +199,67 @@ function choicePressed(choiceNumber) {
     choiceLog.push(chosenChoice);
     setTimeout(() => choosingChoice = false, 50);
     dialogueSkip = false;
-    typeWrite = 0;
     console.log("clicked");
     dialogueTracker = -1;
     storyStage = choices[storyStage].nextPath[choiceNumber];
     advanceStory();
 }
 
+function setUpOptionsButtons() {
+    for (i = 0; i < optionsButtons.length; i++) {
+        let index = i;
+        optionsButtons[i].addEventListener('click', () => {
+            console.log(index);
+            optionsPressed(index);
+        });
+    }
+    for (button of homeButtons) {
+        button.addEventListener('click', () => {
+            setUpOptionsMenus();
+            optionsOpen = false;
+            currentPage = 'title';
+            setStartPage();
+            setPage();
+        });
+    }
+}
+
+function setUpOptionsMenus() {
+    if (backgroundOverlay.classList.contains('z-index1')) {
+        backgroundOverlay.classList.remove('z-index1');
+    }
+    for (menu of optionsMenus) {
+        menu.style = "display: none";
+    }
+}
+
+function optionsPressed(index) {
+    optionsOpen = true;
+    backgroundOverlay.classList.add("z-index1");
+    backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.6);";
+    optionsMenus[index].style = "display: flex;";
+}
+
+function Enemy(name, health, attack, sprite, canSpare, sparesNeeded, canSleep, canDistract) {
+    this.name = name;
+    this.health = health;
+    this.attack = attack;
+    this.sprite = sprite;
+    this.canSpare = canSpare;
+    this.sparesNeeded = sparesNeeded;
+    this.canSleep = canSleep;
+    this.canDistract = canDistract;
+}
+
 startButton.addEventListener('click', () => {
     currentPage = "dialogue";
+    setPage();
+    advanceStory();
+});
+
+continueButton.addEventListener('click', () => {
+    currentPage = "dialogue";
+    dialogueTracker = -1;
     setPage();
     advanceStory();
 });
@@ -207,14 +277,17 @@ choice3.addEventListener('click', () => {
 });
 
 dialogueScreen.addEventListener('click', () => {
-    if (choosingChoice === false) {
-        if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
-            dialogueSkip = true;
-        } else {
-            typeWrite = 0;
-            clearTimeout(skipTimeout);
-            advanceStory();
+    if (optionsOpen === false) {
+        if (choosingChoice === false) {
+            if (typeWrite < storyObject[storyStage].text[dialogueTracker].length) {
+                dialogueSkip = true;
+            } else {
+                advanceStory();
+            }
         }
     }
 });
 
+setUpOptionsButtons();
+setUpOptionsMenus();
+setStartPage();

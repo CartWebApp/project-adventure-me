@@ -22,6 +22,17 @@ p {
     height: 100dvh;
 }
 
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.z-index1 {
+    z-index: 1;
+}
+
 
 /* Title Screen */
 #titleScreen.active {
@@ -48,22 +59,20 @@ p {
     border-width: 3px;
 }
 
+#continueButton {
+    font-size: 50px;
+    padding: 10px 60px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+}
+
 /* Dialogue Screen */
 #dialogueScreen.active {
     display: block;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-}
-
-#nonAbsoluteElements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
 }
 
 #backgroundOverlay {
@@ -74,19 +83,49 @@ p {
     height: 100dvh;
 }
 
-#optionsButton {
+.optionsButton {
+    z-index: 2;
+    position: absolute;
+    right: 20px;
+    top: 10px;
     background-color: #25201C;
     border-color: #BD9745;
     border-width: 3px;
     border-style: solid;
-    height: 5dvh;
+    height: 40px;
     width: 50px;
     padding: 5px;
     margin: 5px;
-    align-self: flex-end;
+}
+
+.optionsMenu {
+    z-index: 3;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    width: 400px;
+}
+
+.optionsMenu button {
+    font-size: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    width: auto;
+    padding: 5px;
+    margin: 5px;
 }
 
 #dialogueAndSprites {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
     display: grid;
     grid-template-rows: auto auto;
     grid-template-columns: 50% 50%; 
