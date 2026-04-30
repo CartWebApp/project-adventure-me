@@ -110,6 +110,42 @@ p {
     width: 400px;
 }
 
+.chatLog {
+    padding: 20px;
+    z-index: 4;
+    width: 80dvw;
+    height: 80dvh;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    overflow-wrap: normal;
+    overflow-y: auto;
+    scrollbar-width: 5px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background:#25201C;
+}
+
+::-webkit-scrollbar-thumb {
+    background:#BD9745;
+}
+
+.chatLog p {
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    padding: 5px;
+}
+
 .optionsMenu button {
     font-size: 20px;
     background-color: #25201C;

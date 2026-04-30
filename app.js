@@ -15,7 +15,8 @@ const backgroundOverlay = document.querySelector('#backgroundOverlay');
 const optionsButtons = document.querySelectorAll('.optionsButton');
 const optionsMenus = document.querySelectorAll('.optionsMenu');
 const homeButtons = document.querySelectorAll('.homeButton');
-const logsButtons = document.querySelectorAll('.logsButtons');
+const logsButtons = document.querySelectorAll('.logsButton');
+const chatLog = document.querySelector('.chatLog');
 const statusButtons = document.querySelectorAll('.statusButton');
 const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
@@ -27,7 +28,7 @@ const statusBarsCtx = statusBars.getContext('2d');
 const screens = [titleScreen, dialogueScreen, combatScreen, endingScreen];
 let storyObject = {
     "intro": {
-        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegw", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG"],
+        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegwqwejefoipq3jfoipq3jfiopjfop4i3fjpo34f3iqfjq4fo q3ifijo3pfj34 jfo4jfop34i fjo4p fopij 4po fipo jf4poif j4fpoi243fjo 4jpo234j poi34jf po32i4 jfp32io4j f3o24i jfpoi342j f3o42 fi", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG"],
         "leftSprite": ["SorenGB.png", null, null, null, null, null],
         "rightSprite": [null, "AlanGB.png", null, null, null, null],
         "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png"],
@@ -91,6 +92,8 @@ let choices = {
         "nextPath": ["1A", "1B", "1C"]
     }
 }
+let chatLogArray = [];
+let continueChatLogArray = [];
 let currentPage = "title";
 let storyStage = "intro";
 let dialogueTracker = -1;
@@ -101,6 +104,7 @@ let choosingChoice = false;
 let optionsOpen = false;
 let suspicion = 0;
 let interrogation = 0;
+let kills = 0;
 let interrogationMode = false;
 let showStatusBars = true;
 
@@ -137,6 +141,10 @@ function advanceStory() {
         dialogueText.innerHTML = "";
         typeWrite = 0;
         typeWriter(storyObject[storyStage].text[dialogueTracker], 50);
+        if (!(storyObject[storyStage].text[dialogueTracker] === '.')) {
+            let temp = `${storyObject[storyStage].speaker[dialogueTracker]}: ${storyObject[storyStage].text[dialogueTracker]}`;
+            chatLogArray.push(temp);
+        }
         if (storyObject[storyStage].leftSprite[dialogueTracker]) {
             leftSprite.style = "visibility: visible;";
             leftSprite.src = `assets/${storyObject[storyStage].leftSprite[dialogueTracker]}`;
@@ -168,6 +176,7 @@ function advanceStory() {
             speakerTag.style = "right: 0;";
         }
         dialogueScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
+        updateStatusCanvas();
     } else {
         setUpChoices();
         choiceOverlay.style = "display: flex";
@@ -202,6 +211,7 @@ function setUpChoices() {
 }
 
 function choicePressed(choiceNumber) {
+    continueChatLogArray = [...chatLogArray];
     choosingChoice = false;
     let chosenChoice = choiceButtons[choiceNumber].innerHTML;
     choiceLog.push(chosenChoice);
@@ -217,7 +227,6 @@ function setUpOptionsButtons() {
     for (i = 0; i < optionsButtons.length; i++) {
         let index = i;
         optionsButtons[i].addEventListener('click', () => {
-            console.log(index);
             optionsPressed(index);
         });
     }
@@ -243,7 +252,7 @@ function setUpOptionsButtons() {
     }
     for (button of logsButtons) {
         button.addEventListener('click', () => {
-            
+            updateChatLog();
         });
     }
 }
@@ -253,12 +262,31 @@ function resetDialogueState() {
     optionsOpen = false;
 }
 
+function updateChatLog() {
+    chatLog.style = "display: flex";
+    let chatLogHTML = "";
+    for (line of chatLogArray) {
+        chatLogHTML += `<p>${line}</p>`;
+    }
+    chatLog.innerHTML = chatLogHTML;
+}
+
 function setUpOptionsMenus() {
     if (backgroundOverlay.classList.contains('z-index1')) {
         backgroundOverlay.classList.remove('z-index1');
     }
     for (menu of optionsMenus) {
         menu.style = "display: none";
+        document.body.addEventListener('click', (event) => {
+            if (!event.target.closest('.optionsMenu') && !event.target.closest('.chatLog') && !event.target.closest('.optionsButton')) {
+                console.log(event.target);
+                console.log(!event.target.closest('.optionsMenu'));
+                console.log(!event.target.closest('.chatLog'));
+                console.log(!event.target.closest('.optionsButton'));
+                hideOptions();
+            }
+        });
+
     }
 }
 
@@ -267,6 +295,22 @@ function optionsPressed(index) {
     backgroundOverlay.classList.add("z-index1");
     backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.6);";
     optionsMenus[index].style = "display: flex;";
+}
+
+function hideOptions() {
+    optionsOpen = false;
+    if (backgroundOverlay.classList.contains('z-index1')) {
+        backgroundOverlay.classList.remove('z-index1');
+    }
+    if (storyObject[storyStage].CGmode[dialogueTracker] === "on") {
+        backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.0);";
+    } else if (storyObject[storyStage].CGmode[dialogueTracker] === "off") {
+        backgroundOverlay.style = "background-color: rgba(37, 32, 28, 0.4);";
+    }
+    chatLog.style = "display: none";
+    for (menu of optionsMenus) {
+        menu.style = "display: none";
+    }
 }
 
 function updateStatusCanvas() {
@@ -290,6 +334,17 @@ function updateStatusCanvas() {
     }
 }
 
+function resetStory() {
+    kills = 0;
+    suspicion = 0;
+    interrogation = 0;
+    chatLogArray = [];
+    continueChatLogArray = [];
+    choiceLog = [];
+    dialogueTracker = -1;
+    storyStage = 'intro';
+}
+
 function Enemy(name, health, attack, sprite, canSpare, sparesNeeded, canSleep, canDistract) {
     this.name = name;
     this.health = health;
@@ -301,12 +356,6 @@ function Enemy(name, health, attack, sprite, canSpare, sparesNeeded, canSleep, c
     this.canDistract = canDistract;
 }
 
-function resetStory() {
-    choiceLog = [];
-    dialogueTracker = -1;
-    storyStage = 'intro';
-}
-
 startButton.addEventListener('click', () => {
     resetStory();
     currentPage = "dialogue";
@@ -315,6 +364,7 @@ startButton.addEventListener('click', () => {
 });
 
 continueButton.addEventListener('click', () => {
+    chatLogArray = [...continueChatLogArray];
     currentPage = "dialogue";
     dialogueTracker = -1;
     setPage();
