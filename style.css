@@ -168,7 +168,6 @@ p {
     grid-template-areas: 
     "a b"
     "c c";
-    flex-grow: 1;
     gap: 0px;
 }
 
@@ -259,6 +258,128 @@ p {
 /* Combat Screen */
 #combatScreen.active {
     display: block;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#logAndSprites {
+    width: 100dvw;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: 55dvh auto auto;
+    grid-template-columns: 50% 50%; 
+    grid-template-areas: 
+    "a b"
+    "c c"
+    "d d";
+    gap: 0px;
+}
+
+#playerSpriteAndHP {
+    justify-self: center;
+    align-self: flex-end;
+    grid-area: a;
+}
+
+#playerCombatSprite {
+    height: 35dvh;
+}
+
+#playerHPBar {
+    width: auto;
+    height: 22px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#playerHPBarCanvas {
+    margin: 3px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+
+#enemyHPBar {
+    width: auto;
+    height: 22px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#enemyHPBarCanvas {
+    margin: 3px;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+}
+
+#enemySpriteAndHP {
+    justify-self: center;
+    align-self: flex-end;
+    grid-area: b;
+}
+
+#enemyCombatSprite {
+    height: 35dvh;
+}
+
+#combatLogBox {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 10px;
+    overflow: hidden;
+    align-self: flex-start;
+    grid-area: c;
+    padding: 20px;
+    margin: 20px;
+    margin-bottom: 10px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    width: -webkit-fill-available;
+    height: 25dvh;
+}
+
+.combatButton {
+    font-family: 'Inika', cursive;
+    font-size: 35px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    width: auto;
+    height: 10dvh;
+    width: 20dvw;
+    padding: 5px;
+}
+
+#combatButtons {
+    grid-area: d;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.blinkFadeOutIn {
+    animation: fadeOutIn 0.3s linear 4
+}
+
+@keyframes fadeOutIn {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Ending Screen */

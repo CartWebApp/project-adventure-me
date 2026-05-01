@@ -44,9 +44,25 @@
         </div>
     </div>
     <div id="combatScreen" class="page">
-        <img src="assets/Icon.png">
-        <div id="combatLogBox">
-            <p id="combatText">Placeholder text</p>
+        <img src="assets/Icon.png" class="optionsButton">
+        <div class="optionsMenu centered">
+            <button class="homeButton">Home</button>
+        </div>
+        <div id="logAndSprites">
+            <div id="playerSpriteAndHP">
+                <div id="playerHPBar"><canvas id="playerHPBarCanvas"></canvas></div>
+                <img src="assets/sorenCombatNight.png" id="playerCombatSprite">
+            </div>
+            <div id="enemySpriteAndHP">
+                <div id="enemyHPBar"><canvas id="enemyHPBarCanvas"></canvas></div>
+                <img src="assets/tiredBusinessWomanNight.png" id="enemyCombatSprite">
+            </div>
+            <div id="combatLogBox"></div>
+            <div id="combatButtons">
+                <button id="attackButton" class = "combatButton">Fight</button>
+                <button id="itemButton" class = "combatButton">Item</button>
+                <button id="spareButton" class = "combatButton">Spare</button>
+            </div>
         </div>
     </div>
     <div id="endingScreen" class="page">
