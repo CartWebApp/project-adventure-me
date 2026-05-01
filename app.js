@@ -23,7 +23,6 @@ const choice1 = document.querySelector('#choice1');
 const choice2 = document.querySelector('#choice2');
 const choice3 = document.querySelector('#choice3');
 const choiceButtons = [choice1, choice2, choice3];
-let choiceLog = [];
 const statusBars = document.querySelector('#statusBars');
 const statusBarsCtx = statusBars.getContext('2d');
 const playerCombatSprite = document.querySelector('#playerCombatSprite');
@@ -36,10 +35,16 @@ const combatLog = document.querySelector('#combatLogBox');
 const attackButton = document.querySelector('#attackButton');
 const itemButton = document.querySelector('#itemButton');
 const spareButton = document.querySelector('#spareButton');
+const endingTitle = document.querySelector('#endingTitle');
+const endingBody = document.querySelector('#endingBody');
+const choiceLogBox = document.querySelector('#choiceLog');
+const choiceLogAndOverlay = document.querySelector('#choiceLogAndOverlay')
+const viewChoicesButton = document.querySelector('#viewChoicesButton')
 
 //misc
 let turnInProgress = false;
 let chatLogArray = [];
+let choiceLog = [];
 let currentPage = "title";
 let storyStage = "intro";
 let dialogueTracker = -1;
@@ -57,6 +62,7 @@ let interrogation = 0;
 let kills = 0;
 let interrogationMode = false;
 //combat vars
+let playerItems = [];
 let playerHealth = 100;
 let playerHealthMax = 100;
 let playerAttack = 10;
@@ -71,6 +77,7 @@ let continuePlayerHealth = 100;
 let continuePlayerHealthMax = 100;
 let continuePlayerAttack = 10;
 let continuePlayerDefense = 10;
+let continueplayerItems = [];
 
 let storyObject = {
     "deathByCombat": {
@@ -85,42 +92,48 @@ let storyObject = {
         "ending": [null, null, null ,null, null, "Death in Combat"]
     },
     "intro": {
-        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegwqwejefoipq3jfoipq3jfiopjfop4i3fjpo34f3iqfjq4fo q3ifijo3pfj34 jfo4jfop34i fjo4p fopij 4po fipo jf4poif j4fpoi243fjo 4jpo234j poi34jf po32i4 jfp32io4j f3o24i jfpoi342j f3o42 fi", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG", "Next up will be a combat test", ".", "How was it?", "Now lets do an ending test", "You accidentally posion yourself and die", "."],
-        "leftSprite": ["SorenGB.png", null, null, null, null, null, null, null, null, null, null, null],
-        "rightSprite": [null, "AlanGB.png", null, null, null, null, null, null, null, null, null, null],
-        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png", "GrillBrosBG.png", "streetNightBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
-        "CGmode": ["off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off"],
-        "speaker":  ["Soren", "Alan", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
-        "tagPosition": ["left", "right", null, null, null, null, null, null, null, null, null, null],
-        "combat": [null, null, null, null, null, null, null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", false, null, true, true]], null, null, null, null],
-        "ending": [null, null, null, null, null, null, null, null, null, null, null, "IV Poisoning"]
+        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegwqwejefoipq3jfoipq3jfiopjfop4i3fjpo34f3iqfjq4fo q3ifijo3pfj34 jfo4jfop34i fjo4p fopij 4po fipo jf4poif j4fpoi243fjo 4jpo234j poi34jf po32i4 jfp32io4j f3o24i jfpoi342j f3o42 fi", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG"],
+        "leftSprite": ["SorenGB.png", null, null, null, null, null],
+        "rightSprite": [null, "AlanGB.png", null, null, null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png"],
+        "CGmode": ["off", "off", "off", "off", "on", "off"],
+        "speaker":  ["Soren", "Alan", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": ["left", "right", null, null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null]
     },
     "1A": {
-        "text": ["You chose 1A"],
-        "leftSprite": ["SorenGB.png"],
-        "rightSprite": [null],
-        "background": ["GrillBrosBG.png"],
-        "CGmode": ["off"],
-        "speaker":  ["Soren"],
-        "tagPosition": ["left"]
+        "text": ["Next up will be a combat test", ".", "How was it?"],
+        "leftSprite": [null, null],
+        "rightSprite": [null, null],
+        "background": ["GrillBrosBG.png", "streetNightBG.png", "GrillBrosBG.png"],
+        "CGmode": ["off", "off", "off", "off",],
+        "speaker":  ["Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, null, null],
+        "combat": [null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", false, null, true, true]], null],
+        "ending": [null, null, null]
     },
     "1B": {
-        "text": ["You chose 1B"],
-        "leftSprite": [null],
-        "rightSprite": ["AlanGB.png"],
-        "background": ["GrillBrosBG.png"],
-        "CGmode": ["off"],
-        "speaker":  ["Alan"],
-        "tagPosition": ["right"]
+        "text": ["Now lets do an ending test", "You accidentally posion yourself and die", "."],
+        "leftSprite": [null, null, null],
+        "rightSprite": [null, null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
+        "CGmode": ["off", "off", "off"],
+        "speaker":  ["Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, null, null],
+        "combat": [null, null, null],
+        "ending":  [null, null, "IV Poisoning"]
     },
     "1C": {
         "text": ["You chose 1C"],
-        "leftSprite": [null],
-        "rightSprite": [null],
+        "leftSprite": ["SorenGB.png"],
+        "rightSprite": [null, null, null],
         "background": ["GrillBrosBG.png"],
         "CGmode": ["off"],
         "speaker":  ["Narrator"],
-        "tagPosition": [null]
+        "tagPosition": [null],
+        "combat": [null],
+        "ending":  [null]
     },
     "2A": {
         "text": [],
@@ -134,19 +147,19 @@ let storyObject = {
 }
 let choices = {
     "intro": {
-        "text": ["Run", "Hide", "Fight"],
+        "text": ["Combat Test", "Ending Test", "Nothing"],
         "nextPath": ["1A", "1B", "1C"]
     },
     "1A": {
-        "text": ["Run", "Hide", "Fight"],
+        "text": ["Combat Test", "Ending Test", "Nothing"],
         "nextPath": ["1A", "1B", "1C"]
     },
     "1B": {
-        "text": ["Run", "Hide", "Fight"],
+        "text": ["Combat Test", "Ending Test", "Nothing"],
         "nextPath": ["1A", "1B", "1C"]
     },
     "1C": {
-        "text": ["Run", "Hide", "Fight"],
+        "text": ["Combat Test", "Ending Test", "Nothing"],
         "nextPath": ["1A", "1B", "1C"]
     }
 }
@@ -294,6 +307,7 @@ function saveStateForContinue() {
     continuePlayerHealthMax = playerHealthMax;
     continuePlayerAttack = playerAttack;
     continuePlayerDefense = playerDefense;
+    continuePlayerItems = playerItems;
 }
 
 function loadStateForContinue() {
@@ -306,6 +320,7 @@ function loadStateForContinue() {
     playerHealthMax = continuePlayerHealthMax;
     playerAttack = continuePlayerAttack;
     playerDefense = continuePlayerDefense;
+    playerItems = continuePlayerItems;
 }
 
 function setUpOptionsButtons() {
@@ -354,6 +369,7 @@ function updateChatLog() {
         chatLogHTML += `<p>${line}</p>`;
     }
     chatLog.innerHTML = chatLogHTML;
+    chatLog.scrollTop = chatLog.scrollHeight;
 }
 
 function setUpOptionsMenus() {
@@ -364,10 +380,6 @@ function setUpOptionsMenus() {
         menu.style = "display: none";
         document.body.addEventListener('click', (event) => {
             if (!event.target.closest('.optionsMenu') && !event.target.closest('.chatLog') && !event.target.closest('.optionsButton')) {
-                console.log(event.target);
-                console.log(!event.target.closest('.optionsMenu'));
-                console.log(!event.target.closest('.chatLog'));
-                console.log(!event.target.closest('.optionsButton'));
                 hideOptions();
             }
         });
@@ -478,7 +490,7 @@ function setUpCombatButtons() {
 }
 
 function attack() {
-    let damage = Math.round((randomNumber((0.8 * playerAttack), (1.2 * playerAttack)) * (Math.pow(0.99, currentEnemy.defense))));
+    let damage = Math.round((randomNumber((0.7 * playerAttack), (1.3 * playerAttack)) * (Math.pow(0.99, currentEnemy.defense))));
     currentEnemy.health -= damage;
     tempAddClass(enemyCombatSprite, 'blinkFadeOutIn', 1200);
     updateHealthCanvases();
@@ -490,13 +502,15 @@ function attack() {
 }
 
 function enemyAttack() {
-    let damage = Math.round((randomNumber((0.8 * currentEnemy.attack), (1.2 * currentEnemy.attack)) * (Math.pow(0.99, playerDefense))));
+    let damage = Math.round((randomNumber((0.7 * currentEnemy.attack), (1.3 * currentEnemy.attack)) * (Math.pow(0.99, playerDefense))));
     playerHealth -= damage;
     tempAddClass(playerCombatSprite, 'blinkFadeOutIn', 1200);
     updateHealthCanvases();
     addToCombatLog(`${currentEnemy.name} attacks and deals ${damage} to you`);
     setTimeout(() => {checkCombatStatus();}, 3000);
-    turnInProgress = false;
+    if (playerHealth > 0) {
+        turnInProgress = false;
+    }
 }
 
 function randomNumber(min, max) {
@@ -562,15 +576,27 @@ function logRewardedStats() {
 }
 
 function addToCombatLog(string) {
-    combatLog.innerHTML = `<p>${string}</p>` + combatLog.innerHTML;
+    combatLog.innerHTML = combatLog.innerHTML + `<p>${string}</p>`;
+    combatLog.scrollTop = combatLog.scrollHeight;
 }
 
 function setUpEnding(ending) {
-    if (ending === "Death by Combat") {
-
+    if (ending === "Death in Combat") {
+        endingTitle.innerHTML = 'Ending 4: Death in Combat';
+        endingBody.innerHTML = `You died while fighting ` + currentEnemy.name + `. You can gain higher stats by fighting stronger enemies, but don't overdo it. You already experienced what happens. Hopefully, you died valiantly. Though, that probably isn't the case.`
     } else if (ending ==="IV Poisoning") {
-        
+        endingTitle.innerHTML = 'Ending 5: IV Poisoning';
+        endingBody.innerHTML = `The hospital was only trying to save you. Turns out that whatever they keep in those IV bags are poisonous to vampires. How unfortunate. That seemed like a real painful way to go.`
     }
+}
+
+function updateChoiceLog() {
+    choiceLogBox.style = "display: flex";
+    let choiceLogHTML = "";
+    for (line of choiceLog) {
+        choiceLogHTML += `<p>${line}</p>`;
+    }
+    choiceLogBox.innerHTML = choiceLogHTML;
 }
 
 startButton.addEventListener('click', () => {
@@ -610,6 +636,17 @@ dialogueScreen.addEventListener('click', () => {
                 advanceStory();
             }
         }
+    }
+});
+
+viewChoicesButton.addEventListener('click', () => {
+    setTimeout(() => {choiceLogAndOverlay.style = "display: block";}, 50);
+    updateChoiceLog();
+});
+
+document.body.addEventListener('click', (event) => {
+    if (!event.target.closest('.choiceLog')) {
+        choiceLogAndOverlay.style = "display: none";
     }
 });
 

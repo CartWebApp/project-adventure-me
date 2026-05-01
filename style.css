@@ -13,7 +13,7 @@ body {
 }
 
 p {
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .page {
@@ -123,6 +123,7 @@ p {
     border-style: solid;
     overflow-wrap: normal;
     overflow-y: auto;
+    scroll-behavior: smooth;
     scrollbar-width: 5px;
 }
 
@@ -208,7 +209,7 @@ p {
 
 #speakerTag {
     position: absolute;
-    top: -80px;
+    top: -100px;
     padding: 10px;
     padding-left: 30px;
     padding-right: 30px;
@@ -231,6 +232,7 @@ p {
 }
 
 .choice {
+    font-size: 24px;
     padding: 10px;
     padding-left: 30px;
     padding-right: 30px;
@@ -328,7 +330,8 @@ p {
 
 #combatLogBox {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-start;
     gap: 10px;
     overflow: hidden;
     align-self: flex-start;
@@ -342,6 +345,7 @@ p {
     border-style: solid;
     width: -webkit-fill-available;
     height: 25dvh;
+    scroll-behavior: smooth;
 }
 
 .combatButton {
@@ -398,5 +402,86 @@ p {
 /* Ending Screen */
 #endingScreen.active {
     display: block;
+    background-image: url("assets/titleBG.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#endingBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    width: 80dvw;
+    height: 80dvh;
+}
+
+#endingBox h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    font-family: 'Inika', cursive;
+}
+
+#endingBox p {
+    align-self: flex-start;
+}
+
+#endingButtons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+}
+
+#endingButtons * {
+    font-size: 30px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    width: auto;
+    height: 10dvh;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#endingButtons .homeButton {
+    margin-left: auto;
+}
+
+#choiceLogAndOverlay {
+    z-index: 1;
+    position: absolute;
+    height: 100dvh;
+    width: 100dvw;
+    background-color: rgba(37, 32, 28, 0.6);
+}
+
+#choiceLog {
+    padding: 20px;
+    width: 60dvw;
+    height: 90dvh;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    overflow-wrap: normal;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: 5px;
+}
+
+#choiceLog p {
+    background-color: #25201C;
+    border-color: #BD9745;
+    border-width: 3px;
+    border-style: solid;
+    padding: 5px;
 }
 
