@@ -104,7 +104,7 @@ let storyObject = {
         "interrogation": [null, null, null, null, null, null]
     },
     "intro": {
-        "text": ["In this story, you play as a young vampire named Soren.", "Soren lives in a modern-world society, similar to your own, except with the existence of vampires and the organization that pursues vampires to protect the peace, the Daylight Savings Corps.", "You work a part-time job to make a salary and blend into human society.", "It is currently 5:49 PM. You’re finishing up the last order of the day, before cleaning up shop and clocking out for your part-time shift at Grill Bros.", "Today, you forgot your “lunch” at home, so you're feeling quite “hungry.”", "Sizzle sizzle…", "What a nice smell… too bad it wouldn’t really help at all, even if I ate it.", "Your stomach grumbles", "Suddenly, one of your coworkers comes up behind you and pats you on the shoulder.", "Ayy, Soren! From the looks of it, you look like you need a break.", "With that being said, do you wanna go grab a bite after our shift?"],
+        "text": ["In this story, you play as a young vampire named Soren.", "Soren lives in a modern-world society, similar to your own, except with the existence of vampires and the organization that pursues vampires to protect the peace, the Daylight Savings Corps.", "You work a part-time job to make a salary and blend into human society.", "It is currently 5:49 PM. You’re finishing up the last order of the day, before cleaning up shop and clocking out for your part-time shift at Grill Bros.", "Today, you forgot your “lunch” at home, so you're feeling quite “hungry.”", "Sizzle sizzle...", "What a nice smell... too bad it wouldn’t really help at all, even if I ate it.", "Your stomach grumbles", "Suddenly, one of your coworkers comes up behind you and pats you on the shoulder.", "Ayy, Soren! From the looks of it, you look like you need a break.", "With that being said, do you wanna go grab a bite after our shift?"],
         "leftSprite": [null, null, null, null, null, null, "SorenGB.png", null, null, null, null],
         "rightSprite": [null, null, null, null, null, null, null, null, null, "AlanGB.png", "AlanGB.png"],
         "background": ["darkBG.png", "darkBG.png", "darkBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
@@ -130,7 +130,7 @@ let storyObject = {
         "interrogation": [null, null, null, null, null, null, null]
     },
     "1B": {
-        "text": ["Absolutely not.", " I don’t even know who you are, to be honest.", "Dang… harsh.", "Anyway, I’m going straight home after I’m done here.", "Oh, but please help clean up.", "Uh… yeah. Sure.", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", "Ugh..."],
+        "text": ["Absolutely not.", " I don’t even know who you are, to be honest.", "Dang... harsh.", "Anyway, I’m going straight home after I’m done here.", "Oh, but please help clean up.", "Uh... yeah. Sure.", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", "Ugh..."],
         "leftSprite": ["SorenGB.png", "SorenGB.png", null, "SorenGB.png", "SorenGB.png", null, null, null, "SorenNM.png"],
         "rightSprite": [null, null, "AlanGB.png", null, null, "AlanGB.png", null, null, null],
         "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "darkBG.png", "streetNightBG.png", "streetNightBG.png"],
@@ -143,7 +143,7 @@ let storyObject = {
         "interrogation": [null, null, null, null, null, null, null, null, null]
     },
     "1C": {
-        "text": ["Oh… well… you see… I’m kinda busy after this…", "Really? I always see you walk straight home, though.", "How do you know that?", "Ah… well…", "Moving on, I still think it's suspicious.", "Well, whatever you’re thinking. I’m seriously busy today, so maybe another time.", "Alright. Sure, man.", "Alan is suspicious of you. (Suspicion +20)", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", " Ugh…",],
+        "text": ["Oh... well... you see... I’m kinda busy after this...", "Really? I always see you walk straight home, though.", "How do you know that?", "Ah... well...", "Moving on, I still think it's suspicious.", "Well, whatever you’re thinking. I’m seriously busy today, so maybe another time.", "Alright. Sure, man.", "Alan is suspicious of you. (Suspicion +20)", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", " Ugh...",],
         "leftSprite": ["SorenGB.png", null, "SorenGB.png", null, null, "SorenGB.png", null, null, null, null, "SorenNM.png"],
         "rightSprite": [null, "AlanGB.png", null, "AlanGB.png", "AlanGB.png", null, "AlanGB.png", null, null, null, null],
         "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "darkBG.png", "streetNightBG.png", "streetNightBG.png"],
@@ -153,47 +153,87 @@ let storyObject = {
         "combat": [null, null, null, null, null, null, null, null, null, null, null],
         "ending": [null, null, null, null, null, null, null, null, null, null, null],
         "suspicion": [null, null, null, null, null, null, null, 20, null, null, null],
-        "intterogation": [null, null, null, null, null, null, null, null, null, null, null]
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null]
     },
     "2A A": {
-        "text": [],
-        "leftSprite": [],
-        "rightSprite": [],
-        "background": [],
-        "CGmode": [],
-        "speaker": [],
-        "tagPosition": [],
-        "combat": [],
-        "ending": [],
-        "suspicion": [],
-        "interrogation": []
+        "text": ["You suddenly bang your hands on the bar table and stand up out of your seat. A few eyes look to see what the commotion is, and Alan is surprised. (Suspicion +20)", "Huh? Soren? What are you doing?", "You don’t say anything as you walk out of “The Willow.” Once the door closes behind you and you are out of Alan’s sight, you start sprinting in the direction of your apartment.", "The “hunger” intensifies with every step, and you narrowly make it back to your residence before feeling like you are about to pass out.", "You burst through the door and rush to the fridge, opening it and revealing a collection of blood bags.", "You quickly snatch one, tearing it open with primal intensity, gorging it down in seconds.", "Ah... Huff...", "I thought I was gonna pass out...", "Suddenly, you notice that you left the door to the apartment open. In the doorway stands your landlord, frozen with a look of shock on his face.", "You notice that you have blood dripping down from your mouth to your chin. You also spilled some blood on your shirt. It looks like quite a scene.", "A... a vampire?!", "(Oh shoot! What should I do!?)"],
+        "leftSprite": [null, null, null, null, null, null, "SorenNM.png", null, null, null, null, "SorenNM.png"],
+        "rightSprite": [null, "AlanGB.png", null, null, null, null, null, null, null, null, "Landlord.png", null],
+        "background": ["willowBG.png", null, null, "streetNightBG.png", "apartmentBG.png", null, null, null, null, null, null, null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator", "Alan", "Narrator", "Narrator", "Narrator", "Narrator", "Soren", "Soren", "Narrator", "Narrator", "Landlord", "Soren"],
+        "tagPosition": [null, "right", null, null, null, null, "left", "left", null, null, "right", "left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [20,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null]
     },
     "2A B": {
-        "text": [],
-        "leftSprite": [],
-        "rightSprite": [],
-        "background": [],
-        "CGmode": [],
-        "speaker": [],
-        "tagPosition": [],
-        "combat": [],
-        "ending": [],
-        "suspicion": [],
-        "interrogation": []
+        "text": ["You resolute yourself to push through the “hunger” and keep conversing.", "...So anyway, what’ve you been up to recently?", "Huff... Oh, me? Nothing much really... hah...", "Uhh... are you okay? You look a little out of breath.", "Suddenly, your vision goes dark, and you pass out unconscious. You feel your body hit the wooden restaurant floor.", "H-hey?! Someone call 911!!", "As a vampire, you are unconscious, but your body’s senses still vaguely pick up the world around you. You hear sirens blare in the distance, then you feel yourself get carried onto a stretcher.", "Around twenty minutes later, you get carried onto a hospital bed, and you hear some people discussing your diagnosis. Sounds like they’re confused about what they're dealing with? Are you going to get exposed?", "Suddenly, you feel a sharp pain in your arm. You’ve been poked by a needle and linked to an IV fluid bag. You instantly feel an intense burning pain as the fluid from the bag flows into your body. It seems your body doesn’t respond well.", "Your senses begin to fade out for real this time, and you die.", "."],
+        "leftSprite": [null, null, "SorenGB.png", null, null, null, null, null, null, null, null],
+        "rightSprite": [null, "AlanNM.png", null, "AlanNM.png", null, "AlanNM.png", null, null, null, null, null],
+        "background": ["willowBG.png", null, null, null, "darkBG.png", null, null, null, null, null, null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator", "Alan", "Soren", "Alan", "Narrator", "Alan", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, "right", "left", "right", null, "right", null, null, null, null, null],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,"IV Poisoning"],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
     },
     "2A C": {
-        "text": [],
-        "leftSprite": [],
-        "rightSprite": [],
-        "background": [],
-        "CGmode": [],
-        "speaker": [],
-        "tagPosition": [],
-        "combat": [],
-        "ending": [],
-        "suspicion": [],
-        "interrogation": []
+        "text": ["You decide to come up with an excuse to go outside and get Alan to follow you.", "H-hey… I’m not feeling too good. I’m gonna go outside for a bit…", "Huh? Oh sure. I’ll be here.", "…", "Actually… Can you come with me just in case?", "Oh, don’t worry. Take your time. I wanna eat my food before it gets cold anyway.", "(Wait… what if this guy is trying to get me to pay for everything?)", "On second thought, sure. I’ll go with you.", "(I don’t know why he changed his mind, but this works out)", "You exit “The Willow” and walk into the dark alleyway between it and the building beside it. You walk to the very back of the alleyway and start acting like you're sick.", "Bleurgh… Aah… Ugh…", "Alan walks up closer to you to check if you’re okay.", "Hey, man. Are you alright?", "You suddenly turn around, revealing that you’re completely fine, and approach Alan.", "."],
+        "leftSprite": [null, "SorenGB.png", null, "SorenGB.png", "SorenGB.png", null, null, null, "SorenGB.png", null, "SorenGB.png", null, null, null, null],
+        "rightSprite": [null, null, "AlanGB.png", null, null, "AlanGB.png", "AlanGB.png", "AlanGB.png", null, null, null, null, "AlanGB.png", null, null],
+        "background": ["willowBG.png", null, null, null, null, null, null, null, null, "alleyNightBG.png", null, null, null, null, "alleyNightCombatBG.png"],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator", "Soren", "Alan", "Soren", "Soren", "Alan", "Alan", "Alan", "Soren", "Narrator", "Soren", "Narrator", "Alan", "Narrator", "Narrator"],
+        "tagPosition": [null, "left", "right", "left", "left", "right", "right", "right", "left", null, "left", null, "right", null, null],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null, ["sorenCombatNight.png", ["Alan", "Alan looks confused and frightened", 5, 1, 1, [5, 1, 1], "AlanCombatNight.png", true, 1, true, true]]],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "2A C kill": {
+        "text": ["After knocking Alan unconscious, you drink his blood, and you drink greedily. After a few minutes of feasting, it seems the blood loss caused him to die.", "You hide Alan’s body in a dumpster nearby. In order to avoid suspicion, you mangled it beforehand to make it seem like the result of a normal homicide.", "You leave the alleyway and comfortably stroll home.", "You make it to your apartment, open the door, and enter.", "Today was tiring… I think I’ll go straight to bed.", "As a vampire, or maybe due to personal preference, you prefer to sleep in your bat form. You transform and then make yourself comfortable on the coat rack next to your bed.", "Suddenly, you notice that you made a fatal mistake. You left the door to the apartment open. In the doorway stands your landlord, frozen with a look of shock on his face.", "The shock causes you to transform back into humanoid form, and you tumble from the top of the coat rack onto the floor.", "A… a vampire?!", "(Dang it! What do I do now?!)"],
+        "leftSprite": [null, null, null, null, "SorenNM.png", null, null, null, null, "SorenNM.png"],
+        "rightSprite": [null, null, null, null, null, null, null, null, "Landlord.png", null],
+        "background": ["alleyNightBG.png", null, null, "apartmentBG.png", null, null, null, null, null, null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Soren", "Narrator", "Narrator", "Narrator", "Landlord", "Soren"],
+        "tagPosition": [null, null, null, null, "left", null, null, null, "right", "left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null]
+    },
+    "2A C spare": {
+        "text": ["Alan flees the scene, and you are left alone.","You're breathing heavily, wondering why you let him go despite setting up that whole ploy.","You realize that you didn't manage to get the blood you needed from that encounter, and the hunger quickly begins to creep back in.","As you walk away, the “hunger” and the adrenaline from what just happened clash in your head, making your vision blur.","On the way back home, you feel like you’re about to pass out with every step.","But the adrenaline from the encounter keeps you barely conscious long enough to reach your apartment.","You stumble through the door and rush straight to the fridge, opening it and grabbing a blood bag.","You tear it open and drink it down quickly, your body finally stabilizing.","Ah… Huff… I thought I was gonna pass out…","You try to calm yourself and transform into your bat form, hoping to rest.","You settle yourself on the coat rack next to your bed.","Suddenly, you notice a fatal mistake. You left the door to your apartment open.","In the doorway stands your landlord, frozen with shock.","The shock causes you to transform back into humanoid form, and you tumble from the top of the coat rack onto the floor.","A… a vampire?!","(Dang it! What do I do now?!?)"],
+        "leftSprite": [null,null,null,null,null,null,null,null,"SorenNM.png",null,null,null,null,null,null,null],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null,null,null,"Landlord.png",null,null],
+        "background": ["alleyNightBG.png",null,null,"streetNightBG.png",null,null,"apartmentBG.png",null,null,null,null,null,null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Soren","Narrator","Narrator","Narrator","Narrator","Narrator","Soren","Soren"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left",null,null,null,null,"right","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "2B A": {
+        "text": ["You approach an elderly woman who was walking on the sidewalk near you.", "."],
+        "leftSprite": [null,null],
+        "rightSprite": [null,null],
+        "background": ["streetNightBG.png", "streetNightCombatBG.png"],
+        "CGmode": ["off","off"],
+        "speaker": ["Narrator","Narrator"],
+        "tagPosition": [null,null],
+        "combat": [null, [["sorenCombatNight.png", ["Elderly Lady", "Elderly Lady is leisurely, and slowly, walking by", 3, 1, 5, [1, 1, 1], "elderlyLadyCombat.png", true, 1, true, true]]]],
+        "ending": [null,null],
+        "suspicion": [null,null],
+        "interrogation": [null,null]
     }
+    //work on kill and spare version of story for 2B A
 }
 let choices = {
     "intro": {
@@ -213,7 +253,24 @@ let choices = {
         "nextPath": ["2B A", "2B B", "2B C"]
     },
     "2A A": {
-
+        "text": ["Threaten them", "Attempt to bribe them", "Try to calm them down"],
+        "nextPath": ["3A A", "3A B", "3A C"]
+    },
+    "2A C kill": {
+        "text": ["Threaten them", "Attempt to bribe them", "Try to calm them down"],
+        "nextPath": ["3A A", "3A B", "3A C"]
+    },
+    "2A C spare": {
+        "text": ["Threaten them", "Attempt to bribe them", "Try to calm them down"],
+        "nextPath": ["3A A", "3A B", "3A C"]
+    },
+    "2B A kill": {
+        "text": ["Threaten them", "Attempt to bribe them", "Try to calm them down"],
+        "nextPath": ["3A A", "3A B", "3A C"]
+    },
+    "2B A spare": {
+        "text": ["Threaten them", "Attempt to bribe them", "Try to calm them down"],
+        "nextPath": ["3A A", "3A B", "3A C"]
     }
 }
 
@@ -244,8 +301,23 @@ function setPage() {
 
 function specialConditionChecker() {
     //check for special condition to branch to endings here, otherwise just set up choices
-    setUpChoices();
-    choiceOverlay.style = "display: flex";
+    if (storyStage === "2A C" && kills > coninueKills) {
+        storyStage = "2A C kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "2A C" && kills === continueKills) {
+        storyStage = "2A C spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else {
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    }
+    
 }
 
 function advanceStory() {
@@ -313,7 +385,9 @@ function updateDialogue() {
     if (storyObject[storyStage].interrogation[dialogueTracker]) {
         interrogation += storyObject[storyStage].interrogation[dialogueTracker];
     }
-    dialogueScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
+    if (storyObject[storyStage].background[dialogueTracker]) {
+        dialogueScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
+    }
     updateStatusCanvas();
 }
 
