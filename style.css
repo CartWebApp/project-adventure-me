@@ -367,7 +367,11 @@ p {
 }
 
 .blinkFadeOutIn {
-    animation: fadeOutIn 0.3s linear 4
+    animation: fadeOutIn 0.3s linear 4;
+}
+
+.fadeOut {
+ animation: fadeOut 1s linear forwards;
 }
 
 @keyframes fadeOutIn {
@@ -379,6 +383,15 @@ p {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
 

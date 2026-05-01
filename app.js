@@ -37,7 +37,53 @@ const attackButton = document.querySelector('#attackButton');
 const itemButton = document.querySelector('#itemButton');
 const spareButton = document.querySelector('#spareButton');
 
+//misc
+let turnInProgress = false;
+let chatLogArray = [];
+let currentPage = "title";
+let storyStage = "intro";
+let dialogueTracker = -1;
+let typeWrite = 0;
+let dialogueSkip = false;
+let skipTimeout;
+let choosingChoice = false;
+let optionsOpen = false;
+let showStatusBars = true;
+let currentEnemy;
+let currentEnemyHealthMax;
+//status vars
+let suspicion = 0;
+let interrogation = 0;
+let kills = 0;
+let interrogationMode = false;
+//combat vars
+let playerHealth = 100;
+let playerHealthMax = 100;
+let playerAttack = 10;
+let playerDefense = 10;
+//continueSave vars
+let continueChatLogArray = [];
+let continueSuspicion = 0;
+let continueInterrogation = 0;
+let continueKills = 0;
+let continueInterrogationMode = false;
+let continuePlayerHealth = 100;
+let continuePlayerHealthMax = 100;
+let continuePlayerAttack = 10;
+let continuePlayerDefense = 10;
+
 let storyObject = {
+    "deathByCombat": {
+        "text": ["Hello there.", "It is me, the Narrator.", "Seems like you died during your journey, eh?", `That battle must've been a tough one...`, `Better luck next time.`, `.`],
+        "leftSprite": [null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null],
+        "background": ["blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off"],
+        "speaker":  ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, null],
+        "ending": [null, null, null ,null, null, "Death in Combat"]
+    },
     "intro": {
         "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegwqwejefoipq3jfoipq3jfiopjfop4i3fjpo34f3iqfjq4fo q3ifijo3pfj34 jfo4jfop34i fjo4p fopij 4po fipo jf4poif j4fpoi243fjo 4jpo234j poi34jf po32i4 jfp32io4j f3o24i jfpoi342j f3o42 fi", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG", "Next up will be a combat test", ".", "How was it?", "Now lets do an ending test", "You accidentally posion yourself and die", "."],
         "leftSprite": ["SorenGB.png", null, null, null, null, null, null, null, null, null, null, null],
@@ -46,8 +92,8 @@ let storyObject = {
         "CGmode": ["off", "off", "off", "off", "on", "off", "off", "off", "off", "off", "off", "off"],
         "speaker":  ["Soren", "Alan", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
         "tagPosition": ["left", "right", null, null, null, null, null, null, null, null, null, null],
-        "combat": [null, null, null, null, null, null, null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 10, 5, [20, 5, 5], "tiredBusinessWomanNight.png", false, null, true, true]], null, null, null, null],
-        "ending": [null, null, null, null, null, null, null, null, null, null, null, "IV poisoning"]
+        "combat": [null, null, null, null, null, null, null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", false, null, true, true]], null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, "IV Poisoning"]
     },
     "1A": {
         "text": ["You chose 1A"],
@@ -104,39 +150,6 @@ let choices = {
         "nextPath": ["1A", "1B", "1C"]
     }
 }
-//misc
-let chatLogArray = [];
-let currentPage = "title";
-let storyStage = "intro";
-let dialogueTracker = -1;
-let typeWrite = 0;
-let dialogueSkip = false;
-let skipTimeout;
-let choosingChoice = false;
-let optionsOpen = false;
-let showStatusBars = true;
-let currentEnemy;
-let currentEnemyHealthMax;
-//status vars
-let suspicion = 0;
-let interrogation = 0;
-let kills = 0;
-let interrogationMode = false;
-//combat vars
-let playerHealth = 100;
-let playerHealthMax = 100;
-let playerAttack = 10;
-let playerDefense = 10;
-//continueSave vars
-let continueChatLogArray = [];
-let continueSuspicion = 0;
-let continueInterrogation = 0;
-let continueKills = 0;
-let continueInterrogationMode = false;
-let continuePlayerHealth = 100;
-let continuePlayerHealthMax = 100;
-let continuePlayerAttack = 10;
-let continuePlayerDefense = 10;
 
 function setStartPage() {
     if (storyStage === "intro" && dialogueTracker === -1) {
@@ -163,6 +176,12 @@ function setPage() {
     }
 }
 
+function specialConditionChecker() {
+    //check for special condition to branch to endings here, otherwise just set up choices
+    setUpChoices();
+    choiceOverlay.style = "display: flex";
+}
+
 function advanceStory() {
     if (storyObject[storyStage].text[dialogueTracker + 1]) {
         dialogueTracker++;
@@ -172,11 +191,15 @@ function advanceStory() {
             setUpCombat(storyObject[storyStage].combat[dialogueTracker]);
             currentPage = "combat";
             setPage();
+        } else if (storyObject[storyStage].ending[dialogueTracker]) {
+            setUpEnding(storyObject[storyStage].ending[dialogueTracker]);
+            currentPage = "ending";
+            setPage();
+        } else {
+            updateDialogue();
         }
-        updateDialogue();
     } else {
-        setUpChoices();
-        choiceOverlay.style = "display: flex";
+        specialConditionChecker();
     }
 }
 
@@ -396,7 +419,7 @@ function updateStatusCanvas() {
     }
 }
 
-function updateHealthCanvases(enemy, enemyHealthMax) {
+function updateHealthCanvases() {
     playerHPBarCtx.fillStyle = "#BDBDBD";
     playerHPBarCtx.fillRect(0, 0, 300, 150);
     playerHPBarCtx.fillStyle = "#00FF26";
@@ -404,7 +427,7 @@ function updateHealthCanvases(enemy, enemyHealthMax) {
     enemyHPBarCtx.fillStyle = "#BDBDBD";
     enemyHPBarCtx.fillRect(0, 0, 300, 150);
     enemyHPBarCtx.fillStyle = "#00FF26";
-    enemyHPBarCtx.fillRect(0, 0, (enemy.health/enemyHealthMax) * 300, 150);
+    enemyHPBarCtx.fillRect(0, 0, (currentEnemy.health/currentEnemyHealthMax) * 300, 150);
 }
 
 function resetStory() {
@@ -447,27 +470,55 @@ function Enemy(name, intro, health, attack, defense, givenStats, sprite, canSpar
 
 function setUpCombatButtons() {
     attackButton.addEventListener('click', () => {
-        attack();
+        if (turnInProgress === false) {
+            turnInProgress = true;
+            setTimeout(() => {attack();}, 1000);
+        } 
     });
 }
 
 function attack() {
-    let damage = Math.round((randomWholeNumber((0.8 * playerAttack), (1.2 * playerAttack)) * (Math.pow(0.99, currentEnemy.defense))));
+    let damage = Math.round((randomNumber((0.8 * playerAttack), (1.2 * playerAttack)) * (Math.pow(0.99, currentEnemy.defense))));
     currentEnemy.health -= damage;
-    addToCombatLog(`You dealt ${damage} to ${currentEnemy.name}`);
-    setTimeout(() => {enemyAttack}, 1000);
+    tempAddClass(enemyCombatSprite, 'blinkFadeOutIn', 1200);
+    updateHealthCanvases();
+    addToCombatLog(`You attack and deal ${damage} damage to ${currentEnemy.name}`);
+    setTimeout(() => {checkCombatStatus();}, 3000);
+    if (currentEnemy.health > 0) {
+        setTimeout(() => {enemyAttack();}, 3000);
+    }
 }
 
 function enemyAttack() {
-    
+    let damage = Math.round((randomNumber((0.8 * currentEnemy.attack), (1.2 * currentEnemy.attack)) * (Math.pow(0.99, playerDefense))));
+    playerHealth -= damage;
+    tempAddClass(playerCombatSprite, 'blinkFadeOutIn', 1200);
+    updateHealthCanvases();
+    addToCombatLog(`${currentEnemy.name} attacks and deals ${damage} to you`);
+    setTimeout(() => {checkCombatStatus();}, 3000);
+    turnInProgress = false;
 }
 
-function randomWholeNumber(min, max) {
+function randomNumber(min, max) {
     let number = Math.round(Math.random() * (max - min) + min);
     return number;
 }
 
+function tempAddClass(element, classToAdd, time) {
+    element.classList.add(classToAdd);
+    setTimeout(() => {
+        element.classList.remove(classToAdd);
+    }, time)
+}
+
 function setUpCombat(combatInfo) {
+    turnInProgress = false;
+    if (enemyCombatSprite.classList.contains('fadeOut')) {
+        enemyCombatSprite.classList.remove('fadeOut');
+    }
+    if (playerCombatSprite.classList.contains('fadeOut')) {
+        playerCombatSprite.classList.remove('fadeOut');
+    }
     combatLog.innerHTML = ''
     combatScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
     playerCombatSprite.src = `assets/${combatInfo[0]}`;
@@ -475,11 +526,51 @@ function setUpCombat(combatInfo) {
     currentEnemyHealthMax = currentEnemy.health;
     enemyCombatSprite.src = `assets/${currentEnemy.sprite}`;
     addToCombatLog(currentEnemy.intro);
-    updateHealthCanvases(currentEnemy, currentEnemyHealthMax);
+    updateHealthCanvases();
+}
+
+function checkCombatStatus() {
+    if (currentEnemy.health <= 0) {
+        turnInProgress = true;
+        enemyCombatSprite.classList.add('fadeOut');
+        addToCombatLog(`You have defeated ${currentEnemy.name}`);
+        playerHealth += currentEnemy.givenStats[0];
+        playerAttack += currentEnemy.givenStats[1];
+        playerDefense += currentEnemy.givenStats[2];
+        setTimeout(() => {logRewardedStats();}, 3000);
+    } else if (playerHealth <= 0) {
+        turnInProgress = true;
+        playerCombatSprite.classList.add('fadeOut');
+        addToCombatLog(`You have been defeated by ${currentEnemy.name}`);
+        storyStage = "deathByCombat";
+        dialogueTracker = -1;
+        setTimeout(() => {
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();}, 5000);
+    }
+}
+
+function logRewardedStats() {
+    addToCombatLog(`You have gained ${currentEnemy.givenStats[0]} health`);
+    setTimeout(() => {addToCombatLog(`You have gained ${currentEnemy.givenStats[1]} attack`);}, 1000);
+    setTimeout(() => {addToCombatLog(`You have gained ${currentEnemy.givenStats[2]} defense`);}, 2000);
+    setTimeout(() => {
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();}, 5000);
 }
 
 function addToCombatLog(string) {
-    combatLog.innerHTML += `<p>${string}</p>`;
+    combatLog.innerHTML = `<p>${string}</p>` + combatLog.innerHTML;
+}
+
+function setUpEnding(ending) {
+    if (ending === "Death by Combat") {
+
+    } else if (ending ==="IV Poisoning") {
+        
+    }
 }
 
 startButton.addEventListener('click', () => {
