@@ -88,7 +88,7 @@ let continuePlayerHealthMax = 100;
 let continuePlayerAttack = 10;
 let continuePlayerDefense = 10;
 let continueplayerItems = [];
-
+//for later ["sorenCombatNight.png", ["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", true, 3, true, true]]
 let storyObject = {
     "deathByCombat": {
         "text": ["Hello there.", "It is me, the Narrator.", "Seems like you died during your journey, eh?", `That battle must've been a tough one...`, `Better luck next time.`, `.`],
@@ -99,7 +99,9 @@ let storyObject = {
         "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
         "tagPosition": [null, null, null, null, null, null],
         "combat": [null, null, null, null, null, null],
-        "ending": [null, null, null, null, null, "Death in Combat"]
+        "ending": [null, null, null, null, null, "Death in Combat"],
+        "suspicion": [null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null]
     },
     "intro": {
         "text": ["In this story, you play as a young vampire named Soren.", "Soren lives in a modern-world society, similar to your own, except with the existence of vampires and the organization that pursues vampires to protect the peace, the Daylight Savings Corps.", "You work a part-time job to make a salary and blend into human society.", "It is currently 5:49 PM. You’re finishing up the last order of the day, before cleaning up shop and clocking out for your part-time shift at Grill Bros.", "Today, you forgot your “lunch” at home, so you're feeling quite “hungry.”", "Sizzle sizzle…", "What a nice smell… too bad it wouldn’t really help at all, even if I ate it.", "Your stomach grumbles", "Suddenly, one of your coworkers comes up behind you and pats you on the shoulder.", "Ayy, Soren! From the looks of it, you look like you need a break.", "With that being said, do you wanna go grab a bite after our shift?"],
@@ -110,49 +112,87 @@ let storyObject = {
         "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Grill", "Soren", "Narrator", "Narrator", "Alan", "Alan"],
         "tagPosition": [null, null, null, null, null, "left", "left", null, null, "right", "right"],
         "combat": [null, null, null, null, null, null, null, null, null, null, null],
-        "ending": [null, null, null, null, null, null, null, null, null, null, null]
+        "ending": [null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null]
     },
     "1A": {
-        "text": ["Yeah, sure. Where are we heading?", ".", "How was it?"],
-        "leftSprite": [null, null],
-        "rightSprite": [null, null],
-        "background": ["GrillBrosBG.png", "streetNightBG.png", "GrillBrosBG.png"],
-        "CGmode": ["off", "off", "off", "off",],
-        "speaker": ["Narrator", "Narrator", "Narrator"],
-        "tagPosition": [null, null, null],
-        "combat": [null, ["sorenCombatNight.png", ["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", true, 3, true, true]], null],
-        "ending": [null, null, null]
+        "text": ["Yeah, sure. Where are we heading?", "Oh, nice. I know this good place just down the street.", "You and Alan head down to a place down the street, not too far from Grill Bros. It's a relatively hidden joint with a wooden sign hung outside that reads “The Willow.” Sounds like a nice place.", "You both walk inside and get seated together at the bar. You both order a steak and fries combo and talk about some mundane things in life.", "So the other day, there was this girl...", "...", "You try your best to suppress your growing “hunger” and have a normal conversation, but you feel terrible."],
+        "leftSprite": ["SorenGB.png", null, null, null, null , "SorenNM.png", null],
+        "rightSprite": [null, "AlanGB.png", null, null, "AlanNM.png", null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "darkBG.png", "willowBG.png", "willowBG.png", "willowBG.png", "willowBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Soren", "Alan", "Narrator", "Narrator", "Alan", "Soren", "Narrator"],
+        "tagPosition": ["left", "right", null, null, "right", "left", null],
+        "combat": [null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null]
     },
     "1B": {
-        "text": ["Now lets do an ending test", "You accidentally posion yourself and die", "."],
-        "leftSprite": [null, null, null],
-        "rightSprite": [null, null, null],
-        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
-        "CGmode": ["off", "off", "off"],
-        "speaker": ["Narrator", "Narrator", "Narrator"],
-        "tagPosition": [null, null, null],
-        "combat": [null, null, null],
-        "ending": [null, null, "IV Poisoning"]
+        "text": ["Absolutely not.", " I don’t even know who you are, to be honest.", "Dang… harsh.", "Anyway, I’m going straight home after I’m done here.", "Oh, but please help clean up.", "Uh… yeah. Sure.", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", "Ugh..."],
+        "leftSprite": ["SorenGB.png", "SorenGB.png", null, "SorenGB.png", "SorenGB.png", null, null, null, "SorenNM.png"],
+        "rightSprite": [null, null, "AlanGB.png", null, null, "AlanGB.png", null, null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "darkBG.png", "streetNightBG.png", "streetNightBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Soren", "Soren", "Alan", "Soren", "Soren", "Alan", "Narrator", "Narrator", "Soren"],
+        "tagPosition": ["left", "left", "right", "left", "left", "right", null, null, "left"],
+        "combat": [null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null]
     },
     "1C": {
-        "text": ["You chose 1C"],
-        "leftSprite": ["SorenGB.png"],
-        "rightSprite": [null, null, null],
-        "background": ["GrillBrosBG.png"],
-        "CGmode": ["off"],
-        "speaker": ["Narrator"],
-        "tagPosition": [null],
-        "combat": [null],
-        "ending": [null]
+        "text": ["Oh… well… you see… I’m kinda busy after this…", "Really? I always see you walk straight home, though.", "How do you know that?", "Ah… well…", "Moving on, I still think it's suspicious.", "Well, whatever you’re thinking. I’m seriously busy today, so maybe another time.", "Alright. Sure, man.", "Alan is suspicious of you. (Suspicion +20)", "You and Alan clean and close up shop. You leave Grill Bros first.", "On the way home, the hunger intensifies even further. Every step makes your stomach grumble more and more. You feel terrible.", " Ugh…",],
+        "leftSprite": ["SorenGB.png", null, "SorenGB.png", null, null, "SorenGB.png", null, null, null, null, "SorenNM.png"],
+        "rightSprite": [null, "AlanGB.png", null, "AlanGB.png", "AlanGB.png", null, "AlanGB.png", null, null, null, null],
+        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "darkBG.png", "streetNightBG.png", "streetNightBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Soren", "Alan", "Soren", "Alan", "Alan", "Soren", "Alan", "Narrator", "Narrator", "Narrator", "Soren"],
+        "tagPosition": ["left", "right", "left", "right", "right", "left", "right", null, null, null, "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, 20, null, null, null],
+        "intterogation": [null, null, null, null, null, null, null, null, null, null, null]
     },
-    "2A": {
+    "2A A": {
         "text": [],
         "leftSprite": [],
         "rightSprite": [],
         "background": [],
         "CGmode": [],
         "speaker": [],
-        "tagPosition": []
+        "tagPosition": [],
+        "combat": [],
+        "ending": [],
+        "suspicion": [],
+        "interrogation": []
+    },
+    "2A B": {
+        "text": [],
+        "leftSprite": [],
+        "rightSprite": [],
+        "background": [],
+        "CGmode": [],
+        "speaker": [],
+        "tagPosition": [],
+        "combat": [],
+        "ending": [],
+        "suspicion": [],
+        "interrogation": []
+    },
+    "2A C": {
+        "text": [],
+        "leftSprite": [],
+        "rightSprite": [],
+        "background": [],
+        "CGmode": [],
+        "speaker": [],
+        "tagPosition": [],
+        "combat": [],
+        "ending": [],
+        "suspicion": [],
+        "interrogation": []
     }
 }
 let choices = {
@@ -161,16 +201,19 @@ let choices = {
         "nextPath": ["1A", "1B", "1C"]
     },
     "1A": {
-        "text": ["Combat Test", "Ending Test", "Nothing"],
-        "nextPath": ["1A", "1B", "1C"]
+        "text": ["Get up and leave", "Endure the hunger", "Lure them outside and attack"],
+        "nextPath": ["2A A", "2A B", "2A C"]
     },
     "1B": {
-        "text": ["Combat Test", "Ending Test", "Nothing"],
-        "nextPath": ["1A", "1B", "1C"]
+        "text": ["Attack an elderly woman nearby", "Start sprinting home", "Try to endure"],
+        "nextPath": ["2B A", "2B B", "2B C"]
     },
     "1C": {
-        "text": ["Combat Test", "Ending Test", "Nothing"],
-        "nextPath": ["1A", "1B", "1C"]
+        "text": ["Attack an elderly woman nearby", "Start sprinting home", "Try to endure"],
+        "nextPath": ["2B A", "2B B", "2B C"]
+    },
+    "2A A": {
+
     }
 }
 
@@ -263,6 +306,12 @@ function updateDialogue() {
         speakerTag.style = "left: 0;";
     } else if (storyObject[storyStage].tagPosition[dialogueTracker] === "right") {
         speakerTag.style = "right: 0;";
+    }
+    if (storyObject[storyStage].suspicion[dialogueTracker]) {
+        suspicion += storyObject[storyStage].suspicion[dialogueTracker];
+    }
+    if (storyObject[storyStage].interrogation[dialogueTracker]) {
+        interrogation += storyObject[storyStage].interrogation[dialogueTracker];
     }
     dialogueScreen.style = `background-image: url("assets/${storyObject[storyStage].background[dialogueTracker]}");`;
     updateStatusCanvas();
