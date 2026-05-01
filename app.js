@@ -94,33 +94,33 @@ let storyObject = {
         "text": ["Hello there.", "It is me, the Narrator.", "Seems like you died during your journey, eh?", `That battle must've been a tough one...`, `Better luck next time.`, `.`],
         "leftSprite": [null, null, null, null, null, null],
         "rightSprite": [null, null, null, null, null, null],
-        "background": ["blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png", "blackBG.png"],
+        "background": ["darkBG.png", "darkBG.png", "darkBG.png", "darkBG.png", "darkBG.png", "darkBG.png"],
         "CGmode": ["off", "off", "off", "off", "off", "off"],
-        "speaker":  ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
         "tagPosition": [null, null, null, null, null, null],
         "combat": [null, null, null, null, null, null],
-        "ending": [null, null, null ,null, null, "Death in Combat"]
+        "ending": [null, null, null, null, null, "Death in Combat"]
     },
     "intro": {
-        "text": ["Testing tesing, I am Soren", "Hi, I'm Alan qrgwegwggeegwqwejefoipq3jfoipq3jfiopjfop4i3fjpo34f3iqfjq4fo q3ifijo3pfj34 jfo4jfop34i fjo4p fopij 4po fipo jf4poif j4fpoi243fjo 4jpo234j poi34jf po32i4 jfp32io4j f3o24i jfpoi342j f3o42 fi", "This is a test of the dialogue system.", "I am the narrator", ".", "That was a CG"],
-        "leftSprite": ["SorenGB.png", null, null, null, null, null],
-        "rightSprite": [null, "AlanGB.png", null, null, null, null],
-        "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "sorenMirrorCG.png", "sorenMirrorCG.png"],
-        "CGmode": ["off", "off", "off", "off", "on", "off"],
-        "speaker":  ["Soren", "Alan", "Narrator", "Narrator", "Narrator", "Narrator"],
-        "tagPosition": ["left", "right", null, null, null, null, null, null, null],
-        "combat": [null, null, null, null, null, null],
-        "ending": [null, null, null, null, null, null]
+        "text": ["In this story, you play as a young vampire named Soren.", "Soren lives in a modern-world society, similar to your own, except with the existence of vampires and the organization that pursues vampires to protect the peace, the Daylight Savings Corps.", "You work a part-time job to make a salary and blend into human society.", "It is currently 5:49 PM. You’re finishing up the last order of the day, before cleaning up shop and clocking out for your part-time shift at Grill Bros.", "Today, you forgot your “lunch” at home, so you're feeling quite “hungry.”", "Sizzle sizzle…", "What a nice smell… too bad it wouldn’t really help at all, even if I ate it.", "Your stomach grumbles", "Suddenly, one of your coworkers comes up behind you and pats you on the shoulder.", "Ayy, Soren! From the looks of it, you look like you need a break.", "With that being said, do you wanna go grab a bite after our shift?"],
+        "leftSprite": [null, null, null, null, null, null, "SorenGB.png", null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, "AlanGB.png", "AlanGB.png"],
+        "background": ["darkBG.png", "darkBG.png", "darkBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Grill", "Soren", "Narrator", "Narrator", "Alan", "Alan"],
+        "tagPosition": [null, null, null, null, null, "left", "left", null, null, "right", "right"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null]
     },
     "1A": {
-        "text": ["Next up will be a combat test", ".", "How was it?"],
+        "text": ["Yeah, sure. Where are we heading?", ".", "How was it?"],
         "leftSprite": [null, null],
         "rightSprite": [null, null],
         "background": ["GrillBrosBG.png", "streetNightBG.png", "GrillBrosBG.png"],
         "CGmode": ["off", "off", "off", "off",],
-        "speaker":  ["Narrator", "Narrator", "Narrator"],
+        "speaker": ["Narrator", "Narrator", "Narrator"],
         "tagPosition": [null, null, null],
-        "combat": [null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", true, 3, true, true]], null],
+        "combat": [null, ["sorenCombatNight.png", ["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", true, 3, true, true]], null],
         "ending": [null, null, null]
     },
     "1B": {
@@ -129,10 +129,10 @@ let storyObject = {
         "rightSprite": [null, null, null],
         "background": ["GrillBrosBG.png", "GrillBrosBG.png", "GrillBrosBG.png"],
         "CGmode": ["off", "off", "off"],
-        "speaker":  ["Narrator", "Narrator", "Narrator"],
+        "speaker": ["Narrator", "Narrator", "Narrator"],
         "tagPosition": [null, null, null],
         "combat": [null, null, null],
-        "ending":  [null, null, "IV Poisoning"]
+        "ending": [null, null, "IV Poisoning"]
     },
     "1C": {
         "text": ["You chose 1C"],
@@ -140,10 +140,10 @@ let storyObject = {
         "rightSprite": [null, null, null],
         "background": ["GrillBrosBG.png"],
         "CGmode": ["off"],
-        "speaker":  ["Narrator"],
+        "speaker": ["Narrator"],
         "tagPosition": [null],
         "combat": [null],
-        "ending":  [null]
+        "ending": [null]
     },
     "2A": {
         "text": [],
@@ -151,13 +151,13 @@ let storyObject = {
         "rightSprite": [],
         "background": [],
         "CGmode": [],
-        "speaker":  [],
+        "speaker": [],
         "tagPosition": []
     }
 }
 let choices = {
     "intro": {
-        "text": ["Combat Test", "Ending Test", "Nothing"],
+        "text": ["Sure", "Absolutely not", "I'm busy"],
         "nextPath": ["1A", "1B", "1C"]
     },
     "1A": {
@@ -229,7 +229,7 @@ function advanceStory() {
 function updateDialogue() {
     dialogueText.innerHTML = "";
     typeWrite = 0;
-    typeWriter(storyObject[storyStage].text[dialogueTracker], 50);
+    typeWriter(storyObject[storyStage].text[dialogueTracker], 25);
     if (!(storyObject[storyStage].text[dialogueTracker] === '.')) {
         let temp = `${storyObject[storyStage].speaker[dialogueTracker]}: ${storyObject[storyStage].text[dialogueTracker]}`;
         chatLogArray.push(temp);
@@ -445,11 +445,11 @@ function updateHealthCanvases() {
     playerHPBarCtx.fillStyle = "#BDBDBD";
     playerHPBarCtx.fillRect(0, 0, 300, 150);
     playerHPBarCtx.fillStyle = "#00FF26";
-    playerHPBarCtx.fillRect(0, 0, (playerHealth/playerHealthMax) * 300, 150);
+    playerHPBarCtx.fillRect(0, 0, (playerHealth / playerHealthMax) * 300, 150);
     enemyHPBarCtx.fillStyle = "#BDBDBD";
     enemyHPBarCtx.fillRect(0, 0, 300, 150);
     enemyHPBarCtx.fillStyle = "#00FF26";
-    enemyHPBarCtx.fillRect(0, 0, (currentEnemy.health/currentEnemyHealthMax) * 300, 150);
+    enemyHPBarCtx.fillRect(0, 0, (currentEnemy.health / currentEnemyHealthMax) * 300, 150);
 }
 
 function resetStory() {
@@ -498,7 +498,7 @@ function setUpCombatButtons() {
             turnInProgress = true;
             logBoxState = "combat log";
             updateDisplayedCombatBox();
-            setTimeout(() => {attack();}, 1000);
+            setTimeout(() => { attack(); }, 1000);
         }
     });
     itemButton.addEventListener('click', () => {
@@ -534,7 +534,7 @@ function setUpCombatButtons() {
 }
 
 function sparePressed() {
-    let stagedEnemyAttack = setTimeout(() => {enemyAttack();}, 6000);
+    let stagedEnemyAttack = setTimeout(() => { enemyAttack(); }, 6000);
     turnInProgress = true;
     addToCombatLog(`You spare ${currentEnemy.name}`);
     if (currentEnemy.canSpare === false) {
@@ -585,9 +585,9 @@ function attack() {
     tempAddClass(enemyCombatSprite, 'blinkFadeOutIn', 1200);
     updateHealthCanvases();
     addToCombatLog(`You attack and deal ${damage} damage to ${currentEnemy.name}`);
-    setTimeout(() => {checkCombatStatus();}, 3000);
+    setTimeout(() => { checkCombatStatus(); }, 3000);
     if (currentEnemy.health > 0) {
-        setTimeout(() => {enemyAttack();}, 3000);
+        setTimeout(() => { enemyAttack(); }, 3000);
     }
 }
 
@@ -598,7 +598,7 @@ function enemyAttack() {
         tempAddClass(playerCombatSprite, 'blinkFadeOutIn', 1200);
         updateHealthCanvases();
         addToCombatLog(`${currentEnemy.name} attacks and deals ${damage} damage to you`);
-        setTimeout(() => {checkCombatStatus();}, 3000);
+        setTimeout(() => { checkCombatStatus(); }, 3000);
         if (playerHealth > 0) {
             turnInProgress = false;
         }
@@ -744,7 +744,7 @@ function checkCombatStatus() {
         playerHealthMax += currentEnemy.givenStats[0];
         playerAttack += currentEnemy.givenStats[1];
         playerDefense += currentEnemy.givenStats[2];
-        setTimeout(() => {logRewardedStats();}, 3000);
+        setTimeout(() => { logRewardedStats(); }, 3000);
     } else if (playerHealth <= 0) {
         combatEnded = true;
         turnInProgress = true;
@@ -753,30 +753,33 @@ function checkCombatStatus() {
         storyStage = "deathByCombat";
         dialogueTracker = -1;
         setTimeout(() => {
-        currentPage = "dialogue";
-        setPage();
-        advanceStory();}, 5000);
+            currentPage = "dialogue";
+            setPage();
+            advanceStory();
+        }, 5000);
     } else if (enemySlept === true || enemySpared === true) {
         combatEnded = true;
         turnInProgress = true;
         enemyCombatSprite.classList.add('fadeOut');
         addToCombatLog(`You have defeated ${currentEnemy.name} through non-violent means.`);
-        setTimeout(() => {addToCombatLog(`As a result, no stats will be given.`);}, 3000);
+        setTimeout(() => { addToCombatLog(`As a result, no stats will be given.`); }, 3000);
         setTimeout(() => {
-        currentPage = "dialogue";
-        setPage();
-        advanceStory();}, 6000);
+            currentPage = "dialogue";
+            setPage();
+            advanceStory();
+        }, 6000);
     }
 }
 
 function logRewardedStats() {
     addToCombatLog(`You have gained ${currentEnemy.givenStats[0]} health`);
-    setTimeout(() => {addToCombatLog(`You have gained ${currentEnemy.givenStats[1]} attack`);}, 1000);
-    setTimeout(() => {addToCombatLog(`You have gained ${currentEnemy.givenStats[2]} defense`);}, 2000);
+    setTimeout(() => { addToCombatLog(`You have gained ${currentEnemy.givenStats[1]} attack`); }, 1000);
+    setTimeout(() => { addToCombatLog(`You have gained ${currentEnemy.givenStats[2]} defense`); }, 2000);
     setTimeout(() => {
         currentPage = "dialogue";
         setPage();
-        advanceStory();}, 5000);
+        advanceStory();
+    }, 5000);
 }
 
 function addToCombatLog(string) {
@@ -788,7 +791,7 @@ function setUpEnding(ending) {
     if (ending === "Death in Combat") {
         endingTitle.innerHTML = 'Ending 4: Death in Combat';
         endingBody.innerHTML = `You died while fighting ` + currentEnemy.name + `. You can gain higher stats by fighting stronger enemies, but don't overdo it. You already experienced what happens. Hopefully, you died valiantly. Though, that probably isn't the case.`
-    } else if (ending ==="IV Poisoning") {
+    } else if (ending === "IV Poisoning") {
         endingTitle.innerHTML = 'Ending 5: IV Poisoning';
         endingBody.innerHTML = `The hospital was only trying to save you. Turns out that whatever they keep in those IV bags are poisonous to vampires. How unfortunate. That seemed like a real painful way to go.`
     }
@@ -844,7 +847,7 @@ dialogueScreen.addEventListener('click', () => {
 });
 
 viewChoicesButton.addEventListener('click', () => {
-    setTimeout(() => {choiceLogAndOverlay.style = "display: block";}, 50);
+    setTimeout(() => { choiceLogAndOverlay.style = "display: block"; }, 50);
     updateChoiceLog();
 });
 
