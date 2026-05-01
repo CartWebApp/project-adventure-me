@@ -32,9 +32,14 @@ const playerHPBarCtx = playerHPBar.getContext('2d');
 const enemyHPBar = document.querySelector('#enemyHPBarCanvas');
 const enemyHPBarCtx = enemyHPBar.getContext('2d');
 const combatLog = document.querySelector('#combatLogBox');
+const itemsBox = document.querySelector('#itemsBox')
+const actBox = document.querySelector('#actBox');
 const attackButton = document.querySelector('#attackButton');
 const itemButton = document.querySelector('#itemButton');
-const spareButton = document.querySelector('#spareButton');
+const actButton = document.querySelector('#actButton');
+const checkSelfButton = document.querySelector('#checkSelfButton');
+const checkEnemyButton = document.querySelector('#checkEnemyButton');
+const spareButton = document.querySelector('#spareButton')
 const endingTitle = document.querySelector('#endingTitle');
 const endingBody = document.querySelector('#endingBody');
 const choiceLogBox = document.querySelector('#choiceLog');
@@ -62,7 +67,12 @@ let interrogation = 0;
 let kills = 0;
 let interrogationMode = false;
 //combat vars
-let playerItems = [];
+let combatEnded = false;
+let logBoxState = "combat log"
+let enemyDistracted = false;
+let enemySlept = false;
+let enemySpared = false;
+let playerItems = ["Premium Blood Vial", "Landlord's Number", "Sleeping Potion"];
 let playerHealth = 100;
 let playerHealthMax = 100;
 let playerAttack = 10;
@@ -110,7 +120,7 @@ let storyObject = {
         "CGmode": ["off", "off", "off", "off",],
         "speaker":  ["Narrator", "Narrator", "Narrator"],
         "tagPosition": [null, null, null],
-        "combat": [null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", false, null, true, true]], null],
+        "combat": [null, ["sorenCombatNight.png",["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 80, 15, 5, [20, 5, 5], "tiredBusinessWomanNight.png", true, 3, true, true]], null],
         "ending": [null, null, null]
     },
     "1B": {
@@ -452,6 +462,7 @@ function resetStory() {
     continuePlayerHealthMax = 0;
     continuePlayerAttack = 10;
     continuePlayerDefense = 10;
+    continuePlayerItems = [];
     chatLogArray = [];
     suspicion = 0;
     interrogation = 0;
@@ -460,6 +471,7 @@ function resetStory() {
     playerHealth = 100;
     playerAttack = 10;
     playerDefense = 10;
+    playerItems = ["Premium Blood Vial", "Landlord's Number", "Sleeping Potion"];
     choiceLog = [];
     dialogueTracker = -1;
     storyStage = 'intro';
@@ -484,12 +496,90 @@ function setUpCombatButtons() {
     attackButton.addEventListener('click', () => {
         if (turnInProgress === false) {
             turnInProgress = true;
+            logBoxState = "combat log";
+            updateDisplayedCombatBox();
             setTimeout(() => {attack();}, 1000);
-        } 
+        }
+    });
+    itemButton.addEventListener('click', () => {
+        if (turnInProgress === false) {
+            logBoxState = "items";
+            setUpItems();
+            updateDisplayedCombatBox();
+        }
+    });
+    actButton.addEventListener('click', () => {
+        if (turnInProgress === false) {
+            logBoxState = "act";
+            updateDisplayedCombatBox();
+        }
+    });
+    checkSelfButton.addEventListener('click', () => {
+        logBoxState = "combat log";
+        updateDisplayedCombatBox();
+        addToCombatLog(`You currently have ${playerHealth}/${playerHealthMax} health, ${playerAttack} attack, ${playerDefense} defense`);
+    });
+    checkEnemyButton.addEventListener('click', () => {
+        logBoxState = "combat log";
+        updateDisplayedCombatBox();
+        addToCombatLog(`${currentEnemy.name} currently has ${currentEnemy.health}/${currentEnemyHealthMax} health, ${currentEnemy.attack} attack, ${currentEnemy.defense} defense`);
+    });
+    spareButton.addEventListener('click', () => {
+        if (turnInProgress === false) {
+            logBoxState = "combat log";
+            updateDisplayedCombatBox();
+            sparePressed();
+        }
     });
 }
 
+function sparePressed() {
+    let stagedEnemyAttack = setTimeout(() => {enemyAttack();}, 6000);
+    turnInProgress = true;
+    addToCombatLog(`You spare ${currentEnemy.name}`);
+    if (currentEnemy.canSpare === false) {
+        setTimeout(() => {
+            addToCombatLog(`${currentEnemy.name} seems just as ferocious as before`);
+        }, 3000);
+    } else if (currentEnemy.canSpare === true && currentEnemy.sparesNeeded > 0) {
+        currentEnemy.sparesNeeded -= 1;
+        if (currentEnemy.sparesNeeded <= 0) {
+            setTimeout(() => {
+                addToCombatLog(`${currentEnemy.name} flees after seeing so signs of aggression`);
+                enemySpared = true;
+                clearTimeout(stagedEnemyAttack);
+                setTimeout(() => {
+                    checkCombatStatus();
+                }, 2000);
+            }, 3000);
+        } else {
+            setTimeout(() => {
+                addToCombatLog(`${currentEnemy.name} seems to calm down slightly`);
+            }, 3000);
+        }
+    }
+}
+
+function updateDisplayedCombatBox() {
+    if (logBoxState === "combat log") {
+        combatLog.style = "z-index: 1";
+        itemsBox.style = "z-index: 0";
+        actBox.style = "z-index: 0";
+    } else if (logBoxState === "items") {
+        combatLog.style = "z-index: 0";
+        itemsBox.style = "z-index: 1";
+        actBox.style = "z-index: 0";
+    } else if (logBoxState === "act") {
+        combatLog.style = "z-index: 0";
+        itemsBox.style = "z-index: 0";
+        actBox.style = "z-index: 1";
+    }
+}
+
 function attack() {
+    if (currentEnemy.sparesNeeded) {
+        currentEnemy.sparesNeeded += 1;
+    }
     let damage = Math.round((randomNumber((0.7 * playerAttack), (1.3 * playerAttack)) * (Math.pow(0.99, currentEnemy.defense))));
     currentEnemy.health -= damage;
     tempAddClass(enemyCombatSprite, 'blinkFadeOutIn', 1200);
@@ -502,13 +592,21 @@ function attack() {
 }
 
 function enemyAttack() {
-    let damage = Math.round((randomNumber((0.7 * currentEnemy.attack), (1.3 * currentEnemy.attack)) * (Math.pow(0.99, playerDefense))));
-    playerHealth -= damage;
-    tempAddClass(playerCombatSprite, 'blinkFadeOutIn', 1200);
-    updateHealthCanvases();
-    addToCombatLog(`${currentEnemy.name} attacks and deals ${damage} to you`);
-    setTimeout(() => {checkCombatStatus();}, 3000);
-    if (playerHealth > 0) {
+    if (enemyDistracted === false) {
+        let damage = Math.round((randomNumber((0.7 * currentEnemy.attack), (1.3 * currentEnemy.attack)) * (Math.pow(0.99, playerDefense))));
+        playerHealth -= damage;
+        tempAddClass(playerCombatSprite, 'blinkFadeOutIn', 1200);
+        updateHealthCanvases();
+        addToCombatLog(`${currentEnemy.name} attacks and deals ${damage} damage to you`);
+        setTimeout(() => {checkCombatStatus();}, 3000);
+        if (playerHealth > 0) {
+            turnInProgress = false;
+        }
+    }
+    if (enemyDistracted === true) {
+        addToCombatLog(`${currentEnemy.name} was distracted and unable to attack!`);
+        enemyDistracted = false;
+        currentEnemy.canDistract = false;
         turnInProgress = false;
     }
 }
@@ -525,7 +623,96 @@ function tempAddClass(element, classToAdd, time) {
     }, time)
 }
 
+function setUpItems() {
+    itemsBox.innerHTML = '';
+    let itemsBoxHTML = ''
+    for (item in playerItems) {
+        itemsBoxHTML += `<p itemId="${item}">${playerItems[item]}</p>`
+    }
+    itemsBox.innerHTML = itemsBoxHTML;
+}
+
+function setUpItemUsage() {
+    document.body.addEventListener('click', (event) => {
+        console.log(event.target);
+        console.log(event.target.closest('#itemsBox'));
+        if (event.target.closest('#itemsBox')) {
+            if (event.target.innerHTML === "Premium Blood Vial") {
+                usedPremiumBloodVial(event.target);
+            } else if (event.target.innerHTML === "Landlord's Number") {
+                usedLandlordNumber();
+            } else if (event.target.innerHTML === "Sleeping Potion") {
+                usedSleepingPotion(event.target);
+            }
+        }
+    });
+}
+
+function usedPremiumBloodVial(item) {
+    playerItems.splice(item.getAttribute('itemId'), 1);
+    setUpItems();
+    playerHealth += 50;
+    if (playerHealth > playerHealthMax) {
+        playerHealth = playerHealthMax;
+    }
+    updateHealthCanvases();
+    logBoxState = "combat log";
+    updateDisplayedCombatBox();
+    addToCombatLog(`You use a Premium Blood Vial and heal 50 health. Your health is now ${playerHealth}/${playerHealthMax}`);
+}
+
+function usedLandlordNumber() {
+    turnInProgress = true;
+    logBoxState = "combat log";
+    updateDisplayedCombatBox();
+    addToCombatLog(`You call the Landlord. He agrees to come by and distract ${currentEnemy.name} for a turn.`);
+    setTimeout(() => {
+        addToCombatLog(`You hear a loud noise in the distance, similar to a gunshot, followed by cries for help in the Landlord's voice.`);
+    }, 3000);
+    if (currentEnemy.canDistract === true) {
+        setTimeout(() => {
+            turnInProgress = false;
+            enemyDistracted = true;
+            addToCombatLog(`${currentEnemy.name} is alarmed by the commotion! They become distracted and unable to attack for one turn.`);
+        }, 6000);
+    } else if (currentEnemy.canDistract === false) {
+        setTimeout(() => {
+            turnInProgress = false;
+            addToCombatLog(`${currentEnemy.name} is unphased by the disruption. The enemy's focus seems entirely honed onto you.`);
+        }, 6000);
+    }
+}
+
+function usedSleepingPotion(item) {
+    playerItems.splice(item.getAttribute('itemId'), 1);
+    setUpItems();
+    logBoxState = "combat log";
+    updateDisplayedCombatBox();
+    addToCombatLog(`You take out a Sleeping Potion and hurl it at ${currentEnemy.name}`);
+    if (currentEnemy.canSleep === true) {
+        setTimeout(() => {
+            enemySlept = true;
+            addToCombatLog(`${currentEnemy.name} is splashed with the potion! They tumble around before falling asleep and collapsing onto the floor.`);
+        }, 3000);
+        setTimeout(() => {
+            checkCombatStatus();
+        }, 6000);
+    } else if (currentEnemy.canSleep === false) {
+        setTimeout(() => {
+            turnInProgress = false;
+            addToCombatLog(`${currentEnemy.name} is drenched with the potion's contents... but it doesn't seem to have any effect.`);
+        }, 3000);
+    }
+}
+
 function setUpCombat(combatInfo) {
+    combatEnded = false;
+    setUpItems();
+    enemySpared = false;
+    enemyDistracted = false;
+    enemySlept = false;
+    logBoxState = "combat log";
+    updateDisplayedCombatBox();
     turnInProgress = false;
     if (enemyCombatSprite.classList.contains('fadeOut')) {
         enemyCombatSprite.classList.remove('fadeOut');
@@ -544,15 +731,22 @@ function setUpCombat(combatInfo) {
 }
 
 function checkCombatStatus() {
+    if (combatEnded === true) {
+        return;
+    }
     if (currentEnemy.health <= 0) {
+        kills += 1;
+        combatEnded = true;
         turnInProgress = true;
         enemyCombatSprite.classList.add('fadeOut');
         addToCombatLog(`You have defeated ${currentEnemy.name}`);
         playerHealth += currentEnemy.givenStats[0];
+        playerHealthMax += currentEnemy.givenStats[0];
         playerAttack += currentEnemy.givenStats[1];
         playerDefense += currentEnemy.givenStats[2];
         setTimeout(() => {logRewardedStats();}, 3000);
     } else if (playerHealth <= 0) {
+        combatEnded = true;
         turnInProgress = true;
         playerCombatSprite.classList.add('fadeOut');
         addToCombatLog(`You have been defeated by ${currentEnemy.name}`);
@@ -562,6 +756,16 @@ function checkCombatStatus() {
         currentPage = "dialogue";
         setPage();
         advanceStory();}, 5000);
+    } else if (enemySlept === true || enemySpared === true) {
+        combatEnded = true;
+        turnInProgress = true;
+        enemyCombatSprite.classList.add('fadeOut');
+        addToCombatLog(`You have defeated ${currentEnemy.name} through non-violent means.`);
+        setTimeout(() => {addToCombatLog(`As a result, no stats will be given.`);}, 3000);
+        setTimeout(() => {
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();}, 6000);
     }
 }
 
@@ -654,6 +858,7 @@ setUpOptionsButtons();
 setUpOptionsMenus();
 updateStatusCanvas();
 setUpCombatButtons();
+setUpItemUsage();
 setStartPage();
 
 function checkLengths() {
