@@ -298,7 +298,45 @@ let storyObject = {
         "suspicion": [null,null,20,null],
         "interrogation": [null,null,null,null]
     },
-
+    "3A A": {
+        "text": ["."],
+        "leftSprite": ["null"],
+        "rightSprite": [null],
+        "background": ["apartmentCombatBG.png"],
+        "CGmode": ["off","off","off","off"],
+        "speaker": ["Narrator"],
+        "tagPosition": [null],
+        "combat": [["sorenCombatNight.png", ["Landlord", "Landlord seems frozen in fear", 5, 1, 1, [5, 1, 1], "LandlordCombatNight.png", true, 1, true, true]]],
+        "ending": [null],
+        "suspicion": [null],
+        "interrogation": [null]
+    },
+    "3A A kill":{
+        "text":["You pounce onto the landlord, landing and grabbing onto his shirt. You bite down on his throat aggressively, and blood gushes into your mouth.","AHH… ahh…","His screams start to die down, and his knees buckle due to the pain and your weight, causing the Landlord’s body to collapse to the floor with you still on him. You continue drinking.","Five minutes later, you finally get off the poor Landlord. His body is shriveled up. It’s pale, lifeless, and dead.","…","It’s not safe here anymore… I have to leave.","You grab an insulated bag that you store in your closet and hastily stuff it with the blood bags you had stored in your fridge.","You shapeshift into your bat transformation and fly out the open apartment door.","You make your way to a nearby forest before you notice that there is some sort of presence following you.","You fly into an open patch of the forest, uncovered by the trees, before shifting back to your humanoid form.","Hey! Come out! I know there’s someone following me!","A figure wearing a hooded black cloak emerges from the shadows.","Hello, young one.","The cloaked figure removes their hood. He has pure white hair and red eyes, just like you. His eyes are a shade browner compared to yours, though. You realize that this man is also a vampire, though a much older one.","So… who are you?","Who am I…","It isn’t important. I’ve taken on many identities over the years.","What is important, however… is that I sense an ancient power in you. I noticed your encounter earlier, but you are still too young…","Huh? What are you talking about?","…Nothing that you need to concern yourself with yet. Please take these with you.","The vampire’s hand shuffles under his cloak, and he reaches it out. He offers you a leather pouch full of Premium Blood Vials. You take the pouch from his hand and stuff it into your pocket.","What are these?","These will help you in your future perils. Whenever you face a major injury, try drinking one of these. It will soothe your body and accelerate the regeneration process.","Eh? Really? And you’re just giving it to me?","Yes. It's nothing suspicious. If you really want to imagine it in a materialistic manner, think of it like an investment that I’ve put into you.","I will take my leave now. I won’t openly associate with you due to the risks of being discovered, but just know that I will be watching from the shadows.","Thank you, Mister Vampire, sir.","Yes, good luck to you, young one.","The vampire flips back on the hood of his cloak, and he vanishes into the shadows with a swarm of fleeing bats taking his place.","What an interesting encounter.","Now, as you wander the forest, you reflect on recent events.","I really have to find a new home, huh. Where can I even go now?","As you walk, you stumble upon an open and wet area of the forest. It is a wetland, with ponds and shrubs all around.","The midnight moonlight beams down on the area and refracts off the many ponds. The moonlight and the many fireflies around the ponds light up the whole area in shades of white and yellow.","It's a beautiful sight, really, paralleling your sorrowful situation.", ".", "You notice your reflection on the water of a pond next to you.","I feel like… It's time to change things up.","You decide that it is time to renew your identity. Who will you become?"],
+        "leftSprite":[null,null,null,null,"SorenNM.png","SorenNM.png",null,null,null,null,"SorenNM.png",null,null,null,"SorenNM.png",null,null,null,"SorenNM.png",null,null,"SorenNM.png",null,"SorenNM.png",null,null,"SorenNM.png",null,null,null,null,"SorenNM.png",null,null,null,null,null,null,null,null],
+        "rightSprite":[null,"Landlord.png",null,null,null,null,null,null,null,null,null,null,"seniorVampireCloaked.png","seniorVampire.png",null,"seniorVampire.png","seniorVampire.png","seniorVampire.png",null,"seniorVampire.png",null,null,"seniorVampire.png",null,"seniorVampire.png","seniorVampire.png",null,"seniorVampire.png",null,null,null,null,null,null,null,null,null,null,null],
+        "background":["apartmentBG.png","apartmentBG.png","apartmentBG.png","apartmentBG.png","apartmentBG.png","apartmentBG.png","apartmentBG.png","apartmentBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","forestBG.png","wetlandBG.png",null,null, "sorenWetlandCG.png", null,null,null],
+        "CGmode":["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off", "on", "off","off","off"],
+        "speaker":["Narrator","Landlord","Narrator","Narrator","Soren","Soren","Narrator","Narrator","Narrator","Narrator","Soren","Narrator","???","Narrator","Soren","Senior Vampire","Senior Vampire","Senior Vampire","Soren","Senior Vampire","Narrator","Soren","Senior Vampire","Soren","Senior Vampire","Senior Vampire","Soren","Senior Vampire","Narrator","Narrator","Narrator","Soren","Narrator","Narrator","Narrator","Narrator","Narrator","Soren","Narrator"],
+        "tagPosition":[null,"right",null,null,"left","left",null,null,null,null,"left",null,"right",null,"left","right","right","right","left","right",null,"left","right","left","right","right","left","right",null,null,null,"left",null,null,null,null,null,null,null],
+        "combat":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "3A A spare":{
+        "text":["Given the opportunity of being spared, the landlord, realizing the danger of staying on his spot in the doorway any longer, dashes away in a sprint.","You reflect on the situation for a few moments.","I seriously messed up. What can I do now?","As the landlord’s footsteps fade into the distance, you hear another pair of footsteps approaching your still-open apartment door.","(What could this possibly be now?!)","A man dressed in casual clothing and an odd hat with an odd robe walks into the room. He seems eccentric, but he exudes a powerful, dangerous aura that humans shouldn’t normally have.","Hmm… a vampire, huh.","Who are you?","Just someone passing by. It looks like you spared that guy, right?","…What do you mean?","Well, you had the chance to stop the guy who ran away just now, but you didn’t. Most other vampires wouldn’t do that, you know…","…","You amuse me…","Here, come closer. I want to give you something.","The man reaches into his robe and takes out a bottle full of pills, reaching it out to you. You instinctively accept the offer.","What are these?","That’s a bottle of sleeping pills, one-hundred times stronger than normal. I hope you use it wisely.","Eh? It’s not like I have any trouble sleeping.","You’ll figure out what I mean eventually. Anyway, I’ll let you go for now.","I hope you are different.","The eccentric man walks back out of the apartment through the front door.","Wait! I’m not done talking to you!","You run out the door and look around, but the odd man is already gone.","Dang it, who even was that guy?","You reflect on recent events and realize that you probably shouldn’t spend any more time at your apartment than necessary.","It’s not safe here anymore… I have to leave.","You grab an insulated bag that you store in your closet and hastily stuff it with the blood bags you had stored in your fridge.","Then, you walk out of the apartment complex and wander the streets.","You eventually find yourself traversing through a nearby forest.","You reflect on the magnitude of the situation you suddenly found yourself in.","I really have to find a new home, huh. Where can I even go now?","As you walk, you stumble upon an open and wet area of the forest. It is a wetland, with ponds and shrubs all around.","The midnight moonlight beams down on the area and refracts off the many ponds. The moonlight and the many fireflies around the ponds light up the whole area in shades of white and yellow.","It's a beautiful sight, really, paralleling your sorrowful situation.",".","You notice your reflection on the water of a pond next to you.","I feel like… It's time to change things up.","You decide that it is time to renew your identity. Who will you become?"],
+        "leftSprite":[null,null,"SorenNM.png",null,"SorenNM.png",null,null,"SorenNM.png",null,"SorenNM.png",null,"SorenNM.png",null,null,null,"SorenNM.png",null,"SorenNM.png",null,null,null,"SorenNM.png",null,"SorenNM.png",null,"SorenNM.png",null,null,null,null,"SorenNM.png",null,null,null,null,null,null,null],
+        "rightSprite":[null,null,null,null,null,"kisukeHidden.png","kisukeHidden.png",null,"kisukeHidden.png",null,"kisukeHidden.png",null,"kisukeHidden.png","kisukeHidden.png",null,null,"kisukeHidden.png",null,"kisukeHidden.png","kisukeHidden.png",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "background":["apartmentBG.png",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"forestBG.png",null,null,"wetlandBG.png",null,null,"sorenWetlandCG.png",null,null,null],
+        "CGmode":["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off",".","off","off","off"],
+        "speaker":["Narrator","Narrator","Soren","Narrator","Soren","Narrator","???","Soren","???","Soren","???","Soren","???","???","Narrator","Soren","???","Soren","???","???","Narrator","Soren","Narrator","Soren","Narrator","Soren","Narrator","Narrator","Narrator","Narrator","Soren","Narrator","Narrator","Narrator","Narrator","Narrator","Soren","Narrator"],
+        "tagPosition":[null,null,"left",null,"left",null,"right","left","right","left","right","left","right","right",null,"left","right","left","right","right",null,"left",null,"left",null,"left",null,null,null,null,"left",null,null,null,null,null,null,null],
+        "combat":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    }
 }
 let choices = {
     "intro": {
@@ -343,8 +381,16 @@ let choices = {
     },
     "3A": {
         "text": ["Kill them", "Knock them out", "Run"],
-        "nextPath": ["3A A", "3B A", "3C A"]
-    }
+        "nextPath": ["3A A", "3A B", "3A C"]
+    },
+    "3A A kill": {
+        "text": ["Become Alice", "Become Aaron", "Stay Undecided"],
+        "nextPath": ["4A A", "4A B", "4A C"]
+    },
+    "3A A spare": {
+        "text": ["Become Alice", "Become Aaron", "Stay Undecided"],
+        "nextPath": ["4A A", "4A A", "4A A"]
+    },
 }
 
 function setStartPage() {
@@ -394,6 +440,24 @@ function specialConditionChecker() {
         advanceStory();
     } else if (storyStage === "2B A" && kills === continueKills) {
         storyStage = "2B A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "3A A" && kills > continueKills) {
+        playerItems.push("Premium Blood Vial");
+        playerItems.push("Premium Blood Vial");
+        playerItems.push("Premium Blood Vial");
+        storyStage = "3A A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "3A A" && kills === continueKills) {
+        playerItems.push("Sleeping Pill");
+        playerItems.push("Sleeping Pill");
+        playerItems.push("Sleeping Pill");
+        storyStage = "3A A spare";
         dialogueTracker = -1;
         currentPage = "dialogue";
         setPage();
@@ -680,7 +744,7 @@ function resetStory() {
     playerHealthMax = 100;
     playerAttack = 10;
     playerDefense = 10;
-    playerItems = ["Premium Blood Vial", "Landlord's Number", "Sleeping Potion"];
+    playerItems = [];
     choiceLog = [];
     dialogueTracker = -1;
     storyStage = 'intro';
@@ -850,7 +914,7 @@ function setUpItemUsage() {
                 usedPremiumBloodVial(event.target);
             } else if (event.target.innerHTML === "Landlord's Number") {
                 usedLandlordNumber();
-            } else if (event.target.innerHTML === "Sleeping Potion") {
+            } else if (event.target.innerHTML === "Sleeping Pill") {
                 usedSleepingPotion(event.target);
             }
         }
@@ -897,11 +961,11 @@ function usedSleepingPotion(item) {
     setUpItems();
     logBoxState = "combat log";
     updateDisplayedCombatBox();
-    addToCombatLog(`You take out a Sleeping Potion and hurl it at ${currentEnemy.name}`);
+    addToCombatLog(`You take out a Sleeping Pill and hurl it at ${currentEnemy.name}`);
     if (currentEnemy.canSleep === true) {
         setTimeout(() => {
             enemySlept = true;
-            addToCombatLog(`${currentEnemy.name} is splashed with the potion! They tumble around before falling asleep and collapsing onto the floor.`);
+            addToCombatLog(`${currentEnemy.name} is hit with the pill! It breaks open and lets out its contents on impact. They tumble around before falling asleep and collapsing onto the floor.`);
         }, 3000);
         setTimeout(() => {
             checkCombatStatus();
@@ -909,7 +973,7 @@ function usedSleepingPotion(item) {
     } else if (currentEnemy.canSleep === false) {
         setTimeout(() => {
             turnInProgress = false;
-            addToCombatLog(`${currentEnemy.name} is drenched with the potion's contents... but it doesn't seem to have any effect.`);
+            addToCombatLog(`${currentEnemy.name} is hit with the pill and it's contents... but it doesn't seem to have any effect.`);
         }, 3000);
     }
 }
