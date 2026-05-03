@@ -1545,14 +1545,14 @@ function specialConditionChecker() {
         setUpChoices();
         choiceOverlay.style = "display: flex";
     } else if (storyStage === "AaronNL5BC B") {
-        playerHealth = playerHealth - Math.floor(playerHealth * 0.05);
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.15);
         if (playerHealth <= 0) {
             playerHealth = 1;
         }
         setUpChoices();
         choiceOverlay.style = "display: flex";
     } else if (storyStage === "AaronNL5BCC B") {
-        playerHealth = playerHealth - Math.floor(playerHealth * 0.1);
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.18);
         if (playerHealth <= 0) {
             playerHealth = 1;
         }
