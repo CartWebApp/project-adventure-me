@@ -62,6 +62,10 @@ let showStatusBars = true;
 let currentEnemy;
 let currentEnemyHealthMax;
 //status vars
+let landlordBefriended = false;
+let jakeBefriended = false;
+let ameliaBefriended = false;
+let dealerBefriended = false;
 let suspicion = 0;
 let interrogation = 0;
 let kills = 0;
@@ -78,6 +82,10 @@ let playerHealthMax = 100;
 let playerAttack = 10;
 let playerDefense = 10;
 //continueSave vars
+let continueLandlordBefriended = false;
+let continueJakeBefriended = false;
+let continueAmeliaBefriended = false;
+let continueDealerBefriended = false;
 let continueChatLogArray = [];
 let continueSuspicion = 0;
 let continueInterrogation = 0;
@@ -531,6 +539,565 @@ let storyObject = {
         "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
         "suspicion": [null,null,null,null,null,null,null,null,null,null,null,10,null,null,null,null],
         "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5 A": {
+        "text": ["Now that I think about it, I’m pretty sure that there was a hospital not too far from here.","I suppose I’ll have to give that place a visit.","That night, you break into a local hospital, and steal a whole cooler full of bloodbags.","It was fairly easy for you to infiltrate the place despite security at night due to the use of your bat transformation.","Despite what many may think. Vampires actually retain the same physical strength that they normally have even in bat form, so flying the cooler out the hospital’s window was no problem for you.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png","alice.png",null,null,null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["houseBG.png",null,"darkBG.png",null,null,null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Alice","Alice","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": ["left","left",null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5 B": {
+        "text": ["Well, I think its time to give the Black Market another visit.","I’m not that familiar with the area around here yet, but I know that the Market finds its way everywhere.","That night, you search all the dark alleyways around the neighborhood and around your area of the city.","You eventually come across a figure in a brown cloak. He wears a big hood that causes his face to be completely hidden.","Are you the “Dealer” in this area?","Yes… yes I am…","Have you come to seek my wares…?","Why do you talk like that? The other dealer I used to know talked normal.","…It’s for the effect. Now, don’t say anymore or you’ll ruin it.","Alright… well anyway, I’m here to buy some blood bags. Like the ones you find in the hospital.","Hm… I see… I have just what you need, but you need to pay me 20% of your vitality.","Eh? Not cash?","You see… every dealer decides their payment method. This one is mine…","Now… are you going to hand over your vitality or not?","Hm… should I really accept this offer?"],
+        "leftSprite": ["aliceHappy.png","alice.png",null,null,"alice.png",null,null,"aliceSad.png",null,"alice.png",null,"alice.png",null,null,"aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,"dealer.png","dealer.png",null,null,null,"dealer.png",null,"dealer.png","dealer.png",null],
+        "background": ["houseBG.png",null,"alleyNightBG.png",null,null,null,null,null,null,null,null,null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Alice","Alice","Narrator","Narrator","Alice","Dealer","Dealer","Alice","Dealer","Alice","Dealer","Alice","Dealer","Dealer","Alice"],
+        "tagPosition": ["left","left",null,null,"left","right","right","left","right","left","right","left","right","right","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5B A": {
+        "text": ["Sorry, but I don’t think I can pay your price.","I’ll just have to take those blood bags forcefully.","Another… unwilling client… so be it.","The Dealer takes out a dagger from one of the pockets within his cloak and stands ready for your attack.","."],
+        "leftSprite": ["alice.png","aliceHappy.png",null,null,null],
+        "rightSprite": [null,null,"dealer.png",null,null],
+        "background": ["alleyNightBG.png",null,null,null,"alleyNightCombatBG.png"],
+        "CGmode": ["off","off","off","off","off"],
+        "speaker": ["Alice","Alice","Dealer","Narrator","Narrator"],
+        "tagPosition": ["left","left","right",null,null],
+        "combat": [null,null,null,null,["aliceCombatNight.png", ["Dealer", "The Dealer stands ready with his dagger, prepared to attack", 70, 10, 5, [10, 3, 3], "dealerCombatNight.png", true, 3, false, false]]],
+        "ending": [null,null,null,null,null],
+        "suspicion": [null,null,null,null,null],
+        "interrogation": [null,null,null,null,null]
+    },
+    "AliceNL5B A kill": {
+        "text": ["You finish off the dealer with a blow to the head. He collapses to the floor, lifeless and unmoving.","He was tougher than he looked…","Anyway, lets get these blood bags.","You search the Dealer’s body for blood bags. He carried a wide assortment of items, much more than what it looked like his cloak would fit, but then you finally find what you were looking for.","Perfect! Just what I was looking for.","You leave the Dealer’s body on the floor as you make your way back to your residence. The Black Market does its best to keep itself hidden, so you aren’t worried about the clean-up.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,"aliceSad.png","alice.png",null,"aliceHappy.png",null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Alice","Alice","Narrator","Alice","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,"left","left",null,"left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5B A spare": {
+        "text": ["You stand there and tank all of the Dealer’s hits without doing anything.","What are you doing?! Didn’t you say that you were going to take my wares forcefully?","What are you doing just standing there?! Are you an idiot?","You wonder yourself why you resolved yourself to kill this guy, but ended up not doing anything in the end.","Well… I just had a change of heart if you know what I mean.","Tee hee.","Oh my god. You actually must be stupid.","Just take the blood bags and go. The blood you dripped yourself onto the floor has more than enough vitality than I initially asked for.","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Oh, thank you. I’ll go now.","Yes, please! Many say that I am eccentric, but you are borderline crazy! Please just go!","You leave the Dealer in the alley as he collects your blood off the floor. The stabs from his dagger really did hurt, but you played it off really well.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,null,"alice.png","aliceHappy.png",null,null,null,"aliceHappy.png",null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,"dealer.png","dealer.png",null,null,null,"dealer.png","dealer.png",null,null,"dealer.png",null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Dealer","Dealer","Narrator","Alice","Alice","Dealer","Dealer","Narrator","Alice","Dealer","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,"right","right",null,"left","left","right","right",null,"left","right",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5B B": {
+        "text": ["Okay. I’ll give you 20% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yes, thank you for your service.","The Dealer seems to like you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png",null,null,null,null,null,null,"aliceHappy.png",null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Alice","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Alice","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5B C": {
+        "text": ["You attempt to haggle with the Dealer in order to lower the price. You attempt to make yourself look pleasant.","Come on… can’t you lower the price a little bit for me?","Pleeeaaase, Mr. Dealer Sir. I know you want to…","It seems to be… very effective?","Ehem… well… this isn’t usually part of my protocol…","But just for you, I can lower the price to just 5% of your vitality.","Nice!","This guy… is too easy to please."],
+        "leftSprite": [null,"aliceBlush.png","aliceBlush.png",null,null,null,"aliceHappy.png",null],
+        "rightSprite": [null,null,null,null,"dealer.png","dealer.png",null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Alice","Alice","Narrator","Dealer","Dealer","Alice","Narrator"],
+        "tagPosition": [null,"left","left",null,"right","right","left",null],
+        "combat": [null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5BC B": {
+        "text": ["Okay. I’ll give you 5% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yes, thank you for your service.","The Dealer seems to like you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png",null,null,null,null,null,null,"aliceHappy.png",null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Alice","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Alice","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5BC C": {
+        "text": ["You attempt to haggle the Dealer further.","Thank you Mr. Dealer, but can you lower it just a little… more…","Okay okay… I see whats going on here…","I’m not that stupid, alright. 10% of your vitality. Take it or leave it…","Aww…"],
+        "leftSprite": [null,"aliceBlush.png",null,null,"aliceSad.png"],
+        "rightSprite": [null,null,"dealer.png","dealer.png",null],
+        "background": ["alleyNightBG.png",null,null,null,null],
+        "CGmode": ["off","off","off","off","off"],
+        "speaker": ["Narrator","Alice","Dealer","Dealer","Alice"],
+        "tagPosition": [null,"left","right","right","left"],
+        "combat": [null,null,null,null,null],
+        "ending": [null,null,null,null,null],
+        "suspicion": [null,null,null,null,null],
+        "interrogation": [null,null,null,null,null]
+    },
+    "AliceNL5BCC B": {
+        "text": ["Okay. I’ll give you 10% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yes, thank you for your service.","The Dealer seems to like you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png",null,null,null,null,null,null,"aliceHappy.png",null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Alice","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Alice","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5 C": {
+        "text": ["I think its time I go on a hunt! After all, wouldn’t it taste best if it came straight from the source?","That night, you decide to go wander the streets for an unsuspecting victim.","The streets are mostly empty, but you manage to patrol around and find a spot where you find three enticing targets.","So… I can choose between that elderly man on the bench over there, the boy who just left the playground, or the business-woman who looks like she’s on the way to the train station.","She looks really tired. I feel bad for her. I wonder if she’s being overworked.","Now you must choose. Who will you hunt?"],
+        "leftSprite": ["aliceHappy.png",null,null,"alice.png","aliceSad.png",null],
+        "rightSprite": [null,null,null,null,null,null],
+        "background": ["houseBG.png","darkBG.png","streetNightBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off"],
+        "speaker": ["Alice","Narrator","Narrator","Alice","Alice","Narrator"],
+        "tagPosition": ["left",null,null,"left","left",null],
+        "combat": [null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null]
+    },
+    "AliceNL5C A": {
+        "text": ["You approach the elderly man on the bench, bareing your fangs.","."],
+        "leftSprite": [null,null],
+        "rightSprite": [null,null],
+        "background": ["streetNightBG.png","streetNightCombatBG.png"],
+        "CGmode": ["off","off"],
+        "speaker": ["Narrator","Narrator"],
+        "tagPosition": [null,null],
+        "combat": [null,["aliceCombatNight.png", ["Elderly Man", "The Elderly Man sits on his bench, unaware of what is happening", 5, 1, 0, [5, 1, 1], "elderlyManNight.png", true, 1, true, true]]],
+        "ending": [null,null],
+        "suspicion": [null,null],
+        "interrogation": [null,null]
+    },
+    "AliceNL5C A kill": {
+        "text": ["Without giving him time to think, you bite down on the elderly man’s neck, even as he is seated on the bench.","The elderly man falls unconscious from the shock coming of the bite. What a weakling, huh.","You suck the blood out of the elderly man’s body for a few minutes. You don’t stop until there is nothing left…","After you are done with him, he ends up looking a shriveled up, mummified corpse on the bench he was sitting on.","His body breaks apart like its made of ashes, so you grind it with your hands and let his dust fly by the wind into the cold night air.","A few days pass since you hunted that old man. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C A spare": {
+        "text": ["For some reason, you let the old man flee. Now, you have no way to get the blood you need.","Why did I do that? Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C A sleep": {
+        "text": ["The old man lies sleeping on his bench after being sedated with the Sleeping Pill. You feel compelled to leave him alone, as you didn't hunt him with your own two hands.","Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C B": {
+        "text": ["You approach the boy, blocking him from moving past you on the sidewalk. You bare your fangs.","He looks at you oddly… almost in awe at your appearance. Not the way that a kid who is about to die should look…","."],
+        "leftSprite": [null,null,null],
+        "rightSprite": [null,null,null],
+        "background": ["streetNightBG.png",null,"streetNightCombatBG.png"],
+        "CGmode": ["off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator"],
+        "tagPosition": [null,null,null],
+        "combat": [null,null,["aliceCombatNight.png", ["Little Boy", "Little Boy looks at you, frozen in place due to your stunning appearance", 3, 1, 1, [5, 1, 1], "littleBoyNight.png", true, 1, true, true]]],
+        "ending": [null,null,null],
+        "suspicion": [null,null,null],
+        "interrogation": [null,null,null]
+    },
+    "AliceNL5C B kill": {
+        "text": ["Even in his state of being stunned you decide to bite down on the boy’s neck.","The boy falls to his knees, and he falls unconscious as you begin to draw the blood from his body.","You suck the blood out the boy’s blood for a few minutes. You don’t stop until there is nothing left…","After you are done with him, the boy’s body looks completely pale and lifeless as it lies on the ground.","You bury the boy’s body in a nearby river, but you make sure to bury it deep under the sediment to make sure nobody ever finds it.","A few days pass since you hunted that little boy. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C B spare": {
+        "text": ["You step aside and leave open the path to the rest of the sidewalk. You smile at the boy and gesture him to go on.","The boy looks at you for another moment before breaking out of his trance of admiration, and he scuttles along down the sidewalk, leaving you alone.","Now, you have no way to get the blood you need.","Why did I do that? Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C B sleep": {
+        "text": ["The boy lies on the ground of the sidewalk after being sedated by the Sleeping Pill.","You feel compelled to leave him be, as you didn't hunt him with your own two hands. You walk away.","Now, you have no way to get the blood you need.","Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C C": {
+        "text": ["You approach the tired business-woman, blocking her path on the sidewalk. You bare your fangs at her.","The woman seems fairly calm despite realizing that you are a vampire, odd…","She only sighs tiredly before… taking out a katana?!","It looks like you’ve got your hands full. This lady is a hunter from the Daylight Savings Corps.","She doesn’t seem like a weak one at that.","Good luck…","."],
+        "leftSprite": [null,null,null,null,null,null,null],
+        "rightSprite": [null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,null,null,"streetNightCombatBG.png"],
+        "CGmode": ["off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator"],
+        "tagPosition": [null,null,null,null,null,null,null],
+        "combat": [null,null,null,null,null,null,["aliceCombatNight.png", ["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 120, 15, 10, [20, 10, 10], "tiredBusinessWomanNight.png", true, 3, true, true]]],
+        "ending": [null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null]
+    },
+    "AliceNL5C C kill": {
+        "text": ["It was a tough battle, but you manage to finish off the woman with a blow to the ribcage.","The lady falls to her knees, fighting to stay conscious. She finally gives in an collapses to the floor.","You walk over a begin sucking the lady’s blood from her body, and you drink hungrily. It was a well-earned meal after all.","After you are done with her, the lady’s body is essentially skin and bones. Even when there was no blood left, you kept drinking. She doesn’t even look human anymore.","You bury the lady’s body in a nearby river, but you make sure to bury it deep under the sediment to make sure nobody ever finds it.","A few days pass since you hunted that Hunter lady. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C C spare": {
+        "text": ["The Off-Duty Hunter flees to catch the train that was pulling into the train station after realizing that you don’t hold any aggression towards her.","I guess she was just too tired to deal with you, since it didn’t seem like you were hurting anybody anyway.","Now, you have no way to get the blood you need.","Why did I do that? Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AliceNL5C C sleep": {
+        "text": ["The Off-Duty Hunter lies on the ground after being sedated with the Sleeping Pill.","You are compelled to leave her there, alone, as you didn't defeat her with your own two hands. You leave.","Now, you have no way to get the blood you need.","Well… time for plan B then.","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… I’m kind of worried.","Everytime I leave the house recently, the neighbor looks at me weird. Could they be suspicious that I’m a vampire?","I should really do something about it, but what can I do?"],
+        "leftSprite": [null,null,null,"aliceSad.png",null,null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Alice","Narrator","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5 A": {
+        "text": ["Now that I think about it, I’m pretty sure that there was a hospital not too far from here.","I’ll just go and get blood from there.","That night, you break into a local hospital, and steal a whole cooler full of bloodbags.","It was fairly easy for you to infiltrate the place despite security at night due to the use of your bat transformation.","Despite what many may think. Vampires actually retain the same physical strength that they normally have even in bat form, so flying the cooler out the hospital’s window was no problem for you.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png","aaron.png",null,null,null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": [null,null,"darkBG.png",null,null,null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Aaron","Aaron","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": ["left","left",null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5 B": {
+        "text": ["Well, I think its time to give the Black Market another visit.","I don’t know who the dealer is around here, but I bet I could find him.","That night, you search all the dark alleyways around the neighborhood and around your area of the city.","You eventually come across a figure in a brown cloak. He wears a big hood that causes his face to be completely hidden.","Are you the “Dealer” here?","Yes… yes I am…","Have you come to seek my wares…?","Why are you talking funny? Are you good?","…It’s for the effect. Now, don’t say anymore or you’ll ruin it.","Whatever. I’m here to buy blood bags. The kind you find at the hospital.","Hm… I see… I have just what you need, but you need to pay me 20% of your vitality.","Huh? Not asking for money?","You see… every dealer decides their payment method. This one is mine…","Now… are you going to hand over your vitality or not?","Hm… give me a minute to think."],
+        "leftSprite": ["aaron.png","aaron.png",null,null,"aaron.png",null,null,"aaronFrustrated.png",null,"aaron.png",null,"aaron.png",null,null,"aaron.png"],
+        "rightSprite": [null,null,null,null,null,"dealer.png","dealer.png",null,null,null,"dealer.png",null,"dealer.png","dealer.png",null],
+        "background": ["houseBG.png",null,"alleyNightBG.png",null,null,null,null,null,null,null,null,null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Aaron","Aaron","Narrator","Narrator","Aaron","Dealer","Dealer","Aaron","Dealer","Aaron","Dealer","Aaron","Dealer","Dealer","Aaron"],
+        "tagPosition": ["left","left",null,null,"left","right","right","left","right","left","right","left","right","right","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5B A": {
+        "text": ["No way I’m paying that price.","I’ll just kill you for it.","Another… unwilling client… so be it.","The Dealer takes out a dagger from one of the pockets within his cloak and stands ready for your attack.","."],
+        "leftSprite": ["aaron.png","aaron.png",null,null,null],
+        "rightSprite": [null,null,"dealer.png",null,null],
+        "background": ["alleyNightBG.png",null,null,null,"alleyNightCombatBG.png"],
+        "CGmode": ["off","off","off","off","off"],
+        "speaker": ["Aaron","Aaron","Dealer","Narrator","Narrator"],
+        "tagPosition": ["left","left","right",null,null],
+        "combat": [null,null,null,null,["aaronCombatNight.png", ["Dealer", "The Dealer stands ready with his dagger, prepared to attack", 70, 10, 5, [10, 3, 3], "dealerCombatNight.png", true, 3, false, false]]],
+        "ending": [null,null,null,null,null],
+        "suspicion": [null,null,null,null,null],
+        "interrogation": [null,null,null,null,null]
+    },
+    "AaronNL5B A kill": {
+        "text": ["You finish off the dealer with a blow to the head. He collapses to the floor, lifeless and unmoving.","He was tougher than he looked…","Anyway, lets get these blood bags.","You search the Dealer’s body for blood bags. He carried a wide assortment of items, much more than what it looked like his cloak would fit, but then you finally find what you were looking for.","Found it.","You leave the Dealer’s body on the floor as you make your way back to your residence. The Black Market does its best to keep itself hidden, so you aren’t worried about the clean-up.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png","aaronFrustrated.png","aaron.png",null,null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,"darkBG.png","houseBG.png",null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Aaron","Aaron","Narrator","Alice","Narrator","Narrator","Aaron","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,"left","left",null,"left",null,null,"left","left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5B A spare": {
+        "text": ["You stand there and tank all of the Dealer’s hits without doing anything.","What are you doing?! Didn’t you say that you were going to kill me?","What are you doing just standing there?! Are you an idiot?","You wonder yourself why you resolved yourself to kill this guy, but ended up not doing anything in the end.","Well… I changed my mind I guess.","Is there something wrong with that…?","Oh my god. You actually must be stupid.","Just take the blood bags and go. The blood you dripped yourself onto the floor has more than enough vitality than I initially asked for.","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Cool. I’m going now.","Yes, please! Many say that I am eccentric, but you are borderline crazy! Please just go!","You leave the Dealer in the alley as he collects your blood off the floor. The stabs from his dagger really did hurt, but you played it off really well.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png",null,null,null,"aaron.png","aaronFrustrated.png",null,null,null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,"dealer.png","dealer.png",null,null,null,"dealer.png",null,null,null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Dealer","Dealer","Narrator","Aaron","Alice","Dealer","Dealer","Narrator","Aaron","Dealer","Narrator","Narrator","Aaron","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,"right","right",null,"left","left","right","right",null,"left","right",null,null,"left","left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5B B": {
+        "text": ["Fine. I’ll pay 20% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yeah, I know. I’m leaving.","The Dealer seems to tolerate you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png",null,null,null,null,null,null,"aaron.png",null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Aaron","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Aaron","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5B C": {
+        "text": ["You attempt to haggle with the Dealer in order to lower the price. You try to intimidate him.","Oi… isn’t that price a little bit too high.","Your gonna get yourself in trouble with your clients if you charge that much…","It seems to be effective.","…I’m not trying to get into any fights.","I’ll settle for 15% of your vitality…","Good.","I’m surprised that worked."],
+        "leftSprite": [null,"aaron.png","aaronFrustrated.png",null,null,null,"aaron.png",null],
+        "rightSprite": [null,null,null,null,"dealer.png","dealer.png",null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Aaron","Aaron","Narrator","Dealer","Dealer","Aaron","Narrator"],
+        "tagPosition": [null,"left","left",null,"right","right","left",null],
+        "combat": [null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5BC B": {
+        "text": ["Fine. I’ll pay 15% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yeah, I know. I’m leaving.","The Dealer seems to tolerate you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png",null,null,null,null,null,null,"aaron.png",null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Aaron","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Aaron","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5BC C": {
+        "text": ["You attempt to haggle the Dealer further.","The price is still high. It’s like you’re asking for a fight.","Okay okay… I see whats going on here…","I’m not that stupid, alright. 18% of your vitality. Take it or leave it…","Dang it…"],
+        "leftSprite": [null,"aaronFrustrated.png",null,null,"aaronFrustrated.png"],
+        "rightSprite": [null,null,"dealer.png","dealer.png",null],
+        "background": ["alleyNightBG.png",null,null,null,null],
+        "CGmode": ["off","off","off","off","off"],
+        "speaker": ["Narrator","Aaron","Dealer","Dealer","Aaron"],
+        "tagPosition": [null,"left","right","right","left"],
+        "combat": [null,null,null,null,null],
+        "ending": [null,null,null,null,null],
+        "suspicion": [null,null,null,null,null],
+        "interrogation": [null,null,null,null,null]
+    },
+    "AaronNL5BCC B": {
+        "text": ["Fine. I’ll pay 18% of my vitality.","Perfect… please reach your arm out.","You do as the dealer says and reach out your arm. He takes out a syringe and pricks it into one of your veins, drawing out blood.","After he is done, your arm feels cold momentarily, but the feeling quickly goes away.","Thank you for your business…","The Dealer tosses a backpack full of blood bags on the floor in front of you.","Now go… stay any longer and we could be discovered…","Yeah, I know. I’m leaving.","The Dealer seems to tolerate you. You have befriended the Dealer.","A few days pass since your encounter with the Dealer. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": ["aaron.png",null,null,null,null,null,null,"aaron.png",null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,"dealer.png",null,null,"dealer.png",null,"dealer.png",null,null,null,null,null,null],
+        "background": ["alleyNightBG.png",null,null,null,null,null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Aaron","Dealer","Narrator","Narrator","Dealer","Narrator","Dealer","Aaron","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": ["left","right",null,null,"right",null,"right","left",null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5 C": {
+        "text": ["I guess its about time I hunt for once. Blood tastes best from the source after all.","That night, you decide to go wander the streets for an unsuspecting victim.","The streets are mostly empty, but you manage to patrol around and find a spot where you find three enticing targets.","So… I got between that elderly man on the bench over there, the boy who just left the playground, or the business-woman who looks like she’s on the way to the train station.","Looks like her life sucks. She looks really tired.","Now you must choose. Who will you hunt?"],
+        "leftSprite": ["aaron.png",null,null,"aaron.png","aaronFrustrated.png",null],
+        "rightSprite": [null,null,null,null,null,null],
+        "background": ["houseBG.png","darkBG.png","streetNightBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off"],
+        "speaker": ["Aaron","Narrator","Narrator","Alice","Alice","Narrator"],
+        "tagPosition": ["left",null,null,"left","left",null],
+        "combat": [null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null]
+    },
+    "AaronNL5C A": {
+        "text": ["You approach the elderly man on the bench, bareing your fangs.","."],
+        "leftSprite": [null,null],
+        "rightSprite": [null,null],
+        "background": ["streetNightBG.png","streetNightCombatBG.png"],
+        "CGmode": ["off","off"],
+        "speaker": ["Narrator","Narrator"],
+        "tagPosition": [null,null],
+        "combat": [null,["aaronCombatNight.png", ["Elderly Man", "The Elderly Man sits on his bench, unaware of what is happening", 5, 1, 0, [5, 1, 1], "elderlyManNight.png", true, 1, true, true]]],
+        "ending": [null,null],
+        "suspicion": [null,null],
+        "interrogation": [null,null]
+    },
+    "AaronNL5C A kill": {
+        "text": ["Without giving him time to think, you bite down on the elderly man’s neck, even as he is seated on the bench.","The elderly man falls unconscious from the shock coming of the bite. What a weakling, huh.","You suck the blood out of the elderly man’s body for a few minutes. You don’t stop until there is nothing left…","After you are done with him, he ends up looking a shriveled up, mummified corpse on the bench he was sitting on.","His body breaks apart like its made of ashes, so you grind it with your hands and let his dust fly by the wind into the cold night air.","A few days pass since you hunted that old man. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,null,null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C A spare": {
+        "text": ["For some reason, you let the old man flee. Now, you have no way to get the blood you need.","Why’d I do that? Guess its time for plan B…","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNight.png",null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Aaron","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C A sleep": {
+        "text": ["The old man lies sleeping on his bench after being sedated with the Sleeping Pill. You feel compelled to leave him alone, as you didn't hunt him with your own two hands.","Guess its time for plan B…","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNight.png",null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Aaron","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C B": {
+        "text": ["You approach the boy, blocking him from moving past you on the sidewalk. You bare your fangs.","He looks frightened, and he immediately dashes away in the other direction, much faster than you expected. You are left alone.","Now, you have no way to get the blood you need.","Guess its time for plan B…","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,null,null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Aaron","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C C": {
+        "text": ["You approach the tired business-woman, blocking her path on the sidewalk. You bare your fangs at her.","The woman seems fairly calm despite realizing that you are a vampire, odd…","She only sighs tiredly before… taking out a katana?!","It looks like you’ve got your hands full. This lady is a hunter from the Daylight Savings Corps.","She doesn’t seem like a weak one at that.","Good luck…","."],
+        "leftSprite": [null,null,null,null,null,null,null],
+        "rightSprite": [null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,null,null,"streetNightCombatBG.png"],
+        "CGmode": ["off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Narrator"],
+        "tagPosition": [null,null,null,null,null,null,null],
+        "combat": [null,null,null,null,null,null,["aaronCombatNight.png", ["Off-Duty Hunter", "Tired Business Woman reveals herself as an Off-Duty Hunter!", 120, 15, 10, [20, 10, 10], "tiredBusinessWomanNight.png", true, 3, true, true]]],
+        "ending": [null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null]
+    },
+    "AaronNL5C C kill": {
+        "text": ["It was a tough battle, but you manage to finish off the woman with a blow to the ribcage.","The lady falls to her knees, fighting to stay conscious. She finally gives in and collapses to the floor.","You walk over a begin sucking the lady’s blood from her body, and you drink hungrily. It was a well-earned meal after all.","After you are done with her, the lady’s body is essentially skin and bones. Even when there was no blood left, you kept drinking. She doesn’t even look human anymore.","You bury the lady’s body in a nearby river, but you make sure to bury it deep under the sediment to make sure nobody ever finds it.","A few days pass since you hunted that Hunter lady. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,null,null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null],
+        "background": ["streetNightBG.png",null,null,null,"darkBG.png","houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C C spare": {
+        "text": ["The Off-Duty Hunter flees to catch the train that was pulling into the train station after realizing that you don’t hold any aggression towards her.","I guess she was just too tired to deal with you, since it didn’t seem like you were hurting anybody anyway.","Now, you have no way to get the blood you need.","Why’d I do that? Guess its time for plan B…","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,null,null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNight.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Aaron","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,20,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "AaronNL5C C sleep": {
+        "text": ["The Off-Duty Hunter lies on the ground after being sedated with the Sleeping Pill.","You are compelled to leave her there, alone, as you didn't defeat her with your own two hands. You leave.","Now, you have no way to get the blood you need.","Guess its time for plan B…","Since you failed in your hunt, you decided to break into the local hospital that night instead.","It seems, though, that the hospital’s CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp’s.","The city is now on higher alert against vampires. (Suspicion +20)","A few days pass since your break-in at the hospital. You recently have begun to notice the neighbor peeking out their house’s window, watching you, every time you leave for your new part time job at Pyramid Pizza.","Hm… its kinda annoying.","Everytime I’ve been leaving the house, the neighbor looks at me weird. Do they think I’m a vampire or something?","What should I do…"],
+        "leftSprite": [null,null,null,"aaron.png",null,null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["streetNight.png",null,null,null,"darkBG.png",null,null,"houseBG.png",null,null,null],
+        "CGmode": ["off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Aaron","Narrator","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,20,null,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
     }
 }
 let choices = {
@@ -645,7 +1212,151 @@ let choices = {
     "4A C": {
         "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Hunt a human"],
         "nextPath": ["GhostNL5 A", "GhostNL5 B", "GhostNL5 C"]
-    }
+    },
+    "AliceNL5 A": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5 B": {
+        "text": ["Kill him and steal the blood", "Pay 20% of your health", "Haggle"],
+        "nextPath": ["AliceNL5B A", "AliceNL5B B", "AliceNL5B C"]
+    },
+    "AliceNL5B A kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5B A spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5B B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5B C": {
+        "text": ["Kill him and steal the blood", "Pay 5% of your health", "Haggle further"],
+        "nextPath": ["AliceNL5B A", "AliceNL5BC B", "AliceNL5BC C"]
+    },
+    "AliceNL5BC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5BC C": {
+        "text": ["Kill him and steal the blood", "Pay 10% of your health"],
+        "nextPath": ["AliceNL5B A", "AliceNL5BCC B"]
+    },
+    "AliceNL5BCC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5 C": {
+        "text": ["The Elderly Man", "The Boy", "The Tired Business-Woman"],
+        "nextPath": ["AliceNL5C A", "AliceNL5C B", "AliceNL5C C"]
+    },
+    "AliceNL5C A kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C A spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C A sleep": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C B kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C B spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C B sleep": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C C kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C C spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AliceNL5C C sleep": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceNL6 A", "AliceNL6 B", "AliceNL6 C"]
+    },
+    "AaronNL5 A": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5 B": {
+        "text": ["Kill him and steal the blood", "Pay 20% of your health", "Haggle"],
+        "nextPath": ["AaronNL5B A", "AaronNL5B B", "AaronNL5B C"]
+    },
+    "AaronNL5B A kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5B A spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5B B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5B C": {
+        "text": ["Kill him and steal the blood", "Pay 5% of your health", "Haggle further"],
+        "nextPath": ["AaronNL5B A", "AaronNL5BC B", "AaronNL5BC C"]
+    },
+    "AaronNL5BC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5BC C": {
+        "text": ["Kill him and steal the blood", "Pay 10% of your health"],
+        "nextPath": ["AaronNL5B A", "AaronNL5BCC B"]
+    },
+    "AaronNL5BCC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5 C": {
+        "text": ["The Elderly Man", "The Boy", "The Tired Business-Woman"],
+        "nextPath": ["AaronNL5C A", "AaronNL5C B", "AaronNL5C C"]
+    },
+    "AaronNL5C A kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C A spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C A sleep": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C C kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C C spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
+    "AaronNL5C C sleep": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
+    },
 }
 
 function setStartPage() {
@@ -681,7 +1392,7 @@ function specialConditionChecker() {
         currentPage = "dialogue";
         setPage();
         advanceStory();
-    } else if (storyStage === "2A C" && kills === continueKills) {
+    } else if (storyStage === "2A C" && enemySpared === true) {
         storyStage = "2A C spare";
         dialogueTracker = -1;
         currentPage = "dialogue";
@@ -693,7 +1404,7 @@ function specialConditionChecker() {
         currentPage = "dialogue";
         setPage();
         advanceStory();
-    } else if (storyStage === "2B A" && kills === continueKills) {
+    } else if (storyStage === "2B A" && enemySpared === true) {
         storyStage = "2B A spare";
         dialogueTracker = -1;
         currentPage = "dialogue";
@@ -708,7 +1419,7 @@ function specialConditionChecker() {
         currentPage = "dialogue";
         setPage();
         advanceStory();
-    } else if (storyStage === "3A A" && kills === continueKills) {
+    } else if (storyStage === "3A A" && enemySpared === true) {
         playerItems.push("Sleeping Pill");
         playerItems.push("Sleeping Pill");
         playerItems.push("Sleeping Pill");
@@ -733,11 +1444,154 @@ function specialConditionChecker() {
         playerItems.push("Landlord's Number");
         setUpChoices();
         choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceNL5B A" && kills > continueKills) {
+        storyStage = "AliceNL5B A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5B A" && enemySpared === true) {
+        storyStage = "AliceNL5B A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5B B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.2);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceNL5BC B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.05);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceNL5BCC B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.1);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceNL5C A" && kills > continueKills) {
+        storyStage = "AliceNL5C A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C A" && enemySpared === true) {
+        storyStage = "AliceNL5C A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C B" && kills > continueKills) {
+        storyStage = "AliceNL5C B kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C B" && enemySpared === true) {
+        storyStage = "AliceNL5C B spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C B" && enemySlept === true) {
+        storyStage = "AliceNL5C B sleep";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C C" && kills > continueKills) {
+        storyStage = "AliceNL5C C kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C C" && enemySpared === true) {
+        storyStage = "AliceNL5C C spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceNL5C C" && enemySlept === true) {
+        storyStage = "AliceNL5C C sleep";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5B A" && kills > continueKills) {
+        storyStage = "AaronNL5B A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5B A" && enemySpared === true) {
+        storyStage = "AaronNL5B A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5B B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.2);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AaronNL5BC B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.05);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AaronNL5BCC B") {
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.1);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AaronNL5C A" && kills > continueKills) {
+        storyStage = "AaronNL5C A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5C A" && enemySpared === true) {
+        storyStage = "AaronNL5C A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5C C" && kills > continueKills) {
+        storyStage = "AaronNL5C C kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5C C" && enemySpared === true) {
+        storyStage = "AaronNL5C C spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AaronNL5C C" && enemySlept === true) {
+        storyStage = "AaronNL5C C sleep";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
     } else {
         setUpChoices();
         choiceOverlay.style = "display: flex";
-    }
-    
+    } 
 }
 
 function advanceStory() {
@@ -865,6 +1719,10 @@ function choicePressed(choiceNumber) {
 }
 
 function saveStateForContinue() {
+    continueLandlordBefriended = landlordBefriended;
+    continueJakeBefriended = jakeBefriended;
+    continueAmeliaBefriended = ameliaBefriended;
+    continueDealerBefriended = dealerBefriended;
     continueChatLogArray = [...chatLogArray];
     continueSuspicion = suspicion;
     continueInterrogation = interrogation
@@ -878,6 +1736,10 @@ function saveStateForContinue() {
 }
 
 function loadStateForContinue() {
+    landlordBefriended = continueLandlordBefriended;
+    jakeBefriended = continueJakeBefriended;
+    ameliaBefriended = continueAmeliaBefriended;
+    dealerBefriended = continueDealerBefriended;
     chatLogArray = [...continueChatLogArray];
     suspicion = continueSuspicion;
     interrogation = continueInterrogation;
