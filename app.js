@@ -493,6 +493,45 @@ let storyObject = {
         "suspicion": [null,null,null],
         "interrogation": [null,null,null]
     },
+    "4A A": {
+        "text": ["You begin shapeshifting your form to something more akin to your liking.","You feel your hair grow out, and your body become slightly smaller.",".","Hm… this form will do. It feels more like me.","Oddly enough, I feel more friendly than I did before.","You spend a few days wandering the outskirts of the city, lurking in the edges of the forest while trying to find a new place to call home.","Eventually, you find an abandoned house in a… shabby neighborhood to say the least. It’s a place a decent amount further from the center of the city, unlike before. It seems like the previous residents had just moved out.","This place actually seems pretty nice.","It looks bad from the outside, but the inside is actually well-maintained. You could even say it’s an upgrade compared to that old apartment.","I guess its safe to say I’ve found a new home.","As a few weeks pass by, you eventually incorporate yourself back into society as your new identity, Alice. Lately, however, you’ve been hearing rumors of a new vampire having been discovered in the city lately.","This vampire is likely you, and those rumors must have been spreading due to your situation with your previous Landlord. (Suspicion +20)","Now, a month into your new life, a recurring problem arises.","Ah. This is the last of my blood bags...","Wow. This isn’t a fun situation to be in.","I should deal with this tonight, but the question is how…"],
+        "leftSprite": [null,null,null,null,null,null,null,"alice.png","alice.png","aliceHappy.png",null,null,null,"aliceSad.png","aliceSad.png","aliceSad.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["darkBG.png",null,"aliceWetlandCG.png",null,null,"forestBG.png","darkBG.png","houseBG.png",null,null,"darkBG.png",null,null,"houseBG.png",null,null],
+        "CGmode": ["off","off","on","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Alice","Alice","Narrator","Narrator","Alice","Alice","Alice","Narrator","Narrator","Narrator","Alice","Alice","Alice"],
+        "tagPosition": [null,null,null,"left","left",null,null,"left","left","left",null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "4A B": {
+        "text": ["You begin shapeshifting your form to something more akin to your liking.","You feel your hair get shorter, and your shoulders become broader..",".","Hm… this form will do. It feels more like me.","For some reason, I suddenly feel tired.","You spend a few days wandering the outskirts of the city, lurking in the edges of the forest while trying to find a new place to call home.","Eventually, you find an abandoned house in a… shabby neighborhood to say the least. It’s a place a decent amount further from the center of the city, unlike before. It seems like the previous residents had just moved out.","This place doesn’t seem too bad.","It looks ugly from the outside, but the inside is pretty furnished. You could even say it’s an upgrade compared to that trashy apartment I used to live in.","Guess I can settle down here for now.","As a few weeks pass by, you eventually incorporate yourself back into society as your new identity, Aaron. Lately, however, you’ve been hearing rumors of a new vampire having been discovered in the city lately.","This vampire is likely you, and those rumors must have been spreading due to your situation with your previous Landlord. (Suspicion +20)","Now, a month into your new life, a recurring problem arises.","This is my last blood bag, huh.","I never really thought about what I would do after I ran out.","I should deal with this tonight, but the question is how…"],
+        "leftSprite": [null,null,null,null,null,null,null,"aaron.png","aaron.png","aaron.png",null,null,null,"aaronFrustrated.png","aaron.png","aaron.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["darkBG.png",null,"aaronWetlandCG.png",null,null,"forestBG.png","darkBG.png","houseBG.png",null,null,"darkBG.png",null,null,"houseBG.png",null,null],
+        "CGmode": ["off","off","on","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Narrator","Aaron","Aaron","Narrator","Narrator","Aaron","Aaron","Aaron","Narrator","Narrator","Narrator","Aaron","Aaron","Aaron"],
+        "tagPosition": [null,null,null,"left","left",null,null,"left","left","left",null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,20,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    },
+    "4A C": {
+        "text": ["You make the decision to not fix yourself to a certain identity.",".","Maybe I don’t wanna decide yet. I’ll just be whoever I want, whenever I want.","Yeah… that sounds more like me.","It feels like, due to your unstable identity, your actions won’t garner you as much suspicion.","You spend a few days wandering the outskirts of the city, lurking in the edges of the forest while trying to find a new place to call home.","Eventually, you find an abandoned house in a… shabby neighborhood to say the least. It’s a place a decent amount further from the center of the city, unlike before. It seems like the previous residents had just moved out.","Hm… not a bad place.","It looks pretty beat up from the outside, but the inside is pretty alright I guess. You could even say it’s an upgrade compared to that apartment I used to live in.","I’ll call this place my home for the time being.","As a few weeks pass by, you eventually incorporate yourself back into society. Lately, however, you’ve been hearing rumors of a new vampire having been discovered in the city lately.","This vampire is likely you, and those rumors must have been spreading due to your situation with your previous Landlord. (Suspicion +10)","Now, a month into your new life, a recurring problem arises.","Oof. this is the last blood bag.","I didn’t think about what to do when I run out.","I should deal with this tonight, but the question is how…"],
+        "leftSprite": [null,null,"ghost.png","ghost.png",null,null,null,"ghost.png","ghost.png","ghost.png",null,null,null,"ghost.png","ghost.png","ghost.png"],
+        "rightSprite": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "background": ["darkBG.png","ghostWetlandCG.png",null,null,null,"forestBG.png","darkBG.png","houseBG.png",null,null,"darkBG.png",null,null,"houseBG.png",null,null],
+        "CGmode": ["off","on","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
+        "speaker": ["Narrator","Narrator","Soren?","Soren?","Narrator","Narrator","Narrator","Soren?","Soren?","Soren?","Narrator","Narrator","Narrator","Soren?","Soren?","Soren?"],
+        "tagPosition": [null,null,"left","left",null,null,null,"left","left","left",null,null,null,"left","left","left"],
+        "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,null,null,null,null,null,10,null,null,null,null],
+        "interrogation": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null]
+    }
 }
 let choices = {
     "intro": {
@@ -594,6 +633,18 @@ let choices = {
     "3C B": {
         "text": ["Promise him money", "Promise him power", "Knock him out"],
         "nextPath": ["3B A", "3B B", "3A B"]
+    },
+    "4A A": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Hunt a human"],
+        "nextPath": ["AliceNL5 A", "AliceNL5 B", "AliceNL5 C"]
+    },
+    "4A B": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Hunt a human"],
+        "nextPath": ["AaronNL5 A", "AaronNL5 B", "AaronNL5 C"]
+    },
+    "4A C": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Hunt a human"],
+        "nextPath": ["GhostNL5 A", "GhostNL5 B", "GhostNL5 C"]
     }
 }
 
