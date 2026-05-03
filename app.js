@@ -975,7 +975,7 @@ let storyObject = {
         "rightSprite": [null,null,null,null,null,null],
         "background": ["houseBG.png","darkBG.png","streetNightBG.png",null,null,null],
         "CGmode": ["off","off","off","off","off","off"],
-        "speaker": ["Aaron","Narrator","Narrator","Alice","Alice","Narrator"],
+        "speaker": ["Aaron","Narrator","Narrator","Aaron","Aaron","Narrator"],
         "tagPosition": ["left",null,null,"left","left",null],
         "combat": [null,null,null,null,null,null],
         "ending": [null,null,null,null,null,null],
@@ -1044,7 +1044,7 @@ let storyObject = {
         "tagPosition": [null,null,null,"left",null,null,null,null,"left","left","left"],
         "combat": [null,null,null,null,null,null,null,null,null,null,null],
         "ending": [null,null,null,null,null,null,null,null,null,null,null],
-        "suspicion": [null,null,null,null,null,null,null,null,null,null,null],
+        "suspicion": [null,null,null,null,null,null,20,null,null,null,null],
         "interrogation": [null,null,null,null,null,null,null,null,null,null,null]
     },
     "AaronNL5C C": {
@@ -1310,7 +1310,7 @@ let choices = {
         "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
     },
     "AaronNL5B C": {
-        "text": ["Kill him and steal the blood", "Pay 5% of your health", "Haggle further"],
+        "text": ["Kill him and steal the blood", "Pay 15% of your health", "Haggle further"],
         "nextPath": ["AaronNL5B A", "AaronNL5BC B", "AaronNL5BC C"]
     },
     "AaronNL5BC B": {
@@ -1318,7 +1318,7 @@ let choices = {
         "nextPath": ["AaronNL6 A", "AaronNL6 B", "AaronNL6 C"]
     },
     "AaronNL5BC C": {
-        "text": ["Kill him and steal the blood", "Pay 10% of your health"],
+        "text": ["Kill him and steal the blood", "Pay 18% of your health"],
         "nextPath": ["AaronNL5B A", "AaronNL5BCC B"]
     },
     "AaronNL5BCC B": {
