@@ -2245,7 +2245,7 @@ let storyObject = {
         "text": ["That night, after your usual shift at Pyramid Pizza, you decide to give your neighbor a visit.", "Through the windows of the house, even through the curtains, you can tell that the lights are on. You know for sure that your neighbor is at home.", "You can hear the clatter of plates inside. It seems like the one residing within is either preparing dinner or washing the dishes afterwards.", "Might as well knock on the door.", "You knock on the door of the house… the sound of clattering plates stops for a moment.", "Then, you hear footsteps begin to slowly approach the door.", "The door opens, revealing your neighbor. In the doorway, stands a fairly young man. He wears a navy blue hoodie and a pair of black glasses.", "H-hello. Um… you’re the neighbor right?", "Yeah.", "Kind of weird you figured that out so fast. I didn’t even say my name yet.", "Oh… ah… hah…", "…W-What brings you h-here?", "I was just wondering… why do you keep peeking at me through your window every morning? It’s a bit much.", "(They seem really scary…)", "(I want to ask if he’s a vampire, but I can’t! He’ll kill me!)", "Jake’s fear is clearly telegraphed in his eyes. Even a five year old could tell that he’s terrified of you. It’s extremely likely that he has high suspicions of you being a vampire.", "You think I’m a vampire, don’t you?", "…", "Jake nods weakly, maybe subconsciously, as it doesn’t even seem that he noticed himself nodding."],
         "leftSprite": [null, null, null, "ghost.png", null, null, null, null, "ghost.png", "ghostFrustrated.png", null, null, "ghost.png", null, null, null, "ghost.png", null, null],
         "rightSprite": [null, null, null, null, null, null, null, "jake.png", null, null, "jake.png", "jake.png", null, "jake.png", "jake.png", null, null, "jake.png", null],
-        "background": ["darkBG.png", "streetNightBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["darkBG.png", "neighborhoodNightBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
         "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
         "speaker": ["Narrator", "Narrator", "Narrator", "Soren?", "Narrator", "Narrator", "Narrator", "Jake", "Soren?", "Soren?", "Jake", "Jake", "Soren?", "Jake", "Jake", "Narrator", "Soren?", "Jake", "Narrator"],
         "tagPosition": [null, null, null, "left", null, null, null, "right", "left", "left", "right", "right", "left", "right", "right", null, "left", "right", null],
@@ -2558,6 +2558,423 @@ let storyObject = {
         "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, ["ghostCombat.png", ["Kisuke", "Kisuke looks like he's gonna give you a bad time...", 900, 150, 50, [100, 50, 25], "kisukeCombat.png", false, null, false, false]], null, null, null, null, null, null, null],
         "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "Monster"]
     },
+    //Landlord Routes
+    "4B A": {
+        "text": ["You begin shapeshifting your form to something more akin to your liking.", "You feel your hair grow out, and your body become slightly smaller.", ".", "Hm... this form will do. It feels more like me.", "Oddly enough, I feel more friendly than I did before.", "You spend the next few weeks staying low in your apartment.", "After that initial scare, you and the landlord actually hit it off.", "It's a relief to have an ally. You've spent your evenings chatting with the Landlord.", "I'm glad things ended up this way.", "It's so much nicer not having to hide who I really am all the time.", "As the month progresses, you've fully embraced life as Alice.", "Lately, however, you've been hearing rumors of a vampire having been discovered in the city.", "This vampire is likely you. The landlord's mandatory report he mentioned seems to have leaked out to the public. (Suspicion +20)", "Now, a month into your peaceful life, a recurring problem arises.", "Ah. This is the last of my blood bags...", "Wow. This isn't a fun situation to be in.", "I should deal with this tonight, but the question is how..."],
+        "leftSprite": [null, null, null, null, null, null, null, null, "aliceHappy.png", "aliceHappy.png", null, null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["darkBG.png", null, "aliceMirrorCG.png", null, null, "darkBG.png", null, "darkBG.png", "apartmentBG.png", null, "darkBG.png", null, null, null, "apartmentBG.png", null, null],
+        "CGmode": ["off", "off", "on", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Alice", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice"],
+        "tagPosition": [null, null, null, "left", "left", null, null, null, "left", "left", null, null, null, null, "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, 20, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5 A": {
+        "text": ["Now that I think about it, I'm pretty sure that there was a hospital not too far from here.", "I suppose I'll have to give that place a visit.", "That night, you break into a local hospital, and steal a whole cooler full of bloodbags.", "It was fairly easy for you to infiltrate the place despite security at night due to the use of your bat transformation.", "Despite what many may think. Vampires actually retain the same physical strength that they normally have even in bat form, so flying the cooler out the hospital's window was no problem for you.", "It seems, though, that the hospital's CCTV managed to record your break-in, and the incident was reported to the Daylight Savings Corp's.", "The city is now on higher alert against vampires. (Suspicion +20)", "A few days pass since your break-in at the hospital.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png", "alice.png", null, null, null, null, null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": [null, null, "darkBG.png", null, null, null, null, "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": ["left", "left", null, null, null, null, null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, 20, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5 B": {
+        "text": ["Well, I think its time to give the Black Market another visit.", "I haven't visited the Dealer in a while, but I'm certain he must still be around here somewhere.", "That night, you search all the dark alleyways around the apartment complex and around your area of the city.", "You eventually come across a figure in a brown cloak.", "He wears a big hood that causes his face to be completely hidden.", "Are you... the Dealer?", "Yes... yes I am...", "Where is the Dealer that I know?", "Oh... that old man had to retire...", "A foreign client... from Portugal... I believe...", "They put him out of commission to say the least...", "I am here to replace him...", "I see... well that's very unfortunate. I'd say that we got along pretty well.", "Also, it's a little late to ask this, but why do you talk like that?", "The other dealer I used to know talked normal.", "...It's for the effect. Now, don't say anymore or you'll ruin it.", "Alright... well anyway, I'm here to buy some blood bags.", "Like the ones you find in the hospital.", "Hm... I see... I have just what you need, but you need to pay me 20% of your vitality.", "Eh? Not cash?", "You see... every dealer decides their payment method. This one is mine...", "Now... are you going to hand over your vitality or not?", "Hm... should I really accept this offer?"],
+        "leftSprite": ["aliceHappy.png", "alice.png", null, null, null, "alice.png", null, "alice.png", null, null, null, null, "alice.png", "aliceSad.png", "aliceSad.png", null, "alice.png", "alice.png", null, "alice.png", null, null, "aliceSad.png"],
+        "rightSprite": [null, null, null, null, null, null, "dealer.png", null, "dealer.png", "dealer.png", "dealer.png", "dealer.png", null, null, null, "dealer.png", null, null, "dealer.png", null, "dealer.png", "dealer.png", null],
+        "background": ["apartmentBG.png", null, "alleyNightBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Dealer", "Alice", "Dealer", "Dealer", "Dealer", "Dealer", "Alice", "Alice", "Alice", "Dealer", "Alice", "Alice", "Dealer", "Alice", "Dealer", "Dealer", "Alice"],
+        "tagPosition": ["left", "left", null, null, null, "left", "right", "left", "right", "right", "right", "right", "left", "left", "left", "right", "left", "left", "right", "left", "right", "right", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5B A": {
+        "text": ["Sorry, but I don't think I can pay your price.", "I'll just have to take those blood bags forcefully.", "Another... unwilling client... so be it.", "The Dealer takes out a dagger from one of the pockets within his cloak and stands ready for your attack.", "."],
+        "leftSprite": ["alice.png", "aliceHappy.png", null, null, null],
+        "rightSprite": [null, null, "dealer.png", null, null],
+        "background": ["alleyNightBG.png", null, null, null, "alleyNightCombatBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Dealer", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", "right", null, null],
+        "combat": [null, null, null, null, "dealer"],
+        "ending": [null, null, null, null, null],
+        "suspicion": [null, null, null, null, null],
+        "interrogation": [null, null, null, null, null]
+    },
+    "AliceL5B A kill": {
+        "text": ["You finish off the dealer with a blow to the head.", "He collapses to the floor, lifeless and unmoving.", "He was tougher than he looked...", "Anyway, lets get these blood bags.", "You search the Dealer's body for blood bags. He carried a wide assortment of items, much more than what it looked like his cloak would fit, but then you finally find what you were looking for.", "Perfect! Just what I was looking for.", "You leave the Dealer's body on the floor as you make your way back to your residence.", "The Black Market does its best to keep itself hidden, so you aren't worried about the clean-up.", "A few days pass since your encounter with the Dealer.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": [null, null, "aliceSad.png", "alice.png", null, "aliceHappy.png", null, null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, "darkBG.png", null, "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Alice", "Alice", "Narrator", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": [null, null, "left", "left", null, "left", null, null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5B A spare": {
+        "text": ["You stand there and tank all of the Dealer's hits without doing anything.", "What are you doing?! Didn't you say that you were going to take my wares forcefully?", "What are you doing just standing there?! Are you an idiot?", "You wonder yourself why you resolved yourself to kill this guy, but ended up not doing anything in the end.", "Well... I just had a change of heart if you know what I mean.", "Tee hee.", "Oh my god. You actually must be stupid.", "Just take the blood bags and go. The blood you dripped yourself onto the floor has more than enough vitality than I initially asked for.", "The Dealer tosses a backpack full of blood bags on the floor in front of you.", "Oh, thank you. I'll go now.", "Yes, please! Many say that I am eccentric, but you are borderline crazy! Please just go!", "You leave the Dealer in the alley as he collects your blood off the floor.", "The stabs from his dagger really did hurt, but you played it off really well.", "A few days pass since your encounter with the Dealer.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": [null, null, null, null, "alice.png", "aliceHappy.png", null, null, null, "aliceHappy.png", null, null, null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, "dealer.png", "dealer.png", null, null, null, "dealer.png", "dealer.png", null, null, "dealer.png", null, null, null, null, null, null, null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, null, null, null, null, null, "darkBG.png", null, "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Dealer", "Dealer", "Narrator", "Alice", "Alice", "Dealer", "Dealer", "Narrator", "Alice", "Dealer", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": [null, "right", "right", null, "left", "left", "right", "right", null, "left", "right", null, null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5B B": {
+        "text": ["Okay. I'll give you 20% of my vitality.", "Perfect... please reach your arm out.", "You do as the dealer says and reach out your arm.", "He takes out a syringe and pricks it into one of your veins, drawing out blood.", "After he is done, your arm feels cold momentarily, but the feeling quickly goes away.", "Thank you for your business...", "The Dealer tosses a backpack full of blood bags on the floor in front of you.", "Now go... stay any longer and we could be discovered.", "Yes, thank you for your service.", "The Dealer seems to like you. You have befriended the Dealer.", "A few days pass since your encounter with the Dealer.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png", null, null, null, null, null, null, null, "aliceHappy.png", null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, "dealer.png", null, null, null, "dealer.png", null, "dealer.png", null, null, null, null, null, null, null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, null, null, null, "darkBG.png", "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Dealer", "Narrator", "Narrator", "Narrator", "Dealer", "Narrator", "Dealer", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": ["left", "right", null, null, null, "right", null, "right", "left", null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5B C": {
+        "text": ["You attempt to haggle with the Dealer in order to lower the price.", "You attempt to make yourself look pleasant.", "Come on... can't you lower the price a little bit for me?", "Pleeeaaase, Mr. Dealer Sir. I know you want to...", "It seems to be... very effective?", "Ehem... well... this isn't usually part of my protocol...", "But just for you, I can lower the price to just 5% of your vitality.", "Nice!", "This guy... is too easy to please."],
+        "leftSprite": [null, null, "aliceBlush.png", "aliceBlush.png", null, null, null, "aliceHappy.png", null],
+        "rightSprite": [null, null, null, null, null, "dealer.png", "dealer.png", null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Alice", "Alice", "Narrator", "Dealer", "Dealer", "Alice", "Narrator"],
+        "tagPosition": [null, null, "left", "left", null, "right", "right", "left", null],
+        "combat": [null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5BC B": {
+        "text": ["Okay. I'll give you 5% of my vitality.", "Perfect... please reach your arm out.", "You do as the dealer says and reach out your arm.", "He takes out a syringe and pricks it into one of your veins, drawing out blood.", "After he is done, your arm feels cold momentarily, but the feeling quickly goes away.", "Thank you for your business...", "The Dealer tosses a backpack full of blood bags on the floor in front of you.", "Now go... stay any longer and we could be discovered...", "Yes, thank you for your service.", "The Dealer seems to like you. You have befriended the Dealer.", "A few days pass since your encounter with the Dealer.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png", null, null, null, null, null, null, null, "aliceHappy.png", null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, "dealer.png", null, null, null, "dealer.png", null, "dealer.png", null, null, null, null, null, null, null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, null, null, null, "darkBG.png", "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Dealer", "Narrator", "Narrator", "Narrator", "Dealer", "Narrator", "Dealer", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": ["left", "right", null, null, null, "right", null, "right", "left", null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5BC C": {
+        "text": ["You attempt to haggle the Dealer further.", "Thank you Mr. Dealer, but can you lower it just a little... more...", "Okay okay... I see whats going on here...", "I'm not that stupid, alright. 10% of your vitality. Take it or leave it...", "Aww..."],
+        "leftSprite": [null, "aliceBlush.png", null, null, "aliceSad.png"],
+        "rightSprite": [null, null, "dealer.png", "dealer.png", null],
+        "background": ["alleyNightBG.png", null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Alice", "Dealer", "Dealer", "Alice"],
+        "tagPosition": [null, "left", "right", "right", "left"],
+        "combat": [null, null, null, null, null],
+        "ending": [null, null, null, null, null],
+        "suspicion": [null, null, null, null, null],
+        "interrogation": [null, null, null, null, null]
+    },
+    "AliceL5BCC B": {
+        "text": ["Okay. I'll give you 10% of my vitality.", "Perfect... please reach your arm out.", "You do as the dealer says and reach out your arm.", "He takes out a syringe and pricks it into one of your veins, drawing out blood.", "After he is done, your arm feels cold momentarily, but the feeling quickly goes away.", "Thank you for your business...", "The Dealer tosses a backpack full of blood bags on the floor in front of you.", "Now go... stay any longer and we could be discovered...", "Yes, thank you for your service.", "The Dealer seems to like you. You have befriended the Dealer.", "A few days pass since your encounter with the Dealer.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": ["alice.png", null, null, null, null, null, null, null, "aliceHappy.png", null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": [null, "dealer.png", null, null, null, "dealer.png", null, "dealer.png", null, null, null, null, null, null, null, null],
+        "background": ["alleyNightBG.png", null, null, null, null, null, null, null, null, "darkBG.png", "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Dealer", "Narrator", "Narrator", "Narrator", "Dealer", "Narrator", "Dealer", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": ["left", "right", null, null, null, "right", null, "right", "left", null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5 C": {
+        "text": ["Oh, I know!", "I can just ask the Landlord if he'll let me drink his blood.", "I'm sure... he'll let me... right?", "That night, you sneak into the Landlord's apartment.", "The lights are all off, and its almost pitch black.", "He is asleep in his bed, and you crawl up into his blanket, planning to wake him up.", "The inside of the blanket feels warm, and you crawl through it, starting from the bottom of the bed up to the top.", "You poke your head out the top of the blanket, and your body is sprawled across the Landlord's with your chin laying on top his chest.", "The Landlord seems to finally come to consciousness due to your actions, though he still seems half asleep.", "Wake up! Wake up! I need something!"],
+        "leftSprite": ["alice.png", "aliceHappy.png", "aliceSad.png", null, null, null, null, null, null, "aliceHappy.png"],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null],
+        "background": ["apartmentBG.png", null, null, "darkBG.png", "landlordApartmentNightBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Alice"],
+        "tagPosition": ["left", "left", "left", null, null, null, null, null, null, "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5C A": {
+        "text": ["Mmm... Alice? What are you... wait, why are you on top of me?", "Sorry. I didn't mean to scare you, but this is a emergency.", "Could I... borrow a little bit of your blood? Just a tiny bit?", "Landlord: Right now? It's the middle of the night! And you're very close...", "Please? I'll be super careful, I promise!", "Sigh... I guess since we're friends. Just... be gentle, okay?", "You lean down and gently press your fangs against his neck.", "You drink slowly and carefully, ensuring the sensation is as painless as possible for him.", "Thank you so much! You're the best landlord ever. Goodnight!", "You hop off the bed and head back to your room, feeling satisfied and warm.", "A few days pass since your nighttime meeting with the Landlord.", "You recently have begun to notice the neighbor peeking out their apartment's window, watching you, every time you leave for your new part time job at Bruno's Burgers.", "Hm... I'm kind of worried.", "Everytime I leave the apartment recently, the neighbor looks at me weird.", "Could they be suspicious that I'm a vampire?", "I should really do something about it, but what can I do?"],
+        "leftSprite": [null, "aliceSad.png", "aliceSad.png", null, "aliceHappy.png", null, null, null, "aliceHappy.png", null, null, null, "aliceSad.png", "aliceSad.png", "aliceSad.png", "aliceSad.png"],
+        "rightSprite": ["landlord.png", null, null, "landlord.png", null, "landlord.png", null, null, null, null, null, null, null, null, null, null],
+        "background": ["landlordApartmentNightBG.png", null, null, null, null, "apartmentBG.png", "darkBG.png", null, null, null, "apartmentBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Landlord", "Alice", "Alice", "Landlord", "Alice", "Landlord", "Narrator", "Narrator", "Alice", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Alice", "Alice"],
+        "tagPosition": ["right", "left", "left", "right", "left", "right", null, null, "left", null, null, null, "left", "left", "left", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL5C B": {
+        "text": ["Alice? Is that you? Why are you under the blankets... whoa!", "I’m starving! I ran out of blood bags and I can't wait until morning.", "Let me have some of yours!", "Wait, hold on a second, you’re squishing me—", "I really need this!", "Alright, alright! Just take what you need, just stop shaking!", "Driven by your hunger, you hastily sink your fangs into his neck.", "You drink greedily, gulping down the blood as the Landlord flinches and lets out a sharp gasp of pain.", "When you finally pull away, he looks significantly paler than before, clutching his neck with a shaky hand.", "Phew! I feel way better now. Thanks for the meal!", "You leave the room quickly, leaving the dizzy Landlord to recover as you head to bed.", "A few days pass since your nighttime meeting with the Landlord.", "You recently have begun to notice the neighbor peeking out their apartment's window..."],
+        "leftSprite": [null, "aliceSad.png", "aliceSad.png", null, "aliceSad.png", null, null, null, null, "aliceHappy.png", null, null, null],
+        "rightSprite": ["landlord.png", null, null, "landlord.png", null, "landlord.png", null, null, null, null, null, null, null],
+        "background": ["landlordApartmentNightBG.png", null, null, null, null, null, "darkBG.png", null, null, null, null, "apartmentBG.png", null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Landlord", "Alice", "Alice", "Landlord", "Alice", "Landlord", "Narrator", "Narrator", "Narrator", "Alice", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": ["right", "left", "left", "right", "left", "right", null, null, null, "left", null, null, null],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL6 A": {
+        "text": ["That was the night that you killed your neighbor, Amelia.", "You staged it to look like an accident, an accident where his ceiling fan fell on his head and killed her on impact."],
+        "leftSprite": [null, null],
+        "rightSprite": [null, null],
+        "background": ["darkBG.png", null],
+        "CGmode": ["off", "off"],
+        "speaker": ["Narrator", "Narrator"],
+        "tagPosition": [null, null],
+        "combat": [null, null],
+        "ending": [null, null],
+        "suspicion": [null, null],
+        "interrogation": [null, null]
+    },
+    "AliceL6 B": {
+        "text": ["That night, after your usual shift at Bruno's Burgers, you decide to give your neighbor a visit.", "Through the windows of the apartment, even through the curtains, you can tell that the lights are on.", "You know for sure that your neighbor is at home.", "You can hear the clatter of plates inside.", "It seems like the one residing within is either preparing dinner or washing the dishes afterwards.", "Well… how should I go about this? I suppose I’ll start with knocking.", "You knock on the door of the apartment… the sound of clattering plates stops for a mo", "…I-its not in a weird way or anything, but I’ve been watching you for a while.", "I was wondering… could you possibly… be a vampire?", "(Eh… it seems that I might be busted again. Now what...)"],
+        "leftSprite": [null, null, null, null, null, "alice.png", null, null, null, "aliceSad.png"],
+        "rightSprite": [null, null, null, null, null, null, null, "amelia.png", "amelia.png", null],
+        "background": ["darkBG.png", "streetNightBG.png", null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Narrator", "Amelia", "Amelia", "Alice"],
+        "tagPosition": [null, null, null, null, null, "left", null, "right", "right", "left"],
+        "combat": [null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL6B A": {
+        "text": ["I’m sorry, but you know too much.", "This is what has to happen…", "H-huh?", "You walk into Amelia’s apartment, pushing her through the doorway. Amelia falls onto the floor.", "You close the door behind you.", "The only exit left is the back door, but you know that you are much faster than her.", "You approach your neighbor…", "."],
+        "leftSprite": ["aliceSad.png", "alice.png", null, null, null, null, null, null],
+        "rightSprite": [null, null, "amelia.png", null, null, null, null, null],
+        "background": ["streetNightBG.png", null, null, "ameliaApartmentBG.png", null, null, null, "ameilaApartmentCombatBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Amelia", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", "right", null, null, null, null, null],
+        "combat": [null, null, null, null, null, null, null, "ameliaAlice"],
+        "ending": [null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null]
+    },
+    "AliceL6B A kill": {
+        "text": ["It took one week before someone discovered your neighbor, Amelia, was inexplicably missing.", "There was no evidence present that allowed investigations to trace the act to you."],
+        "leftSprite": [null, null],
+        "rightSprite": [null, null],
+        "background": ["ameliaApartmentBG.png", null],
+        "CGmode": ["off", "off"],
+        "speaker": ["Narrator", "Narrator"],
+        "tagPosition": [null, null],
+        "combat": [null, null],
+        "ending": [null, null],
+        "suspicion": [null, null],
+        "interrogation": [null, null]
+    },
+    "AliceL6B A spare": {
+        "text": ["You end up just standing there after having shoved Amelia into his apartment.", "Given the opportunity, Amelia panickedly got up and ran out the back door.", "You did nothing to stop her.", "Why did I do that? Now I let them escape.", "Well, I suppose there isn’t anything I can do now. I’ll just head back.", "You make the decision to just head back to your residence. You never see Amelia again.", "He never seemed to come back to his apartment since that day.", "You notice, however, that more Corps Hunters have been wandering the area recently.", "It seems that your neighbor had likely reported you. (Suspicion +20)"],
+        "leftSprite": [null, null, null, "aliceSad.png", "alice.png", null, null, null, null],
+        "rightSprite": [null, "amelia.png", null, null, null, null, null, null, null],
+        "background": ["ameliaApartmentBG.png", null, null, null, null, "darkBG.png", null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, null, null, "left", "left", null, null, null, null],
+        "combat": [null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, 20],
+        "interrogation": [null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL6B B": {
+        "text": ["(Hm… considering that this person hasn’t reported me yet, despite having suspicions that I’m a vampire, could mean that it might not hurt to reveal the truth.)", "So… say I was a vampire.", "What would you do?", "Well, in that case…", "…", "I don’t know.", "Well, I just want to let you know that, yes, I am a vampire.", "It might have been stupid of me to just tell you this, but please keep it a secret.", "(Huh? Really? Just like that? I never really took vampires to be such an honest kind of people.)", "You’re… not joking right?", "Nope. I’m telling the truth.", "With that being said, are we on good terms now? Can I go?", "Yes, and also, thank you for not killing me.", "Yes, yes.", "No problem, I hope we can help each other in the future.", "Right… you can come to me if you ever need help with something.", "You leave your neighbor’s apartment on good terms.", "You have managed to peacefully reveal your identity as a vampire to Amelia. You have befriended Amelia."],
+        "leftSprite": ["alice.png", "aliceSad.png", "aliceSad.png", null, null, null, "aliceSad.png", "aliceSad.png", null, null, "alice.png", "alice.png", null, "alice.png", "alice.png", null, null, null],
+        "rightSprite": [null, null, null, "amelia.png", "amelia.png", "amelia.png", null, null, "amelia.png", "amelia.png", null, null, "ameliaSmile.png", null, null, "ameliaSmile.png", null, null],
+        "background": ["streetNightBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "darkBG.png", null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Alice", "Amelia", "Amelia", "Amelia", "Alice", "Alice", "Amelia", "Amelia", "Alice", "Alice", "Amelia", "Alice", "Alice", "Amelia", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", "left", "right", "right", "right", "left", "left", "right", "right", "left", "left", "right", "left", "left", "right", null, null],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL6B C": {
+        "text": ["You make the decision to lie about not being a vampire.", "Eh? Where did you get that idea from?", "I’m not a vampire, you know.", "Even though… you have those crimson-colored eyes? And that gleaming white hair?", "…", "That’s just how I was bor", "Yeah… that makes sense. I won’t bother you anymore.", "Okay, thank you for that.", "I’ll now be taking my leave.", "You leave the neighbor’s apartment, managing to gaslight them into believing that you are not a vampire. Amelia seems to have believed your lie, as no new activity has been seen regarding the Daylight Savings Corps."],
+        "leftSprite": [null, "alice.png", "aliceHappy.png", null, "alice.png", "alice.png", null, "aliceHappy.png", "aliceHappy.png", null],
+        "rightSprite": [null, null, null, "amelia.png", null, null, "ameliaSmile.png", null, null, null],
+        "background": ["streetNightBG.png", null, null, null, null, null, null, null, null, "darkBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Alice", "Alice", "Amelia", "Alice", "Alice", "Amelia", "Alice", "Alice", "Narrator"],
+        "tagPosition": [null, "left", "left", "right", "left", "left", "right", "left", "left", null],
+        "combat": [null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL6 C": {
+        "text": ["I’m sure that the neighbor is just a little odd, maybe they don’t mean anything by it.", "Just don’t think about it. I’m sure this issue will pass over just fine!", "You decide to leave the neighbor alone.", "They keep watching you from their window as you leave to work, and you notice that Corps Hunter patrols around the area have become more"],
+        "leftSprite": ["aliceSad.png", "alice.png", null, null],
+        "rightSprite": [null, null, null, null],
+        "background": [null, null, "darkBG.png", null],
+        "CGmode": ["off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", null, null],
+        "combat": [null, null, null, null],
+        "ending": [null, null, null, null],
+        "suspicion": [null, null, null, null],
+        "interrogation": [null, null, null, null]
+    },
+    "AliceL7Amelia": {
+        "text": ["On one, seemingly normal, day. It seems that your new life has once again, taken a turn for the worst.", "KNOCK KNOCK KNOCK", "Eh… what could this be so early in the morning?", "KNOCK KNOCK KNOCK KNOCK KNOCK", "You open the door.", "On the other side stands your neighbor, Amelia.", "Alice! We have a problem!", "Hunters from the Corps are telling people nearby to move out of the area!", "They’re getting ready to raid your apartment!", "E-eh?! This is a lot to take in at once!", "I-I know. I’m sorry I couldn’t tell you sooner. I only found out just now.", "Sorry, but I have to go now. If they see me talking to you, then they might get me too.", "I really hope you make it out! I gotta go!", "Without giving you tim"],
+        "leftSprite": [null, null, "aliceSad.png", null, null, null, null, null, null, "aliceSad.png", null, null, null, null],
+        "rightSprite": [null, null, null, null, null, "amelia.png", "amelia.png", "amelia.png", "amelia.png", null, "amelia.png", "amelia.png", "amelia.png", null],
+        "background": ["apartmentBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Door", "Alice", "Door", "Narrator", "Amelia", "Amelia", "Amelia", "Amelia", "Alice", "Amelia", "Amelia", "Amelia", "Narrator"],
+        "tagPosition": [null, "left", "left", "left", null, "right", "right", "right", "right", "left", "right", "right", "right", null],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL7Dealer": {
+        "text": ["A few months pass in your new life.", "You’ve been making bi-weekly visits to the Dealer at night.", "He’s even been giving you discounts on his bloodbags recently.", "On one, seemingly normal, day.", "It seems that your new life has once again, taken a turn for the worst.", "KNOCK KNOCK KNOCK", "Eh… what could this be so early in the morning?", "KNOCK KNOCK KNOCK KNOCK KNOCK", "You open the door.", "On the other side stands the Black Market Dealer.", "My friend! I must tell you something!", "Your place is about to be invaded! You have to leave at once!", "E-eh?!", "This is a lot to take in at once!", "I know, friend... Even with my informants, I only found out just now.", "Now, I mus"],
+        "leftSprite": [null, null, null, null, null, null, "aliceSad.png", null, null, null, null, null, "aliceSad.png", "aliceSad.png", null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, "dealer.png", "dealer.png", "dealer.png", null, null, "dealer.png", null],
+        "background": ["darkBG.png", null, null, "apartmentBG.png", null, null, null, null, null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Door", "Alice", "Door", "Narrator", "Dealer", "Dealer", "Dealer", "Alice", "Alice", "Dealer", "Dealer"],
+        "tagPosition": [null, null, null, null, null, "left", "left", null, null, "right", "right", "right", "left", "left", "right", "right"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL7Vampire": {
+        "text": ["A few months pass in your new life.", "On one, seemingly normal, day. It seems that your new life has once again, taken a turn for the worst.", "KNOCK KNOCK KNOCK", "Eh… what could this be so early in the morning?", "KNOCK KNOCK KNOCK KNOCK KNOCK", "You open the door.", "On the other side stands the Senior Vampire.", "Young one! This is an important matter!", "Your abode is about to be invaded! You have to leave right at this moment!", "E-eh?! This is a lot to take in at once!", "I know, but this is an urgent matter.", "Now, apologies, but I must leave.", "I cannot risk being discovered by the Corps once"],
+        "leftSprite": [null, null, null, "aliceSad.png", null, null, null, null, null, "aliceSad.png", null, null, null],
+        "rightSprite": [null, null, null, null, null, null, "seniorVampire.png", "seniorVampire.png", "seniorVampire.png", null, "seniorVampire.png", "seniorVampire.png", null],
+        "background": ["darkBG.png", "apartmentBG.png", null, null, null, null, null, null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Door", "Alice", "Door", "Narrator", "Senior Vampire", "Senior Vampire", "Senior Vampire", "Alice", "Senior Vampire", "Senior Vampire", "Senior Vampire"],
+        "tagPosition": [null, null, "left", "left", null, null, "right", "right", "right", "left", "right", "right", "right"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL7 A": {
+        "text": ["I need to face them head-on.", "This is the best course of action.", "You steel your resolve, and open the front door once again.", "You step out.", "Closing in on your front porch are a mob of hunters.", "Upon seeing you, they begin sprinting in your direction, wielding knives.", "Let’s use every last drop.", ".", "You manage to knock down a hunter, but another comes…", ".", "You manage to knock down another hunter, but another comes…", ".", "You manage to knock down a third hunter, but another comes…", ".", "You manage to knock down a seventh hunter, but another comes…", ".", "You manage to knock down an eighth hunter, but another comes…", ".", "You manage to knock down a ninth hunter, but another comes…", ".", "You manage to knock down a tenth hunter, but you shouldn’t reach this point."],
+        "leftSprite": ["alice.png", "alice.png", null, null, null, null, "alice.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["apartmentBG.png", null, "streetDayBG.png", null, null, null, null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", null, null, null, null, "left", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, null, null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter"],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL7 B": {
+        "text": ["I need to get out of here.", "Now.", "You hastily transform into your bat form, then fly out the window.", "You only make it a few feet out of your apartment’s window before you feel a sharp pain in your left wing.", "A bolt from a hunter’s crossbow pierced straight through it, and you fell put onto the street", "You manage to knock down a third hunter, but another comes…", ".", "You manage to knock down a fourth hunter, but another comes…", ".", "You manage to knock down a fifth hunter, but another comes…", ".", "You manage to knock down a sixth hunter, but another comes…", ".", "You manage to knock down a seventh hunter, but another comes…", ".", "You manage to knock down an eighth hunter, but another comes…", ".", "You manage to knock down a ninth hunter, but another comes…", "."],
+        "leftSprite": ["aliceSad.png", "aliceSad.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["apartmentBG.png", null, "streetDayBG.png", null, null, null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": ["left", "left", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter"],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL7 C": {
+        "text": ["You run out your backdoor, into the neighborhood in order to evade the hunters.", "They’re here. What now.", "Ah… running away will only delay the inevitable.", "Well, I suppose… just this once…", "Let’s use every last drop.", ".", "You manage to knock down a hunter, but another comes…", ".", "You manage to knock down another hunter, but another comes…", ".", "You manage to knock down a third hunter, but another comes…", ".", "You manage to knock down a fourth hunter, but another comes…", ".", "You manage to knock down a ninth hunter, but another comes…", ".", "You manage to knock down a tenth hunter, but you shouldn’t reach this point."],
+        "leftSprite": [null, "aliceSad.png", "aliceSad.png", "alice.png", "alice.png", null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "background": ["streetDayBG.png", null, null, null, null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png", null, "streetDayCombatBG.png"],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Alice", "Alice", "Alice", "Alice", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, "left", "left", "left", "left", null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter", null, "aliceHunter"],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL8 A": {
+        "text": ["You are delivered a critical hit by one of the hunters.", "The hit causes your body to fold, and you collapse to the floor.", "Your whole body aches in pain.", "It seems like this is the end of the road for you.", "I suppose this is it, yes? Ouch… atleast… I went out with a bang.", "Ow! I think my leg is broken…", "As you close your eyes and resign yourself to your fate, it seems that a finishing blow never comes.", "Instead, you hear a mysterious voice. Someone that speaks casually, but with great authority.", "Hey you there, don’t even think about it.", "It seems like he is telling the", "You can call me Kisuke. I am a captain within the Daylight Savings Corps.", "…Did you save me?", "Maybe. Since I’ve started watching you, I noticed that you haven’t ended the life of a single person.", "For a vampire that is commendable, but how this ends all depends on you.", "Eh…?", "What do you mean by that?", "What I’m trying to say is that I am the only one who wants you alive right now.", "???", "We know that you have the royal bloodline.", "I think that you could be an asset to finally make peace with the vampires, but the other captains want you eliminated immediately.", "Royal… bloodline…?", "You might not be aware yourself yet, but we know for sure that you have royal blood.", "It seems the innate powers haven’t awakened yet.", "Anyway, young vampire… or Alice.", "I think that’s what you’ve been calling yourself?", "I need you to convince the other two captains that", "You better.", "Now, they’re already expecting you. I notified them beforehand.", "Take the elevator to the hundredth floor. I’ll wait here.", "You take the elevator up to the hundredth floor, the ride feels much longer than it actually was.", "The nerves of meeting with the captains of the Corps, plus the fact that they wanted to kill you, weighs on your mind.", "The elevator finally opens, you are met with a dimly-lit room, lit with a single light on the ceiling.", "The walls are made of a sort of dark metallic steel.", "In the middle of the room is a conference table, with one empty chair on the side closer to the entrance, and two chairs occupied by who you assume are the captains on the other side.", "Welcome… vampire. We’ve been waiting for you.", "Hello… vampire.", "Please take a seat, we’d like to"],
+        "leftSprite": [null, null, null, null, "aliceSad.png", "aliceSad.png", null, null, null, null, null, "alice.png", null, null, "alice.png", "alice.png", null, "alice.png", null, null, "aliceSad.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null, null, null, null, "kisuke.png", null, "kisuke.png", "kisuke.png", null, null, "kisuke.png", null, "kisuke.png", "kisuke.png", null, "kisuke.png", "kisuke.png", "kisuke.png", "kisuke.png", "kisuke.png", "kisuke.png", "kisuke.png", "kisuke.png", null, null, null, null, null, "malkuthHappy.png", "binah.png", "malkuth.png"],
+        "background": [null, null, null, null, null, null, "darkBG.png", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, "corpsBG.png", null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Alice", "Alice", "Narrator", "Narrator", "???", "Narrator", "Kisuke", "Alice", "Kisuke", "Kisuke", "Alice", "Alice", "Kisuke", "Alice", "Kisuke", "Kisuke", "Alice", "Kisuke", "Kisuke", "Kisuke", "Kisuke", "Kisuke", "Kisuke", "Kisuke", "Kisuke", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Malkuth", "Binah", "Malkuth"],
+        "tagPosition": [null, null, null, null, "left", "left", null, null, "right", null, "right", "left", "right", "right", "left", "left", "right", "left", "right", "right", "left", "right", "right", "right", "right", "right", "right", "right", "right", null, null, null, null, null, "right", "right", "right"],
+        "combat": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "suspicion": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+    },
+    "AliceL8A1 A": {
+        "text": ["I’ve been stealing blood bags from the local hospital.", "Is that so?", "Very good on you for finding an alternative to murder. (Interrogation +20)", "That is a satisfactory response… I will inquire the next question.", "Could you explain your motives behind why you have not killed anyone up to this point?"],
+        "leftSprite": [null, null, null, null, null],
+        "rightSprite": [null, "malkuth.png", "malkuthHappy.png", "binah.png", "binah.png"],
+        "background": ["corpsBG.png", null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Malkuth", "Malkuth", "Binah", "Binah"],
+        "tagPosition": ["left", "right", "right", "right", "right"],
+        "combat": [null, null, null, null, null],
+        "ending": [null, null, null, null, null],
+        "suspicion": [null, null, null, null, null],
+        "interrogation": [null, null, 20, null, null]
+    },
+    "AliceL8A1 B": {
+        "text": ["I’ve been buying them from the Black Market.", "Is that so?", "Very good on you for finding an alternative to murder. (Interrogation +20)", "That is a satisfactory response… I will inquire the next question.", "Could you explain your motives behind why you have not killed anyone up to this point?"],
+        "leftSprite": [null, null, null, null, null],
+        "rightSprite": [null, "malkuth.png", "malkuthHappy.png", "binah.png", "binah.png"],
+        "background": ["corpsBG.png", null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off"],
+        "speaker": ["Alice", "Malkuth", "Malkuth", "Binah", "Binah"],
+        "tagPosition": ["left", "right", "right", "right", "right"],
+        "combat": [null, null, null, null, null],
+        "ending": [null, null, null, null, null],
+        "suspicion": [null, null, null, null, null],
+        "interrogation": [null, null, 20, null, null]
+    },
+    "AliceL9 A": {
+        "text": ["After that meeting with captains Binah and Malkuth, you were given the directive to become a vampire diplomat.", "You were later informed by the Corps that you were born with the vampire royal bloodline, something that only occurs once a century.", "They helped you unlock your innate powers that give you royal authority over other vampires.", "You traveled across the continent, mending the relationships between vampires and humans.", "You become world renowned, and your efforts become celebrated by many.", "There was even a holiday named after you on the 8th of June known as “Diplomat’s day.”", "You live happily, having saved the world from decades of conflict between humans and vampires."],
+        "leftSprite": [null, null, null, null, null, null, null],
+        "rightSprite": [null, null, null, null, null, null, null],
+        "background": ["darkBG.png", null, null, null, null, null, null],
+        "CGmode": ["off", "off", "off", "off", "off", "off", "off"],
+        "speaker": ["Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator", "Narrator"],
+        "tagPosition": [null, null, null, null, null, null, null],
+        "combat": [null, null, null, null, null, null, null],
+        "ending": [null, null, null, null, null, null, "Diplomat"],
+        "suspicion": [null, null, null, null, null, null, null],
+        "interrogation": [null, null, null, null, null, null, null]
+    }
 }
 let choices = {
     "intro": {
@@ -3040,6 +3457,123 @@ let choices = {
         "text": ["Yes, teach me", "No, I want to be on my own"],
         "nextPath": ["GhostNL8B A", "GhostNL8B B"]
     },
+    //Landlord Routes
+    "4B A": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Ask the Landlord for blood"],
+        "nextPath": ["AliceL5 A", "AliceL5 B", "AliceL5 C"]
+    },
+    "4B B": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Ask the Landlord for blood"],
+        "nextPath": ["AaronL5 A", "AaronL5 B", "AaronL5 C"]
+    },
+    "4B C": {
+        "text": ["Steal from a hospital blood bank", "Buy from the Black Market Dealer", "Ask the Landlord for blood"],
+        "nextPath": ["GhostL5 A", "GhostL5 B", "GhostL5 C"]
+    },
+    "AliceL5 A": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5 B": {
+        "text": ["Kill him and steal the blood", "Pay 20% of your health", "Haggle"],
+        "nextPath": ["AliceL5B A", "AliceL5B B", "AliceL5B C"]
+    },
+    "AliceL5B A kill": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5B A spare": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5B B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5B C": {
+        "text": ["Kill him and steal the blood", "Pay 5% of your health", "Haggle further"],
+        "nextPath": ["AliceL5B A", "AliceL5BC B", "AliceL5BC C"]
+    },
+    "AliceL5BC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5BC C": {
+        "text": ["Kill him and steal the blood", "Pay 10% of your health"],
+        "nextPath": ["AliceL5B A", "AliceL5BCC B"]
+    },
+    "AliceL5BCC B": {
+        "text": ["Kill them at night", "Knock on their door and ask about their behavior", "Leave them alone"],
+        "nextPath": ["AliceL6 A", "AliceL6 B", "AliceL6 C"]
+    },
+    "AliceL5 C": {
+        "text": ["Ask the Landlord nicely and gently", "Ask the Landlord hungrily and greedily", "Ask the Landlord shyly and considerately"],
+        "nextPath": ["AliceL5C A", "AliceL5C B", "AliceL5C C"]
+    },
+    "AliceL5C A": {
+        "text": ["Kill them", "Admit that you are", "Say that you aren't"],
+        "nextPath": ["AliceL6B A", "AliceL6B B", "AliceL6B C"]
+    },
+    "AliceL5C B": {
+        "text": ["Kill them", "Admit that you are", "Say that you aren't"],
+        "nextPath": ["AliceL6B A", "AliceL6B B", "AliceL6B C"]
+    },
+    "AliceL5C C": {
+        "text": ["Kill them", "Admit that you are", "Say that you aren't"],
+        "nextPath": ["AliceL6B A", "AliceL6B B", "AliceL6B C"]
+    },
+    "AliceL6 B": {
+        "text": ["Kill them", "Admit that you are", "Say that you aren't"],
+        "nextPath": ["AliceL6B A", "AliceL6B B", "AliceL6B C"]
+    },
+    "AliceL7JakeDealer": {
+        "text": ["Fight", "Run", "Wait"],
+        "nextPath": ["AliceL7 A", "AliceL7 B", "AliceL7 C"]
+    },
+    "AliceL7Jake": {
+        "text": ["Fight", "Run", "Wait"],
+        "nextPath": ["AliceL7 A", "AliceL7 B", "AliceL7 C"]
+    },
+    "AliceL7Dealer": {
+        "text": ["Fight", "Run", "Wait"],
+        "nextPath": ["AliceL7 A", "AliceL7 B", "AliceL7 C"]
+    },
+    "AliceL7Vampire": {
+        "text": ["Fight", "Run", "Wait"],
+        "nextPath": ["AliceL7 A", "AliceL7 B", "AliceL7 C"]
+    },
+    "AliceL8 A": {
+        "text": ["Stealing hospital blood bags", "Buying from the Black Market ", "Killing people"],
+        "nextPath": ["AliceL8A1 A", "AliceL8A1 B", "AliceL8A1 C"]
+    },
+    "AliceL8A1 A": {
+        "text": ["I don’t want to hurt anyone", "I don’t know", "I never got the chance to"],
+        "nextPath": ["AliceL8A2 A", "AliceL8A2 B", "AliceL8A2 C"]
+    },
+    "AliceL8A1 B": {
+        "text": ["I don’t want to hurt anyone", "I don’t know", "I never got the chance to"],
+        "nextPath": ["AliceL8A2 A", "AliceL8A2 B", "AliceL8A2 C"]
+    },
+    "AliceL8A1 C": {
+        "text": ["I don’t want to hurt anyone", "I don’t know", "I never got the chance to"],
+        "nextPath": ["AliceL8A2 A", "AliceL8A2 B", "AliceL8A2 C"]
+    },
+    "AliceL8A2 A": {
+        "text": ["Yes? A vampire, right?", "Yes. A vampire.", "No."],
+        "nextPath": ["AliceL8A3 A", "AliceL8A3 B", "AliceL8A3 C"]
+    },
+    "AliceL8A2 B": {
+        "text": ["Yes? A vampire, right?", "Yes. A vampire.", "No."],
+        "nextPath": ["AliceL8A3 A", "AliceL8A3 B", "AliceL8A3 C"]
+    },
+    "AliceL8A2 C": {
+        "text": ["Yes? A vampire, right?", "Yes. A vampire.", "No."],
+        "nextPath": ["AliceL8A3 A", "AliceL8A3 B", "AliceL8A3 C"]
+    },
+    "AliceL8 B": {
+        "text": ["Yes, teach me", "No, I want to be on my own"],
+        "nextPath": ["AliceL8B A", "AliceL8B B"]
+    },
 }
 
 function setStartPage() {
@@ -3392,20 +3926,6 @@ function specialConditionChecker() {
         advanceStory();
     } else if (storyStage === "AliceNL6B A" && enemySlept === true) {
         storyStage = "AliceNL6B A sleep";
-        dialogueTracker = -1;
-        currentPage = "dialogue";
-        setPage();
-        advanceStory();
-    } else if (storyStage === "AliceNL6 A") {
-        if (dealerBefriended && jakeBefriended) {
-            storyStage = "AliceNL7JakeDealer";
-        } else if (jakeBefriended) {
-            storyStage = "AliceNL7Jake";
-        } else if (dealerBefriended) {
-            storyStage = "AliceNL7Dealer";
-        } else {
-            storyStage = "AliceNL7Vampire";
-        }
         dialogueTracker = -1;
         currentPage = "dialogue";
         setPage();
@@ -3786,6 +4306,176 @@ function specialConditionChecker() {
             setPage();
             advanceStory();
         }
+    } 
+    //Landlord routes
+    else if (storyStage === "AliceL5B A" && kills > continueKills) {
+        storyStage = "AliceL5B A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL5B A" && enemySpared === true) {
+        storyStage = "AliceL5B A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL5B B") {
+        dealerBefriended = true;
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.2);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceL5BC B") {
+        dealerBefriended = true;
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.05);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceL5BCC B") {
+        dealerBefriended = true;
+        playerHealth = playerHealth - Math.floor(playerHealth * 0.1);
+        if (playerHealth <= 0) {
+            playerHealth = 1;
+        }
+        setUpChoices();
+        choiceOverlay.style = "display: flex";
+    } else if (storyStage === "AliceL6 A") {
+        kills += 1;
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A" && kills > continueKills) {
+        storyStage = "AliceL6B A kill";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A" && enemySpared === true) {
+        storyStage = "AliceL6B A spare";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A" && enemySlept === true) {
+        storyStage = "AliceL6B A sleep";
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A kill") {
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A spare") {
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B A sleep") {
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B B") {
+        ameliaBefriended = true;
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6B C") {
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage === "AliceL6 C") {
+        if (dealerBefriended && ameliaBefriended) {
+            storyStage = "AliceL7AmeliaDealer";
+        } else if (ameliaBefriended) {
+            storyStage = "AliceL7Amelia";
+        } else if (dealerBefriended) {
+            storyStage = "AliceL7Dealer";
+        } else {
+            storyStage = "AliceL7Vampire";
+        }
+        dialogueTracker = -1;
+        currentPage = "dialogue";
+        setPage();
+        advanceStory();
+    } else if (storyStage.includes("AliceL8A3")) {
+        if (interrogation >= 50) {
+            dialogueTracker = -1;
+            storyStage = "AliceL9 A";
+            currentPage = "dialogue";
+            setPage();
+            advanceStory();
+        } else {
+            dialogueTracker = -1;
+            storyStage = "AliceL8A Fail";
+            currentPage = "dialogue";
+            setPage();
+            advanceStory();
+        }
     } else {
         setUpChoices();
         choiceOverlay.style = "display: flex";
@@ -3810,6 +4500,25 @@ function checkEndingAlignment() {
         if (kills > 0 && kills < 4) {
             playerHealth = playerHealthMax;
             storyStage = "AliceNL8 B"
+        }
+    }
+    if (storyStage.includes('AliceL7')) {
+        if (kills === 0) {
+            playerHealth = playerHealthMax;
+            interrogationMode = true;
+            storyStage = "AliceL8 A"
+        }
+        if (kills >= 4) {
+            playerAttack = 99;
+            playerHealth = 1000;
+            playerHealthMax = 1000;
+            playerDefense = 50;
+            playerHealth = playerHealthMax;
+            storyStage = "AliceL8 C"
+        }
+        if (kills > 0 && kills < 4) {
+            playerHealth = playerHealthMax;
+            storyStage = "AliceL8 B"
         }
     }
     if (storyStage.includes('AaronNL7')) {
