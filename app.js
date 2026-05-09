@@ -116,7 +116,7 @@ let storyObject = {
         "background": ["darkBG.png","corpsBG.png",null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,"corpsCombatBG.png"],
         "CGmode": ["off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off","off"],
         "speaker": ["Narrator","Narrator","Narrator","Narrator","Binah","Alice","Binah","Alice","Binah","Binah","Binah","Alice","Narrator","Binah","Binah","Alice","Narrator","Narrator"],
-        "tagPosition": [null,null,null,null,"right","left","right","left","right","right","right","left",null,null,null,null,null,null],
+        "tagPosition": [null,null,null,null,"right","left","right","left","right","right","right","left",null,"right","right","left",null,null],
         "combat": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,["aliceCombat.png", ["Binah", "Binah stands there menacingly... her presence makes it hard to breathe", 1000, 100, 100, [200, 30, 30], "binahCombat.png", false, null, false, false]]],
         "ending": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
         "suspicion": [null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],
