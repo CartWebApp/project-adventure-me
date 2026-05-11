@@ -46,6 +46,100 @@ const choiceLogBox = document.querySelector('#choiceLog');
 const choiceLogAndOverlay = document.querySelector('#choiceLogAndOverlay')
 const viewChoicesButton = document.querySelector('#viewChoicesButton')
 
+const imageUrls = [
+'assets/aaron.png',
+'assets/aaronCombat.png',
+'assets/aaronCombatNight.png',
+'assets/aaronFrustrated.png',
+'assets/aaronMirrorCG.png',
+'assets/aaronWetlandCG.png',
+'assets/alanCombatNight.png',
+'assets/AlanGB.png',
+'assets/AlanGBDisappointed.png',
+'assets/AlanGBMouthOpen.png',
+'assets/AlanGBProud.png',
+'assets/AlanNM.png',
+'assets/AlanNMDisappointed.png',
+'assets/AlanNMProud.png',
+'assets/AlanNMSurprised.png',
+'assets/alice.png',
+'assets/aliceBlush.png',
+'assets/aliceCombat.png',
+'assets/aliceCombatNight.png',
+'assets/aliceHappy.png',
+'assets/aliceMirrorCG.png',
+'assets/aliceSad.png',
+'assets/aliceWetlandCG.png',
+'assets/alleyNightBG.png',
+'assets/alleyNightCombatBG.png',
+'assets/amelia.png',
+'assets/ameliaApartmentBG.png',
+'assets/ameliaApartmentCombatBG.png',
+'assets/ameliaCombat.png',
+'assets/ameliaSmile.png',
+'assets/apartmentBG.png',
+'assets/apartmentCombatBG.png',
+'assets/bat.png',
+'assets/binah.png',
+'assets/binahCombat.png',
+'assets/binahMad.png',
+'assets/corpsBG.png',
+'assets/corpsCombatBG.png',
+'assets/darkBG.png',
+'assets/dealer.png',
+'assets/dealerCombatNight.png',
+'assets/elderlyLadyCombat.png',
+'assets/elderlyManNight.png',
+'assets/forestBG.png',
+'assets/ghost.png',
+'assets/ghostCombat.png',
+'assets/ghostCombatNight.png',
+'assets/ghostFrustrated.png',
+'assets/ghostMirrorCG.png',
+'assets/ghostWetlandCG.png',
+'assets/GrillBrosBG.png',
+'assets/houseBG.png',
+'assets/houseCombatBG.png',
+'assets/hunterDay.png',
+'assets/Icon.png',
+'assets/jake.png',
+'assets/jakeCombat.png',
+'assets/jakeHouseBG.png',
+'assets/jakeHouseCombatBG.png',
+'assets/jakeSmile.png',
+'assets/kisuke.png',
+'assets/kisukeCombat.png',
+'assets/kisukeHidden.png',
+'assets/kisukeMad.png',
+'assets/landlord.png',
+'assets/landlordApartmentNightBG.png',
+'assets/landlordCombatNight.png',
+'assets/littleBoyNight.png',
+'assets/malkuth.png',
+'assets/malkuthHappy.png',
+'assets/malkuthSad.png',
+'assets/neighborhoodBG.png',
+'assets/neighborhoodCombatBG.png',
+'assets/neighborhoodNightBG.png',
+'assets/seniorVampire.png',
+'assets/seniorVampireCloaked.png',
+'assets/skyBG.png',
+'assets/sorenCombat.png',
+'assets/sorenCombatNight.png',
+'assets/SorenGB.png',
+'assets/sorenMirrorCG.png',
+'assets/SorenNM.png',
+'assets/sorenWetlandCG.png',
+'assets/streetDayBG.png',
+'assets/streetDayCombatBG.png',
+'assets/streetNightBG.png',
+'assets/streetNightCombatBG.png',
+'assets/tiredBusinessWomanNight.png',
+'assets/titleBG.png',
+'assets/wetlandBG.png',
+'assets/willowBG.png'
+];
+
 //misc
 let turnInProgress = false;
 let chatLogArray = [];
@@ -7211,6 +7305,7 @@ document.body.addEventListener('click', (event) => {
     }
 });
 
+preloadImages();
 setUpOptionsButtons();
 setUpOptionsMenus();
 updateStatusCanvas();
@@ -7236,4 +7331,13 @@ function testDialogue(stage) {
     currentPage = "dialogue";
     setPage();
     advanceStory();
+}
+
+function preloadImages() {
+    //code taken from and modified from https://stackoverflow.com/questions/42172441/load-all-images-and-scripts-for-full-website-at-once 
+    var imgs = [];
+    for (i=0;i<imageUrls.length;i++) {
+        imgs.push(new Image());
+        imgs[i].src = imageUrls[i];
+    }
 }
